@@ -44,8 +44,7 @@ namespace LeoJHarris.Control.iOS
             this.Control.RightView = new UIView(new CGRect(0, 0, 10, this.Control.Frame.Height));
             this.Control.LeftViewMode = UITextFieldViewMode.Always;
             this.Control.RightViewMode = UITextFieldViewMode.Always;
-
-            // Fixed height creates padding at top and bottom
+            
             this.Element.HeightRequest = 45;
 
             AdvancedEntry customEntry = e.NewElement as AdvancedEntry;

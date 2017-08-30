@@ -1,10 +1,5 @@
-
-
-using Android;
 using Android.Content;
-using Android.Content.Res;
 using Android.OS;
-using Android.Support.V4.Content;
 using Android.Views.InputMethods;
 using LeoJHarris.Control.Abstractions;
 using System;
@@ -43,25 +38,19 @@ namespace LeoJHarris.Control.Android
 
             this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);
 
-            if (this.Control != null && string.IsNullOrEmpty(baseEntry.RoundedCornerXML))
+            if (this.Control != null && !string.IsNullOrEmpty(baseEntry.RoundedCornerXML))
             {
                 if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
                 {
-                    //this.Control.Background = ContextCompat.GetDrawable(this.Context, Controls.Android.Resource.Drawable.RoundedCornerEntry);
-
                     this.Control.Background = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.RoundedCornerXML, "drawable", PackageName));
-
-                    //this.Control.Background =  Context.Resources.GetLayout(Context.Resources.GetIdentifier(baseEntry.RoundedCornerXML, "drawable", PackageName));
                 }
                 else
                 {
-                    // this.Control.Background = Resources.GetDrawable(Controls.Android.Resource.Drawable.RoundedCornerEntry);
-
-                    this.Control.Background = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.RoundedCornerXML, "drawable", PackageName));
+                     this.Control.Background = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.RoundedCornerXML, "drawable", PackageName));
                 }
             }
 
-            var resourceId = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.RoundedCornerXML, "drawable", PackageName));
+            var resourceId = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.LeftIcon, "drawable", PackageName));
 
             if (resourceId != null)
             {

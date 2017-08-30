@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>LeoJHarris.Controls.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>LeoJHarris.Controls.iOS</AssemblyName>
+    <AssemblyName>LeoJHarris.FormsPlugin.iOS</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <DocumentationFile>bin\iPhone\Release\LeoJHarris.Controls.iOS.xml</DocumentationFile>
+    <DocumentationFile>bin\iPhone\Release\LeoJHarris.FormsPlugin.iOS.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AdvancedEntryImplementation.cs" />

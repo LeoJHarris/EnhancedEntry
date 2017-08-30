@@ -137,7 +137,6 @@
     <Compile Include="Resources\Resource.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="AdvancedEntry.FormsPlugin.Android.csproj.bak" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

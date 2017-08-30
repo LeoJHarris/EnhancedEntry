@@ -20,14 +20,11 @@
 
 			
 
-			<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Abstractions\bin\Release\LeoJHarris.Control.Abstractions*.*" target="lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10" />
+			<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Abstractions\bin\Release\LeoJHarris.Control.Abstractions*.*" target="lib\portable-net45+wp80+win8+wpa81" />
 
-				<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.iOS\bin\iPhone\LeoJHarris.Control.Abstractions*.*" target="lib\Xamarin.iOS10" />
+				<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.iOS\bin\iPhone\Release\AdvancedEntry.FormsPlugin.iOS*.*" target="lib\Xamarin.iOS10" />
 
 			<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Android\bin\Release\AdvancedEntry.FormsPlugin.Android*.*" target="lib\MonoAndroid10" />
-
-
-			<!--<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Android\bin\Release\LeoJHarris.Control.Abstractions*.*" target="lib\MonoAndroid10" />-->
 
 			<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.WindowsPhone\bin\Release\LeoJHarris.Control.Abstractions*.*" target="lib\uap10.0" />
 		

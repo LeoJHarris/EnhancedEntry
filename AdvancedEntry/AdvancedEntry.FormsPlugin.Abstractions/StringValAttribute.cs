@@ -4,15 +4,15 @@ using System.Reflection;
 
 namespace LeoJHarris.Control.Abstractions
 {
-    public class StringValueAttribute : Attribute
+    public class StringValAttribute : Attribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="StringValueAttribute"/> class.
+        /// Initializes a new instance of the <see cref="StringValAttribute"/> class.
         /// </summary>
         /// <param name="value">
         /// The value.
         /// </param>
-        public StringValueAttribute(string value)
+        public StringValAttribute(string value)
         {
             this.Value = value;
         }
@@ -27,7 +27,7 @@ namespace LeoJHarris.Control.Abstractions
             Type type = value.GetType();
 
             FieldInfo fieldInfo = type.GetRuntimeField(value.ToString());
-            StringValueAttribute[] attrs = fieldInfo.GetCustomAttributes(typeof(StringValueAttribute), false) as StringValueAttribute[];
+            StringValAttribute[] attrs = fieldInfo.GetCustomAttributes(typeof(StringValAttribute), false) as StringValAttribute[];
 
             if (attrs != null && attrs.Any())
             {

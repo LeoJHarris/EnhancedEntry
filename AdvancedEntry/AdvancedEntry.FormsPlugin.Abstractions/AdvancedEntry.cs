@@ -33,7 +33,7 @@ namespace LeoJHarris.Control.Abstractions
             }
         }
 
-        public static readonly BindableProperty PaddingIconTextBindableProperty = BindableProperty.Create(nameof(PaddingIconTextPropertyName), typeof(int), typeof(AdvancedEntry), 25);
+        public static readonly BindableProperty PaddingIconTextBindableProperty = BindableProperty.Create(nameof(PaddingIconTextPropertyName), typeof(int), typeof(AdvancedEntry), 10);
 
         public const string PaddingIconTextPropertyName = "PaddingLeftIcon";
 
@@ -133,7 +133,7 @@ namespace LeoJHarris.Control.Abstractions
             Type type = value.GetType();
 
             FieldInfo fieldInfo = type.GetRuntimeField(value.ToString());
-            StringValueAttribute[] attrs = fieldInfo.GetCustomAttributes(typeof(StringValueAttribute), false) as StringValueAttribute[];
+            StringValAttribute[] attrs = fieldInfo.GetCustomAttributes(typeof(StringValAttribute), false) as StringValAttribute[];
 
             if (attrs != null && attrs.Any())
             {
