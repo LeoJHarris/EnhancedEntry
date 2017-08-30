@@ -1,11 +1,9 @@
-﻿using AdvancedEntry.FormsPlugin.Abstractions;
-using System;
+﻿using LeoJHarris.Control.Abstractions;
+using LeoJHarris.Control.WindowsPhone;
 using Xamarin.Forms;
-using AdvancedEntry.FormsPlugin.WindowsPhone;
-using Xamarin.Forms.Platform.WinPhone;
 
-[assembly: ExportRenderer(typeof(AdvancedEntry.FormsPlugin.Abstractions.AdvancedEntryControl), typeof(AdvancedEntryRenderer))]
-namespace AdvancedEntry.FormsPlugin.WindowsPhone
+[assembly: ExportRenderer(typeof(AdvancedEntry), typeof(AdvancedEntryRenderer))]
+namespace LeoJHarris.Control.WindowsPhone
 {
     /// <summary>
     /// AdvancedEntry Renderer

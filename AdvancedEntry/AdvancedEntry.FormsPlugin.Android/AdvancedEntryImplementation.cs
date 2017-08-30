@@ -1,56 +1,73 @@
-using AdvancedEntry.FormsPlugin.Abstractions;
-using System;
-using Xamarin.Forms;
-using AdvancedEntry.FormsPlugin.Android;
-using Xamarin.Forms.Platform.Android;
-using System.ComponentModel;
-using System.Reflection;
-using Android.Views.InputMethods;
+
+
+using Android;
+using Android.Content;
+using Android.Content.Res;
 using Android.OS;
 using Android.Support.V4.Content;
+using Android.Views.InputMethods;
+using LeoJHarris.Control.Abstractions;
+using System;
+using System.ComponentModel;
+using System.Reflection;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(AdvancedEntry.FormsPlugin.Abstractions.AdvancedEntryControl), typeof(AdvancedEntryRenderer))]
-namespace AdvancedEntry.FormsPlugin.Android
+[assembly: ExportRenderer(typeof(AdvancedEntry), typeof(LeoJHarris.Control.Android.AdvancedEntryRenderer))]
+namespace LeoJHarris.Control.Android
 {
     public class AdvancedEntryRenderer : EntryRenderer
     {
+       static string PackageName
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Used for registration with dependency service
         /// </summary>
-        public static void Init() { }
+        public static void Init(Context context) { PackageName= context.PackageName; }
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
-            var baseEntry = (AdvancedEntryControl)this.Element;
-
             base.OnElementChanged(e);
 
+            var baseEntry = (AdvancedEntry)this.Element;
+
             if (!((this.Control != null) & (e.NewElement != null))) return;
-            AdvancedEntryControl entryExt = e.NewElement as AdvancedEntryControl;
-            if (entryExt == null) return;
+
+            AdvancedEntry entryExt = e.NewElement as AdvancedEntry;
+            if (baseEntry == null) return;
 
             this.Control.ImeOptions = entryExt.ReturnKeyType.GetValueFromDescription();
 
             this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);
 
-            if (this.Control != null)
+            if (this.Control != null && string.IsNullOrEmpty(baseEntry.RoundedCornerXML))
             {
                 if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
                 {
-                    this.Control.Background = ContextCompat.GetDrawable(this.Context, Resource.Drawable.RoundedCornerEntry);
+                    //this.Control.Background = ContextCompat.GetDrawable(this.Context, Controls.Android.Resource.Drawable.RoundedCornerEntry);
+
+                    this.Control.Background = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.RoundedCornerXML, "drawable", PackageName));
+
+                    //this.Control.Background =  Context.Resources.GetLayout(Context.Resources.GetIdentifier(baseEntry.RoundedCornerXML, "drawable", PackageName));
                 }
                 else
                 {
-                    this.Control.Background = this.Resources.GetDrawable(Resource.Drawable.RoundedCornerEntry);
+                    // this.Control.Background = Resources.GetDrawable(Controls.Android.Resource.Drawable.RoundedCornerEntry);
+
+                    this.Control.Background = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.RoundedCornerXML, "drawable", PackageName));
                 }
             }
-           // var resourceId = (int)typeof(Resource.Drawable).GetField(baseEntry.LeftIcon).GetValue(null);
-            // Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.LeftIcon, "drawable", Context.PackageName));
 
-            //if (resourceId != 0)
-            //{
-            //    this.Control.SetCompoundDrawablesWithIntrinsicBounds(resourceId, 0, 0, 0);
-            //    this.Control.CompoundDrawablePadding = 25;
-            //}
+            var resourceId = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.RoundedCornerXML, "drawable", PackageName));
+
+            if (resourceId != null)
+            {
+                this.Control.SetCompoundDrawablesWithIntrinsicBounds(resourceId, null, null, null);
+                this.Control.CompoundDrawablePadding = baseEntry.PaddingLeftIcon;
+            }
 
             this.Control.EditorAction += (sender, args) =>
             {
@@ -70,8 +87,8 @@ namespace AdvancedEntry.FormsPlugin.Android
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            if (e.PropertyName != AdvancedEntryControl.ReturnKeyPropertyName) return;
-            AdvancedEntryControl entryExt = sender as AdvancedEntryControl;
+            if (e.PropertyName != AdvancedEntry.ReturnKeyPropertyName) return;
+            AdvancedEntry entryExt = sender as AdvancedEntry;
             if (entryExt == null) return;
             this.Control.ImeOptions = entryExt.ReturnKeyType.GetValueFromDescription();
             this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);

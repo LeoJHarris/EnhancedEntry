@@ -1,15 +1,16 @@
-﻿using AdvancedEntry.FormsPlugin.Abstractions;
+﻿
 using System;
 using Xamarin.Forms;
-using AdvancedEntry.FormsPlugin.iOS;
 using Xamarin.Forms.Platform.iOS;
 using UIKit;
 using CoreGraphics;
 using System.ComponentModel;
 using System.Reflection;
+using LeoJHarris.Control.Abstractions;
+using LeoJHarris.Control.iOS;
 
-[assembly: ExportRenderer(typeof(AdvancedEntry.FormsPlugin.Abstractions.AdvancedEntryControl), typeof(AdvancedEntryRenderer))]
-namespace AdvancedEntry.FormsPlugin.iOS
+[assembly: ExportRenderer(typeof(AdvancedEntry), typeof(AdvancedEntryRenderer))]
+namespace LeoJHarris.Control.iOS
 {
     /// <summary>
     /// AdvancedEntry Renderer
@@ -23,7 +24,7 @@ namespace AdvancedEntry.FormsPlugin.iOS
 
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
-            AdvancedEntryControl baseEntry = (AdvancedEntryControl)this.Element;
+            AdvancedEntry baseEntry = (AdvancedEntry)Element;
             base.OnElementChanged(e);
 
             if (!((this.Control != null) & (e.NewElement != null)))
@@ -47,7 +48,7 @@ namespace AdvancedEntry.FormsPlugin.iOS
             // Fixed height creates padding at top and bottom
             this.Element.HeightRequest = 45;
 
-            AdvancedEntryControl customEntry = e.NewElement as AdvancedEntryControl;
+            AdvancedEntry customEntry = e.NewElement as AdvancedEntry;
             if (customEntry != null)
             {
                 this.Control.ReturnKeyType =
@@ -71,12 +72,12 @@ namespace AdvancedEntry.FormsPlugin.iOS
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            if (e.PropertyName != AdvancedEntryControl.ReturnKeyPropertyName)
+            if (e.PropertyName != AdvancedEntry.ReturnKeyPropertyName)
             {
                 return;
             }
 
-            AdvancedEntryControl customEntry = sender as AdvancedEntryControl;
+            AdvancedEntry customEntry = sender as AdvancedEntry;
             if (customEntry != null)
                 this.Control.ReturnKeyType =
                     EnumEx.GetValueFromDescription<UIReturnKeyType>(customEntry.ReturnKeyType.ToString());

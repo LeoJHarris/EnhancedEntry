@@ -1,30 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata minClientVersion="2.8.3">
-		<id>FormsPlugin.AdvancedEntry</id>
+		<id>LeoJHarris.AdvancedEntry</id>
 		<version>1.0.0</version>
 		<title>AdvancedEntry Control Plugin for Xamarin.Forms</title>
-		<authors>Your Name</authors>
-		<owners>Your Name</owners>
+		<authors>Leonard Harris</authors>
+		<owners>Leonard Harris</owners>
 		<licenseUrl>https://github.com/LeoJHarris/AdvancedEntry/blob/master/LICENSE</licenseUrl>
 		<projectUrl>https://github.com/LeoJHarris/AdvancedEntry</projectUrl>
 		<!--Default Icon, a template can be found:  https://raw.githubusercontent.com/jamesmontemagno/Xamarin-Templates/master/Plugins-Templates/icons/plugin_icon.png-->
 		<iconUrl>https://raw.githubusercontent.com/jamesmontemagno/Xamarin-Templates/master/Plugins-Templates/icons/plugin_icon_nuget.png</iconUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>
-         Long description for your plugin.
+				 Advanced entry for Xamarin forms
 		</description>
 		<summary>Short description for your plugin.</summary>
-		<tags>xamarin, pcl, xam.pcl, plugin, plugin for xamarin.forms, windows phone, winphone, wp8, android, xamarin.forms, ios</tags>
-		
 	</metadata>
-	  <files>
-        <file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Abstractions\bin\Release\AdvancedEntry.FormsPlugin.Abstractions*.*" target="lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10" />
+		<files>
 
-        <file src="AdvancedEntry\AdvancedEntry.FormsPlugin.iOS\bin\iPhone\AdvancedEntry.FormsPlugin.Abstractions*.*" target="lib\Xamarin.iOS10" />
+			
 
-        <file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Android\bin\Release\AdvancedEntry.FormsPlugin.Abstractions*.*" target="lib\MonoAndroid10" />
+			<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Abstractions\bin\Release\LeoJHarris.Control.Abstractions*.*" target="lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10" />
 
-        <file src="AdvancedEntry\AdvancedEntry.FormsPlugin.WindowsPhone\bin\Release\AdvancedEntry.FormsPlugin.Abstractions*.*" target="lib\uap10.0" />
-    </files>
+				<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.iOS\bin\iPhone\LeoJHarris.Control.Abstractions*.*" target="lib\Xamarin.iOS10" />
+
+			<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Android\bin\Release\AdvancedEntry.FormsPlugin.Android*.*" target="lib\MonoAndroid10" />
+
+
+			<!--<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Android\bin\Release\LeoJHarris.Control.Abstractions*.*" target="lib\MonoAndroid10" />-->
+
+			<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.WindowsPhone\bin\Release\LeoJHarris.Control.Abstractions*.*" target="lib\uap10.0" />
+		
+		</files>
 </package>
