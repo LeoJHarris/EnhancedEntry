@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Xamarin.Forms;
 
-namespace AdvancedEntry.FormsPlugin.Abstractions
+namespace LeoJHarris.Control.Abstractions
 {
     /// <summary>
     /// AdvancedEntry Interface
@@ -30,6 +30,40 @@ namespace AdvancedEntry.FormsPlugin.Abstractions
             set
             {
                 this.SetValue(LeftIconProperty, value);
+            }
+        }
+
+        public static readonly BindableProperty PaddingIconTextBindableProperty = BindableProperty.Create(nameof(PaddingIconTextPropertyName), typeof(int), typeof(AdvancedEntry), 25);
+
+        public const string PaddingIconTextPropertyName = "PaddingLeftIcon";
+
+        public int PaddingLeftIcon
+        {
+            get
+            {
+                return (int)this.GetValue(PaddingIconTextBindableProperty);
+            }
+
+            set
+            {
+                this.SetValue(PaddingIconTextBindableProperty, value);
+            }
+        }
+
+        public static readonly BindableProperty RoundedCornerXMLBindableProperty = BindableProperty.Create(nameof(RoundedCornerXMLPropertyName), typeof(string), typeof(AdvancedEntry), string.Empty);
+
+        public const string RoundedCornerXMLPropertyName = "RoundedCornerXML";
+
+        public string RoundedCornerXML
+        {
+            get
+            {
+                return (string)this.GetValue(RoundedCornerXMLBindableProperty);
+            }
+
+            set
+            {
+                this.SetValue(RoundedCornerXMLBindableProperty, value);
             }
         }
 
