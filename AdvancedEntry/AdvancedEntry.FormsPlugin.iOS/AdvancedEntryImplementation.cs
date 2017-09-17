@@ -68,7 +68,7 @@ namespace LeoJHarris.Control.iOS
             if (customEntry != null)
             {
                 this.Control.ReturnKeyType =
-                    EnumEx.GetValueFromDescription<UIReturnKeyType>(customEntry.ReturnKeyType.ToString());
+                   GetValueFromDescription<UIReturnKeyType>(customEntry.ReturnKeyType.ToString());
 
                 if (!string.IsNullOrEmpty(customEntry.LeftIcon))
                 {
@@ -104,14 +104,10 @@ namespace LeoJHarris.Control.iOS
 
             AdvancedEntry customEntry = sender as AdvancedEntry;
             if (customEntry != null)
-                this.Control.ReturnKeyType =
-                    EnumEx.GetValueFromDescription<UIReturnKeyType>(customEntry.ReturnKeyType.ToString());
+                this.Control.ReturnKeyType = GetValueFromDescription<UIReturnKeyType>(customEntry.ReturnKeyType.ToString());
         }
-    }
 
-    public static class EnumEx
-    {
-        public static T GetValueFromDescription<T>(string description)
+        private static T GetValueFromDescription<T>(string description)
         {
             Type type = typeof(T);
             if (!type.IsEnum)
@@ -142,4 +138,5 @@ namespace LeoJHarris.Control.iOS
             throw new ArgumentException("Not found.", nameof(description));
         }
     }
+
 }

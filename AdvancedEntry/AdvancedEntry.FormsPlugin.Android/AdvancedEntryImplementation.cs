@@ -34,32 +34,39 @@ namespace LeoJHarris.Control.Android
             AdvancedEntry entryExt = e.NewElement as AdvancedEntry;
             if (baseEntry == null) return;
 
-            this.Control.ImeOptions = entryExt.ReturnKeyType.GetValueFromDescription();
+            this.Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
 
             this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);
 
-            if (this.Control != null && !string.IsNullOrEmpty(baseEntry.CustomBackgroundXML) && !string
-                .IsNullOrEmpty(PackageName))
+            if (this.Control != null && !string.IsNullOrEmpty(PackageName))
             {
-                if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
+                if (!string.IsNullOrEmpty(baseEntry.CustomBackgroundXML))
                 {
-                    this.Control.Background = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.CustomBackgroundXML, "drawable", PackageName));
+                    var identifier = Context.Resources.GetIdentifier(baseEntry.CustomBackgroundXML, "drawable", PackageName);
+                    if(identifier !=0)
+                    {
+                        if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
+                        {
+                            this.Control.Background = Context.Resources.GetDrawable(identifier);
+                        }
+                        else
+                        {
+                            this.Control.Background = Context.Resources.GetDrawable(identifier);
+                        }
+                    }
                 }
-                else
+                if (!string.IsNullOrEmpty(baseEntry.LeftIcon))
                 {
-                     this.Control.Background = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.CustomBackgroundXML, "drawable", PackageName));
-                }
-            }
-
-            if (this.Control != null && !string.IsNullOrEmpty(baseEntry.LeftIcon))
-            {
-
-                var resourceId = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.LeftIcon, "drawable", PackageName));
-
-                if (resourceId != null)
-                {
-                    this.Control.SetCompoundDrawablesWithIntrinsicBounds(resourceId, null, null, null);
-                    this.Control.CompoundDrawablePadding = baseEntry.PaddingLeftIcon;
+                    var identifier = Context.Resources.GetIdentifier(baseEntry.LeftIcon, "drawable", PackageName);
+                    if (identifier != 0)
+                    {
+                        var drawable = Context.Resources.GetDrawable(identifier);
+                        if (drawable != null)
+                        {
+                            this.Control.SetCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+                            this.Control.CompoundDrawablePadding = baseEntry.PaddingLeftIcon;
+                        }
+                    }
                 }
             }
 
@@ -84,17 +91,11 @@ namespace LeoJHarris.Control.Android
             if (e.PropertyName != AdvancedEntry.ReturnKeyPropertyName) return;
             AdvancedEntry entryExt = sender as AdvancedEntry;
             if (entryExt == null) return;
-            this.Control.ImeOptions = entryExt.ReturnKeyType.GetValueFromDescription();
+            this.Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
             this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);
         }
-    }
 
-    /// <summary>
-    /// The enum extensions.
-    /// </summary>
-    public static class EnumExtensions
-    {
-        public static ImeAction GetValueFromDescription(this ReturnKeyTypes value)
+        private static ImeAction GetValueFromDescription(ReturnKeyTypes value)
         {
             Type type = typeof(ImeAction);
             if (!type.IsEnum) throw new InvalidOperationException();

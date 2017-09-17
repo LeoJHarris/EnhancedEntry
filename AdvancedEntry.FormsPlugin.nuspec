@@ -17,22 +17,13 @@
 		<summary>
 			Customize the keyboard's ImeOptions and either give your entry a command or assign the next entry you want focus. 
 			Customize your entry to allow rounded corners with border color and background color
-			Customize your entry to allows left icons perfect for forms
+			Customize your entry to allows left icons perfect for form entry.
 		</summary>
 	</metadata>
 		<files>
-
-			
-
 			<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Abstractions\bin\Release\LeoJHarris.Control.Abstractions*.*" target="lib\portable-net45+wp80+win8+wpa81" />
-
-				<!--<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.iOS\bin\iPhone\Release\LeoJHarris.Control.Abstractions.iOS*.*" target="lib\Xamarin.iOS10" />-->
-			
 			<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.iOS\bin\iPhone\Release\LeoJHarris.FormsPlugin.iOS*.*" target="lib\Xamarin.iOS10" />
-
 			<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Android\bin\Release\AdvancedEntry.FormsPlugin.Android*.*" target="lib\MonoAndroid10" />
-
 			<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.WindowsPhone\bin\Release\LeoJHarris.Control.Abstractions*.*" target="lib\uap10.0" />
-		
 		</files>
 </package>
