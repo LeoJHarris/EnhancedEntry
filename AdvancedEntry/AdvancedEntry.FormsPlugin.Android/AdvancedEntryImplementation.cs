@@ -50,12 +50,16 @@ namespace LeoJHarris.Control.Android
                 }
             }
 
-            var resourceId = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.LeftIcon, "drawable", PackageName));
-
-            if (resourceId != null)
+            if (this.Control != null && !string.IsNullOrEmpty(baseEntry.LeftIcon))
             {
-                this.Control.SetCompoundDrawablesWithIntrinsicBounds(resourceId, null, null, null);
-                this.Control.CompoundDrawablePadding = baseEntry.PaddingLeftIcon;
+
+                var resourceId = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.LeftIcon, "drawable", PackageName));
+
+                if (resourceId != null)
+                {
+                    this.Control.SetCompoundDrawablesWithIntrinsicBounds(resourceId, null, null, null);
+                    this.Control.CompoundDrawablePadding = baseEntry.PaddingLeftIcon;
+                }
             }
 
             this.Control.EditorAction += (sender, args) =>

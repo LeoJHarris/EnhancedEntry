@@ -7,11 +7,13 @@ using CoreGraphics;
 using System.ComponentModel;
 using System.Reflection;
 using LeoJHarris.Control.Abstractions;
-using LeoJHarris.Control.iOS;
+using Foundation;
 
-[assembly: ExportRenderer(typeof(AdvancedEntry), typeof(AdvancedEntryRenderer))]
+[assembly: ExportRenderer(typeof(AdvancedEntry), typeof(LeoJHarris.Control.iOS.AdvancedEntryRenderer))]
 namespace LeoJHarris.Control.iOS
 {
+
+    [Preserve(AllMembers = true)]
     /// <summary>
     /// AdvancedEntry Renderer
     /// </summary>
@@ -20,18 +22,22 @@ namespace LeoJHarris.Control.iOS
         /// <summary>
         /// Used for registration with dependency service
         /// </summary>
-        public static void Init() { }
+        public static DateTime Init()
+        { var temp = DateTime.Now;
+            return DateTime.Now;
+                
+                }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             AdvancedEntry baseEntry = (AdvancedEntry)Element;
             base.OnElementChanged(e);
 
+
             if (!((this.Control != null) & (e.NewElement != null)))
             {
                 return;
             }
-
             // Create a custom border with square corners
             this.Control.BorderStyle = UITextBorderStyle.None;
             this.Control.Layer.CornerRadius = 8;
@@ -53,12 +59,12 @@ namespace LeoJHarris.Control.iOS
                 this.Control.ReturnKeyType =
                     EnumEx.GetValueFromDescription<UIReturnKeyType>(customEntry.ReturnKeyType.ToString());
 
-                UIImageView viewImage = new UIImageView(new UIImage(customEntry.LeftIcon));
+               // UIImageView viewImage = new UIImageView(new UIImage(customEntry.LeftIcon));
 
-                viewImage.Frame = new CGRect(0.0, 0.0, viewImage.Image.Size.Width + 25.0, viewImage.Image.Size.Height + 18);
-                viewImage.ContentMode = UIViewContentMode.Center;
+                //viewImage.Frame = new CGRect(0.0, 0.0, viewImage.Image.Size.Width + 25.0, viewImage.Image.Size.Height + 18);
+               // viewImage.ContentMode = UIViewContentMode.Center;
 
-                this.Control.LeftView = viewImage;
+              //  this.Control.LeftView = viewImage;
 
                 this.Control.ShouldReturn += field =>
                 {
