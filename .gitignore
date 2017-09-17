@@ -22,3 +22,9 @@
 /AdvancedEntry/AdvancedEntry.FormsPlugin.Android/obj/Release
 *.user
 *.nupkg
+/Sample/Sample/bin
+/Sample/Sample/obj
+/Sample/Sample.Android/obj
+/Sample/Sample.iOS/bin/iPhoneSimulator
+/Sample/Sample.iOS/obj
+/Sample/Sample.UWP/obj/x86
