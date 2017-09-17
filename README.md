@@ -1,6 +1,6 @@
 **Advanced Entry for Xamarin forms**
 
-Customize the keyboard's ImeOptions and either give your entry a command or assign the next entry you want focus. Customize your entry to allow rounded corners with border color and background color Customize your entry to allows left icons perfect for forms
+Customize the keyboard's ImeOptions, give your entry a command or assign the next entry you want focus, give your entry rounded corners with border color and background color or customize your entry to allows left icons with padding perfect for forms
 
 ![](https://github.com/LeoJHarris/AdvancedEntry/blob/master/ios.jpg) ![](https://github.com/LeoJHarris/AdvancedEntry/blob/master/android.png)
 
