@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata minClientVersion="2.8.3">
 		<id>LeoJHarris.AdvancedEntry</id>
-		<version>1.0.1</version>
+		<version>1.0.0</version>
 		<title>AdvancedEntry Control Plugin for Xamarin.Forms</title>
 		<authors>Leonard Harris</authors>
 		<owners>Leonard Harris</owners>
@@ -12,9 +12,13 @@
 		<iconUrl>https://raw.githubusercontent.com/jamesmontemagno/Xamarin-Templates/master/Plugins-Templates/icons/plugin_icon_nuget.png</iconUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>
-				 Advanced entry for Xamarin forms
+				 Advanced entry for Xamarin.forms projects that extends the current xamarin.forms entry
 		</description>
-		<summary>Short description for your plugin.</summary>
+		<summary>
+			Customize the keyboard's ImeOptions and either give your entry a command or assign the next entry you want focus. 
+			Customize your entry to allow rounded corners with border color and background color
+			Customize your entry to allows left icons perfect for forms
+		</summary>
 	</metadata>
 		<files>
 

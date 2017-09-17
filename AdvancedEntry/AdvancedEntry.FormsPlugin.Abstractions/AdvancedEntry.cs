@@ -11,9 +11,7 @@ namespace LeoJHarris.Control.Abstractions
     public class AdvancedEntry : Entry
     {
         public event EventHandler EventTriggered;
-
-        public static readonly BindableProperty ReturnTypeProperty = BindableProperty.Create(nameof(ReturnKeyType), typeof(ReturnKeyTypes), typeof(AdvancedEntry), ReturnKeyTypes.Done);
-
+        
         public const string ReturnKeyPropertyName = "ReturnKeyType";
 
         public static readonly BindableProperty LeftIconProperty = BindableProperty.Create(nameof(LeftIconPropertyName), typeof(string), typeof(AdvancedEntry), string.Empty);
@@ -50,22 +48,43 @@ namespace LeoJHarris.Control.Abstractions
             }
         }
 
-        public static readonly BindableProperty RoundedCornerXMLBindableProperty = BindableProperty.Create(nameof(RoundedCornerXMLPropertyName), typeof(string), typeof(AdvancedEntry), string.Empty);
+        public static readonly BindableProperty CustomBackgroundXMLBindableProperty = BindableProperty.Create(nameof(CustomBackgroundXMLPropertyName), typeof(string), typeof(AdvancedEntry), string.Empty);
 
-        public const string RoundedCornerXMLPropertyName = "RoundedCornerXML";
+        public const string CustomBackgroundXMLPropertyName = "CustomBackgroundXML";
 
-        public string RoundedCornerXML
+        public string CustomBackgroundXML
         {
             get
             {
-                return (string)this.GetValue(RoundedCornerXMLBindableProperty);
+                return (string)this.GetValue(CustomBackgroundXMLBindableProperty);
             }
 
             set
             {
-                this.SetValue(RoundedCornerXMLBindableProperty, value);
+                this.SetValue(CustomBackgroundXMLBindableProperty, value);
             }
         }
+
+        public static readonly BindableProperty BorderWidthBindableProperty = BindableProperty.Create(nameof(BorderWidthPropertyName), typeof(int), typeof(AdvancedEntry), 0);
+
+        public const string BorderWidthPropertyName = "BorderWidth";
+
+        /// <summary>
+        /// Borfdfs
+        /// </summary>
+        public int BorderWidth
+        {
+            get
+            {
+                return (int)this.GetValue(BorderWidthBindableProperty);
+            }
+
+            set
+            {
+                this.SetValue(BorderWidthBindableProperty, value);
+            }
+        }
+
 
         public static readonly BindableProperty BorderColorProperty = BindableProperty.Create(nameof(BorderColorPropertyName), typeof(Color), typeof(AdvancedEntry), Color.Transparent);
 
@@ -84,9 +103,28 @@ namespace LeoJHarris.Control.Abstractions
             }
         }
 
-        public static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColorPropertyName), typeof(Color), typeof(AdvancedEntry), Color.Transparent);
+        
+        public static readonly BindableProperty CornerRadiusBindableProperty = BindableProperty.Create(nameof(PaddingIconTextPropertyName), typeof(int), typeof(AdvancedEntry), 5);
+
+        public const string CornerRadiusPropertyName = "PaddingLeftIcon";
+
+        public int CornerRadius
+        {
+            get
+            {
+                return (int)this.GetValue(CornerRadiusBindableProperty);
+            }
+
+            set
+            {
+                this.SetValue(CornerRadiusBindableProperty, value);
+            }
+        }
+
+        public static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColorPropertyName), typeof(Color), typeof(AdvancedEntry), Color.White);
 
         public const string BackgroundColorPropertyName = "BackgroundColor";
+
 
         public Color BackgroundColor
         {
@@ -107,17 +145,20 @@ namespace LeoJHarris.Control.Abstractions
         }
 
         public AdvancedEntry Next { get; set; }
-
-        public Command DoneCommand { get; set; }
+        /// <summary>
+        /// To specify the keyboard action 
+        /// </summary>
+        public Command KeyBoardAction { get; set; }
 
 
         private static void Goto(object sender, EventArgs e)
         {
             ((AdvancedEntry)sender)?.Next?.Focus();
 
-            ((AdvancedEntry)sender)?.DoneCommand?.Execute(null);
+            ((AdvancedEntry)sender)?.KeyBoardAction?.Execute(null);
         }
 
+        public static readonly BindableProperty ReturnTypeProperty = BindableProperty.Create(nameof(ReturnKeyType), typeof(ReturnKeyTypes), typeof(AdvancedEntry), ReturnKeyTypes.Done);
         public ReturnKeyTypes ReturnKeyType
         {
             get { return (ReturnKeyTypes)GetValue(ReturnTypeProperty); }
@@ -142,9 +183,18 @@ namespace LeoJHarris.Control.Abstractions
 
             return string.Empty;
         }
+        public static readonly BindableProperty UITextBorderStyleBindableProperty = BindableProperty.Create(nameof(UITextBorderStyle), typeof(TextBorderStyle), typeof(AdvancedEntry), TextBorderStyle.None);
+        /// <summary>
+        /// Used for iOS only to determine the border style.
+        /// </summary>
+        public TextBorderStyle UITextBorderStyle
+        {
+            get { return (TextBorderStyle)GetValue(UITextBorderStyleBindableProperty); }
+            set { SetValue(UITextBorderStyleBindableProperty, value); }
+        }
     }
     /// <summary>
-    /// Return key types.
+    /// Specify the keyboard action button text.
     /// </summary>
     public enum ReturnKeyTypes
     {
@@ -160,5 +210,16 @@ namespace LeoJHarris.Control.Abstractions
         Done,
         EmergencyCall,
         Continue
+    }
+
+    /// <summary>
+    /// Used for iOS only to determine the border style.
+    /// </summary>
+    public enum TextBorderStyle : long
+    {
+        None = 0,
+        Line = 1,
+        Bezel = 2,
+        RoundedRect = 3
     }
 }

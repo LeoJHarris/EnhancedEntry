@@ -38,15 +38,16 @@ namespace LeoJHarris.Control.Android
 
             this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);
 
-            if (this.Control != null && !string.IsNullOrEmpty(baseEntry.RoundedCornerXML))
+            if (this.Control != null && !string.IsNullOrEmpty(baseEntry.CustomBackgroundXML) && !string
+                .IsNullOrEmpty(PackageName))
             {
                 if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
                 {
-                    this.Control.Background = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.RoundedCornerXML, "drawable", PackageName));
+                    this.Control.Background = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.CustomBackgroundXML, "drawable", PackageName));
                 }
                 else
                 {
-                     this.Control.Background = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.RoundedCornerXML, "drawable", PackageName));
+                     this.Control.Background = Context.Resources.GetDrawable(Context.Resources.GetIdentifier(baseEntry.CustomBackgroundXML, "drawable", PackageName));
                 }
             }
 
