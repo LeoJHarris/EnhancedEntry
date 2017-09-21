@@ -36,7 +36,7 @@ _In your iOS_
                 CustomBackgroundXML = "roundedcornerentry"
             };`
 
-IMPORTANT: Regarding setting background color, border color and radius this is done seperately per platform so for iOS use the bindable properties that specify color etc however for android put your background xml file into your drawable folder and also you will need to put a layout folder in resources if not already exists and place color xml document if your follow my example:
+IMPORTANT: Due to android and iOS different methods required for setting background for then for iOS use the bindable properties that specify color, borderradius, borderwidth etc however for android put your background xml file that will be a drawable into your drawable folder and also you will need to put a layout folder in resources that has the colors if you do not already and place color xml document if your follow my example:
 
 **Bindable Properties**
 
