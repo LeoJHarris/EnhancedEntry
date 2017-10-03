@@ -13,27 +13,26 @@ Available on NuGet: https://www.nuget.org/packages/LeoJHarris.AdvancedEntry NuGe
 _In your Android_
 
 Xamarin.Forms.Init();
-LeoJHarris.Control.Android.AdvancedEntryRenderer.Init(this);
+LeoJHarris.AdvancedEntry.Plugin.iOS.AdvancedEntryRenderer.Init();;
 You must do this AFTER you call Xamarin.Forms.Init();
 
 _In your iOS_
 
 `Xamarin.Forms.Forms.Init(); `
-`LeoJHarris.Control.iOS.AdvancedEntryRenderer.Init(); `
+`LeoJHarris.AdvancedEntry.Plugin.iOS.AdvancedEntryRenderer.Init(); `
 `LoadApplication(new App());`
 
 `new AdvancedEntry()
             {
                 KeyBoardAction = LoginCommand,
-                ReturnKeyType = ReturnKeyTypes.Search,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                BackgroundColor = Color.White
-                ,CornerRadius = 5,
-                BorderWidth = 1,
-                BorderColor = Color.Blue,
-                Placeholder = "email",
+                FocusBorderColor = Color.Yellow,
+                BorderColor = Color.Red,
+                LeftPadding = 10,
+                RightPadding = 20,
+                TopBottomPadding = 20,
+                BorderWidth = 2,
+                BackgroundColor = Color.Pink,
                 LeftIcon = "email",
-                CustomBackgroundXML = "roundedcornerentry"
             };`
 
 IMPORTANT: Due to android and iOS different methods required for setting background for then for iOS use the bindable properties that specify color, borderradius, borderwidth etc however for android put your background xml file that will be a drawable into your drawable folder and also you will need to put a layout folder in resources that has the colors if you do not already and place color xml document if your follow my example:
