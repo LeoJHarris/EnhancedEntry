@@ -34,9 +34,7 @@ _In your iOS_
                 BackgroundColor = Color.Pink,
                 LeftIcon = "email",
             };`
-
-IMPORTANT: Due to android and iOS different methods required for setting background for then for iOS use the bindable properties that specify color, borderradius, borderwidth etc however for android put your background xml file that will be a drawable into your drawable folder and also you will need to put a layout folder in resources that has the colors if you do not already and place color xml document if your follow my example:
-
+            
 **Bindable Properties**
 
 To be added.
