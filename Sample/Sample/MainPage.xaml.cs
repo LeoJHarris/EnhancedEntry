@@ -11,17 +11,12 @@ namespace Sample
 
             AdvancedEntry AdvancedEntry = new AdvancedEntry()
             {
-                KeyBoardAction = LoginCommand,
-                ReturnKeyType = ReturnKeyTypes.Search,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                BackgroundColor = Color.White
-            ,
-                CornerRadius = 5,
-                BorderWidth = 1,
-                BorderColor = Color.Blue,
                 Placeholder = "Advancedentry",
-                LeftIcon = "email",
-                CustomBackgroundXML = "roundedcornerentry"
+                BorderColor = Color.Red,
+
+                BorderWidth =1
+                
             };
 
             TESTVIEW2.Content = AdvancedEntry;

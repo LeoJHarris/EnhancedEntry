@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace LeoJHarris.Control.Abstractions
+namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
 {
     public class StringValAttribute : Attribute
     {

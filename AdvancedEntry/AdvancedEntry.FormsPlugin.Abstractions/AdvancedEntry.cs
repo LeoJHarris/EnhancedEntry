@@ -3,28 +3,13 @@ using System.Linq;
 using System.Reflection;
 using Xamarin.Forms;
 
-namespace LeoJHarris.Control.Abstractions
+namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
 {
     /// <summary>
     /// AdvancedEntry Interface
     /// </summary>
     public class AdvancedEntry : Entry
     {
-        /// <summary>
-        /// XML definition for custom background (place file in drawable folder, only used for android)
-        /// </summary>
-        public string CustomBackgroundXML
-        {
-            get
-            {
-                return (string)this.GetValue(CustomBackgroundXMLBindableProperty);
-            }
-
-            set
-            {
-                this.SetValue(CustomBackgroundXMLBindableProperty, value);
-            }
-        }
         /// <summary>
         /// Left icon (Place images definitions in each of the drawable folders)
         /// </summary>
@@ -58,11 +43,11 @@ namespace LeoJHarris.Control.Abstractions
         /// <summary>
         /// Border width (only used for iOS)
         /// </summary>
-        public int BorderWidth
+        public double BorderWidth
         {
             get
             {
-                return (int)this.GetValue(BorderWidthBindableProperty);
+                return (double)this.GetValue(BorderWidthBindableProperty);
             }
 
             set
@@ -89,42 +74,21 @@ namespace LeoJHarris.Control.Abstractions
 
         public const string ReturnKeyPropertyName = "ReturnKeyType";
 
-        private static readonly BindableProperty LeftIconProperty = BindableProperty.Create(nameof(LeftIconPropertyName), typeof(string), typeof(AdvancedEntry), string.Empty);
+        private static readonly BindableProperty LeftIconProperty = BindableProperty.Create(nameof(LeftIcon), typeof(string), typeof(AdvancedEntry), string.Empty);
+        
 
-        private const string LeftIconPropertyName = "LeftIcon";
-
-        private static readonly BindableProperty PaddingIconTextBindableProperty = BindableProperty.Create(nameof(PaddingIconTextPropertyName), typeof(int), typeof(AdvancedEntry), 10);
-
-        private const string PaddingIconTextPropertyName = "PaddingLeftIcon";
-
-
-
-        private static readonly BindableProperty CustomBackgroundXMLBindableProperty = BindableProperty.Create(nameof(CustomBackgroundXMLPropertyName), typeof(string), typeof(AdvancedEntry), string.Empty);
-
-        private const string CustomBackgroundXMLPropertyName = "CustomBackgroundXML";
+        private static readonly BindableProperty PaddingIconTextBindableProperty = BindableProperty.Create(nameof(PaddingLeftIcon), typeof(int), typeof(AdvancedEntry), 10);
+        
+        
+        private static readonly BindableProperty BorderWidthBindableProperty = BindableProperty.Create(nameof(BorderWidth), typeof(double), typeof(AdvancedEntry), 0.5);
 
 
-
-        private static readonly BindableProperty BorderWidthBindableProperty = BindableProperty.Create(nameof(BorderWidthPropertyName), typeof(int), typeof(AdvancedEntry), 0);
-
-        private const string BorderWidthPropertyName = "BorderWidth";
-
+        public static readonly BindableProperty BorderColorProperty = BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(AdvancedEntry), Color.Gray);
+        
+        private static readonly BindableProperty CornerRadiusBindableProperty = BindableProperty.Create(nameof(CornerRadius), typeof(int), typeof(AdvancedEntry), 5);
+        
         /// <summary>
-        /// Borfdfs
-        /// </summary>
-      
-
-
-        public static readonly BindableProperty BorderColorProperty = BindableProperty.Create(nameof(BorderColorPropertyName), typeof(Color), typeof(AdvancedEntry), Color.Transparent);
-
-        private const string BorderColorPropertyName = "BorderColor";
-
-
-        private static readonly BindableProperty CornerRadiusBindableProperty = BindableProperty.Create(nameof(PaddingIconTextPropertyName), typeof(int), typeof(AdvancedEntry), 5);
-
-        private const string CornerRadiusPropertyName = "PaddingLeftIcon";
-        /// <summary>
-        /// Corner radius (only used for iOS)
+        /// Corner radius
         /// </summary>
         public int CornerRadius
         {
@@ -139,11 +103,74 @@ namespace LeoJHarris.Control.Abstractions
             }
         }
 
-        public static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColorPropertyName), typeof(Color), typeof(AdvancedEntry), Color.White);
+        public static readonly BindableProperty LeftPaddingBindableProperty = BindableProperty.Create(nameof(LeftPadding), typeof(int), typeof(AdvancedEntry), 6);
 
-        public const string BackgroundColorPropertyName = "BackgroundColor";
+        public int LeftPadding
+        {
+            get
+            {
+                return (int)this.GetValue(LeftPaddingBindableProperty);
+            }
+
+            set
+            {
+                this.SetValue(LeftPaddingBindableProperty, value);
+            }
+        }
+        public static readonly BindableProperty RightPaddingBindableProperty = BindableProperty.Create(nameof(RightPadding), typeof(int), typeof(AdvancedEntry), 6);
+        
+        public int RightPadding
+        {
+            get
+            {
+                return (int)this.GetValue(RightPaddingBindableProperty);
+            }
+
+            set
+            {
+                this.SetValue(RightPaddingBindableProperty, value);
+            }
+        }
+
+        public static readonly BindableProperty TopBottomPaddingBindableProperty = BindableProperty.Create(nameof(TopBottomPadding), typeof(int), typeof(AdvancedEntry), 0);
+
+        public int TopBottomPadding
+        {
+            get
+            {
+                return (int)this.GetValue(TopBottomPaddingBindableProperty);
+            }
+
+            set
+            {
+                this.SetValue(TopBottomPaddingBindableProperty, value);
+            }
+        }
+
+
+        public static readonly BindableProperty FocusBorderColorBindableProperty = BindableProperty.Create(nameof(FocusBorderColor), typeof(Color), typeof(AdvancedEntry), Color.Transparent);
+
         /// <summary>
-        /// Background color (only used for iOS)
+        /// Background color 
+        /// </summary>
+
+        public Color FocusBorderColor
+        {
+            get
+            {
+                return (Color)this.GetValue(FocusBorderColorBindableProperty);
+            }
+
+            set
+            {
+                this.SetValue(FocusBorderColorBindableProperty, value);
+            }
+        }
+
+        public static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(AdvancedEntry), Color.White);
+        
+        /// <summary>
+        /// Background color 
         /// </summary>
 
         public Color BackgroundColor

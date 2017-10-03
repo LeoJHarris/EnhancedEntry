@@ -6,11 +6,12 @@ using UIKit;
 using CoreGraphics;
 using System.ComponentModel;
 using System.Reflection;
-using LeoJHarris.Control.Abstractions;
 using Foundation;
+using LeoJHarris.AdvancedEntry.Plugin.Abstractions;
+using LeoJHarris.AdvancedEntry.Plugin.iOS;
 
-[assembly: ExportRenderer(typeof(AdvancedEntry), typeof(LeoJHarris.Control.iOS.AdvancedEntryRenderer))]
-namespace LeoJHarris.Control.iOS
+[assembly: ExportRenderer(typeof(AdvancedEntry), typeof(AdvancedEntryRenderer))]
+namespace LeoJHarris.AdvancedEntry.Plugin.iOS
 {
 
     [Preserve(AllMembers = true)]
@@ -26,7 +27,7 @@ namespace LeoJHarris.Control.iOS
 
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
-            AdvancedEntry baseEntry = (AdvancedEntry)Element;
+            Abstractions.AdvancedEntry baseEntry = (LeoJHarris.AdvancedEntry.Plugin.Abstractions.AdvancedEntry)Element;
             base.OnElementChanged(e);
 
 
@@ -35,14 +36,14 @@ namespace LeoJHarris.Control.iOS
                 return;
             }
           
-            this.Control.LeftView = new UIView(new CGRect(0, 0, 6, this.Control.Frame.Height));
-            this.Control.RightView = new UIView(new CGRect(0, 0, 6, this.Control.Frame.Height));
+            this.Control.LeftView = new UIView(new CGRect(0, 0, baseEntry.LeftPadding, this.Control.Frame.Height + baseEntry.TopBottomPadding));
+            this.Control.RightView = new UIView(new CGRect(0, 0, baseEntry.RightPadding, this.Control.Frame.Height + baseEntry.TopBottomPadding));
             this.Control.LeftViewMode = UITextFieldViewMode.Always;
             this.Control.RightViewMode = UITextFieldViewMode.Always;
 
             this.Element.HeightRequest = 30;
 
-            AdvancedEntry customEntry = e.NewElement as AdvancedEntry;
+            Abstractions.AdvancedEntry customEntry = e.NewElement as Abstractions.AdvancedEntry;
 
             switch (customEntry.UITextBorderStyle)
             {
@@ -60,8 +61,19 @@ namespace LeoJHarris.Control.iOS
                     break;
             }
 
-            this.Control.Layer.CornerRadius = customEntry.CornerRadius;
-           this.Control.Layer.BorderWidth = customEntry.BorderWidth;
+            e.NewElement.Focused += (sender, evt) =>
+            {
+                this.Control.Layer.BorderColor = baseEntry.FocusBorderColor.ToCGColor();
+            };
+
+            e.NewElement.Unfocused += (sender, evt) =>
+            {
+                this.Control.Layer.BorderColor = baseEntry.BorderColor.ToCGColor();
+            };
+            
+
+            this.Control.Layer.CornerRadius = new nfloat(customEntry.CornerRadius);
+            this.Control.Layer.BorderWidth = new nfloat(customEntry.BorderWidth);
             this.Control.Layer.BackgroundColor = baseEntry.BackgroundColor.ToCGColor();
             this.Control.Layer.BorderColor = baseEntry.BorderColor.ToCGColor();
 
@@ -97,12 +109,12 @@ namespace LeoJHarris.Control.iOS
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            if (e.PropertyName != AdvancedEntry.ReturnKeyPropertyName)
+            if (e.PropertyName != Abstractions.AdvancedEntry.ReturnKeyPropertyName)
             {
                 return;
             }
 
-            AdvancedEntry customEntry = sender as AdvancedEntry;
+            Abstractions.AdvancedEntry customEntry = sender as Abstractions.AdvancedEntry;
             if (customEntry != null)
                 this.Control.ReturnKeyType = GetValueFromDescription<UIReturnKeyType>(customEntry.ReturnKeyType.ToString());
         }

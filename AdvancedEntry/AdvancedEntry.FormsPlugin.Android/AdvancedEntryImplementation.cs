@@ -1,60 +1,79 @@
 using Android.Content;
-using Android.OS;
+using Android.Graphics;
+using Android.Graphics.Drawables;
+using Android.Graphics.Drawables.Shapes;
 using Android.Views.InputMethods;
-using LeoJHarris.Control.Abstractions;
+using LeoJHarris.AdvancedEntry.Plugin.Abstractions;
+using LeoJHarris.AdvancedEntry.Plugin.Droid;
 using System;
 using System.ComponentModel;
 using System.Reflection;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(AdvancedEntry), typeof(LeoJHarris.Control.Android.AdvancedEntryRenderer))]
-namespace LeoJHarris.Control.Android
+[assembly: ExportRenderer(typeof(AdvancedEntry), typeof(AdvancedEntryRenderer))]
+namespace LeoJHarris.AdvancedEntry.Plugin.Droid
 {
     public class AdvancedEntryRenderer : EntryRenderer
     {
-       static string PackageName
+        static string PackageName
         {
             get;
             set;
         }
 
+        private GradientDrawable gradietDrawable;
+
         /// <summary>
         /// Used for registration with dependency service
         /// </summary>
-        public static void Init(Context context) { PackageName= context.PackageName; }
+        public static void Init(Context context) { PackageName = context.PackageName; }
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             base.OnElementChanged(e);
 
-            var baseEntry = (AdvancedEntry)this.Element;
+            var baseEntry = (Abstractions.AdvancedEntry)this.Element;
 
             if (!((this.Control != null) & (e.NewElement != null))) return;
 
-            AdvancedEntry entryExt = e.NewElement as AdvancedEntry;
+            Abstractions.AdvancedEntry entryExt = e.NewElement as Abstractions.AdvancedEntry;
             if (baseEntry == null) return;
 
             this.Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
 
             this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);
+            gradietDrawable = new GradientDrawable();
+            gradietDrawable.SetShape(ShapeType.Rectangle);
+            gradietDrawable.SetColor(entryExt.BackgroundColor.ToAndroid());
+            gradietDrawable.SetStroke((int)baseEntry.BorderWidth, entryExt.BackgroundColor.ToAndroid());
+            gradietDrawable.SetCornerRadius(entryExt.CornerRadius);
 
+            var shape = new ShapeDrawable(new RectShape());
+            shape.Paint.Color = Android.Graphics.Color.Transparent;
+            shape.Paint.StrokeWidth = 0;
+            shape.Paint.SetStyle(Paint.Style.Stroke);
+            Control.Background = shape;
+
+            //Rect padding = new Rect();
+            //padding.Left = entryExt.LeftPadding;
+            //padding.Right = entryExt.RightPadding;
+            //padding.Top = entryExt.TopBottomPadding / 2;
+            //padding.Bottom = entryExt.TopBottomPadding / 2;
+            //gradietDrawable.GetPadding(padding: padding);
+            
+            e.NewElement.Focused += (sender, evt) =>
+            {
+                gradietDrawable.SetStroke((int)baseEntry.BorderWidth, baseEntry.FocusBorderColor.ToAndroid());
+            };
+
+            e.NewElement.Unfocused += (sender, evt) =>
+            {
+                gradietDrawable.SetStroke((int)baseEntry.BorderWidth, baseEntry.BorderColor.ToAndroid());
+            };
+
+            Control.SetBackground(gradietDrawable);
             if (this.Control != null && !string.IsNullOrEmpty(PackageName))
             {
-                if (!string.IsNullOrEmpty(baseEntry.CustomBackgroundXML))
-                {
-                    var identifier = Context.Resources.GetIdentifier(baseEntry.CustomBackgroundXML, "drawable", PackageName);
-                    if(identifier !=0)
-                    {
-                        if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
-                        {
-                            this.Control.Background = Context.Resources.GetDrawable(identifier);
-                        }
-                        else
-                        {
-                            this.Control.Background = Context.Resources.GetDrawable(identifier);
-                        }
-                    }
-                }
                 if (!string.IsNullOrEmpty(baseEntry.LeftIcon))
                 {
                     var identifier = Context.Resources.GetIdentifier(baseEntry.LeftIcon, "drawable", PackageName);
@@ -88,8 +107,8 @@ namespace LeoJHarris.Control.Android
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            if (e.PropertyName != AdvancedEntry.ReturnKeyPropertyName) return;
-            AdvancedEntry entryExt = sender as AdvancedEntry;
+            if (e.PropertyName != Abstractions.AdvancedEntry.ReturnKeyPropertyName) return;
+            Abstractions.AdvancedEntry entryExt = sender as Abstractions.AdvancedEntry;
             if (entryExt == null) return;
             this.Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
             this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);
