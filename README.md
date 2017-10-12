@@ -1,6 +1,14 @@
 **Advanced Entry for Xamarin forms**
 
-Customize the keyboard's ImeOptions, give your entry a command or assign the next entry you want focus, give your entry rounded corners with border color and background color or customize your entry to allows left icons with padding perfect for forms
+Advanced entry for Xamarin.forms projects that extends the current xamarin.forms entry. Unofficial. 
+
+• Must have set keyboard return button command or set focus to next entry when user taps the Input Method Editor i.e. Done/Next button on keyboard tapped => do something / set focus on the next specified entry. 
+
+• Customize keyboard return button. 
+
+• Rounded corners, border color border width and background colors. On and off focus border color property change 
+
+• Left icons perfect for form entry with padding enabled.
 
 ![](https://github.com/LeoJHarris/AdvancedEntry/blob/master/ios.jpg) ![](https://github.com/LeoJHarris/AdvancedEntry/blob/master/android.png)
 
