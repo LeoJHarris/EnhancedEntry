@@ -10,6 +10,9 @@ Advanced entry for Xamarin.forms projects that extends the current xamarin.forms
 
 • Left icons perfect for form entry with padding enabled.
 
+**Screenshots**
+
+
 ![](https://github.com/LeoJHarris/AdvancedEntry/blob/master/ios.jpg) ![](https://github.com/LeoJHarris/AdvancedEntry/blob/master/android.png)
 
 **Setup**
