@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata minClientVersion="2.8.3">
 		<id>LeoJHarris.AdvancedEntry</id>
-		<version>1.0.4</version>
+		<version>1.0.5</version>
 		<title>AdvancedEntry Control Plugin for Xamarin.Forms</title>
 		<authors>Leonard Harris</authors>
 		<owners>Leonard Harris</owners>
@@ -23,6 +23,6 @@
 			<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Abstractions\bin\Release\LeoJHarris.AdvancedEntry.Plugin.Abstractions*.*" target="lib\portable-net45+wp80+win8+wpa81" />
 			<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.iOS\bin\iPhone\Release\LeoJHarris.AdvancedEntry.Plugin.iOS*.*" target="lib\Xamarin.iOS10" />
 			<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Android\bin\Release\LeoJHarris.AdvancedEntry.Plugin.Droid*.*" target="lib\MonoAndroid10" />
-			<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.WindowsPhone\bin\Release\LeoJHarris.AdvancedEntry.Plugin.Abstractions*.*" target="lib\uap10.0" />
+			<!--<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.WindowsPhone\bin\Release\LeoJHarris.AdvancedEntry.Plugin.Abstractions*.*" target="lib\uap10.0" />-->
 		</files>
 </package>

@@ -1,7 +1,6 @@
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
-using Android.Graphics.Drawables.Shapes;
 using Android.Views.InputMethods;
 using LeoJHarris.AdvancedEntry.Plugin.Abstractions;
 using LeoJHarris.AdvancedEntry.Plugin.Droid;
@@ -48,17 +47,13 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Droid
             gradietDrawable.SetStroke((int)baseEntry.BorderWidth, entryExt.BackgroundColor.ToAndroid());
             gradietDrawable.SetCornerRadius(entryExt.CornerRadius);
 
-            //var shape = new ShapeDrawable(new RectShape());
-            //shape.Paint.Color = Android.Graphics.Color.Transparent;
-            //shape.Paint.StrokeWidth = 0;
-            //shape.Paint.SetStyle(Paint.Style.Stroke);
-            //Control.Background = shape;
-
-            Rect padding = new Rect();
-            padding.Left = entryExt.LeftPadding;
-            padding.Right = entryExt.RightPadding;
-            padding.Top = entryExt.TopBottomPadding / 2;
-            padding.Bottom = entryExt.TopBottomPadding / 2;
+            Rect padding = new Rect
+            {
+                Left = entryExt.LeftPadding,
+                Right = entryExt.RightPadding,
+                Top = entryExt.TopBottomPadding / 2,
+                Bottom = entryExt.TopBottomPadding / 2
+            };
             gradietDrawable.GetPadding(padding: padding);
 
             e.NewElement.Focused += (sender, evt) =>
