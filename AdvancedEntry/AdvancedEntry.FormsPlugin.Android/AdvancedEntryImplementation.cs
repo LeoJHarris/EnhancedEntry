@@ -13,6 +13,9 @@ using Xamarin.Forms.Platform.Android;
 [assembly: ExportRenderer(typeof(AdvancedEntry), typeof(AdvancedEntryRenderer))]
 namespace LeoJHarris.AdvancedEntry.Plugin.Droid
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class AdvancedEntryRenderer : EntryRenderer
     {
         static string PackageName

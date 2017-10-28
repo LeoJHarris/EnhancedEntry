@@ -38,6 +38,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AdvancedEntry.cs" />
+    <Compile Include="Helpers\BooleanToObjectConverter.cs" />
+    <Compile Include="Helpers\EmailValidatorBehavior.cs" />
+    <Compile Include="Helpers\JumpToEntryOnLengthValidationBehaviour.cs" />
+    <Compile Include="Helpers\MaxLengthValidator.cs" />
+    <Compile Include="Helpers\NotValueConverter.cs" />
+    <Compile Include="Helpers\NumberValidatorBehavior.cs" />
+    <Compile Include="Helpers\PasswordCompareValidationBehavior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringValAttribute.cs" />
   </ItemGroup>

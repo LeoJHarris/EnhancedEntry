@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
+using LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers;
 using Xamarin.Forms;
 
 namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
@@ -15,136 +17,94 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
         /// </summary>
         public string LeftIcon
         {
-            get
-            {
-                return (string)this.GetValue(LeftIconProperty);
-            }
+            get => (string)this.GetValue(LeftIconProperty);
 
-            set
-            {
-                this.SetValue(LeftIconProperty, value);
-            }
+            set => this.SetValue(LeftIconProperty, value);
         }
         /// <summary>
         /// Padding for the left icon drawable
         /// </summary>
         public int PaddingLeftIcon
         {
-            get
-            {
-                return (int)this.GetValue(PaddingIconTextBindableProperty);
-            }
+            get => (int)this.GetValue(PaddingIconTextBindableProperty);
 
-            set
-            {
-                this.SetValue(PaddingIconTextBindableProperty, value);
-            }
+            set => this.SetValue(PaddingIconTextBindableProperty, value);
         }
         /// <summary>
-        /// Border width (only used for iOS)
+        /// Border width
         /// </summary>
         public double BorderWidth
         {
-            get
-            {
-                return (double)this.GetValue(BorderWidthBindableProperty);
-            }
+            get => (double)this.GetValue(BorderWidthBindableProperty);
 
-            set
-            {
-                this.SetValue(BorderWidthBindableProperty, value);
-            }
+            set => this.SetValue(BorderWidthBindableProperty, value);
         }
         /// <summary>
-        /// Border color (only used for iOS)
+        /// Border color
         /// </summary>
         public Color BorderColor
         {
-            get
-            {
-                return (Color)this.GetValue(BorderColorProperty);
-            }
+            get => (Color)this.GetValue(BorderColorProperty);
 
-            set
-            {
-                this.SetValue(BorderColorProperty, value);
-            }
+            set => this.SetValue(BorderColorProperty, value);
         }
         private event EventHandler EventTriggered;
 
         public const string ReturnKeyPropertyName = "ReturnKeyType";
 
         private static readonly BindableProperty LeftIconProperty = BindableProperty.Create(nameof(LeftIcon), typeof(string), typeof(AdvancedEntry), string.Empty);
-        
-
-        private static readonly BindableProperty PaddingIconTextBindableProperty = BindableProperty.Create(nameof(PaddingLeftIcon), typeof(int), typeof(AdvancedEntry), 10);
-        
-        
-        private static readonly BindableProperty BorderWidthBindableProperty = BindableProperty.Create(nameof(BorderWidth), typeof(double), typeof(AdvancedEntry), 0.5);
 
 
-        public static readonly BindableProperty BorderColorProperty = BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(AdvancedEntry), Color.Gray);
-        
-        private static readonly BindableProperty CornerRadiusBindableProperty = BindableProperty.Create(nameof(CornerRadius), typeof(int), typeof(AdvancedEntry), 5);
-        
+        private static readonly BindableProperty PaddingIconTextBindableProperty =
+            BindableProperty.Create(nameof(PaddingLeftIcon), typeof(int), typeof(AdvancedEntry), 10);
+
+        private static readonly BindableProperty BorderWidthBindableProperty =
+            BindableProperty.Create(nameof(BorderWidth), typeof(double), typeof(AdvancedEntry), 0.5);
+
+
+        public static readonly BindableProperty BorderColorProperty =
+            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(AdvancedEntry), Color.Gray);
+
+        private static readonly BindableProperty CornerRadiusBindableProperty =
+            BindableProperty.Create(nameof(CornerRadius), typeof(int), typeof(AdvancedEntry), 5);
+
         /// <summary>
         /// Corner radius
         /// </summary>
         public int CornerRadius
         {
-            get
-            {
-                return (int)this.GetValue(CornerRadiusBindableProperty);
-            }
+            get => (int)this.GetValue(CornerRadiusBindableProperty);
 
-            set
-            {
-                this.SetValue(CornerRadiusBindableProperty, value);
-            }
+            set => this.SetValue(CornerRadiusBindableProperty, value);
         }
 
         public static readonly BindableProperty LeftPaddingBindableProperty = BindableProperty.Create(nameof(LeftPadding), typeof(int), typeof(AdvancedEntry), 6);
 
         public int LeftPadding
         {
-            get
-            {
-                return (int)this.GetValue(LeftPaddingBindableProperty);
-            }
+            get => (int)this.GetValue(LeftPaddingBindableProperty);
 
-            set
-            {
-                this.SetValue(LeftPaddingBindableProperty, value);
-            }
+            set => this.SetValue(LeftPaddingBindableProperty, value);
         }
         public static readonly BindableProperty RightPaddingBindableProperty = BindableProperty.Create(nameof(RightPadding), typeof(int), typeof(AdvancedEntry), 6);
-        
+
         public int RightPadding
         {
-            get
-            {
-                return (int)this.GetValue(RightPaddingBindableProperty);
-            }
+            get => (int)this.GetValue(RightPaddingBindableProperty);
 
-            set
-            {
-                this.SetValue(RightPaddingBindableProperty, value);
-            }
+            set => this.SetValue(RightPaddingBindableProperty, value);
         }
 
         public static readonly BindableProperty TopBottomPaddingBindableProperty = BindableProperty.Create(nameof(TopBottomPadding), typeof(int), typeof(AdvancedEntry), 0);
 
+        /// <summary>
+        /// Specified top/bottom padding
+        /// </summary>
         public int TopBottomPadding
         {
-            get
-            {
-                return (int)this.GetValue(TopBottomPaddingBindableProperty);
-            }
+            get => (int)this.GetValue(TopBottomPaddingBindableProperty);
 
-            set
-            {
-                this.SetValue(TopBottomPaddingBindableProperty, value);
-            }
+            set => this.SetValue(TopBottomPaddingBindableProperty, value);
         }
 
 
@@ -156,45 +116,108 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
 
         public Color FocusBorderColor
         {
-            get
-            {
-                return (Color)this.GetValue(FocusBorderColorBindableProperty);
-            }
+            get => (Color)this.GetValue(FocusBorderColorBindableProperty);
 
-            set
-            {
-                this.SetValue(FocusBorderColorBindableProperty, value);
-            }
+            set => this.SetValue(FocusBorderColorBindableProperty, value);
         }
 
-        public static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(AdvancedEntry), Color.White);
-        
+        public static readonly BindableProperty BackgroundColorProperty =
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(AdvancedEntry), Color.White);
+
         /// <summary>
         /// Background color 
         /// </summary>
 
         public Color BackgroundColor
         {
-            get
-            {
-                return (Color)this.GetValue(BackgroundColorProperty);
-            }
+            get => (Color)this.GetValue(BackgroundColorProperty);
 
-            set
+            set => this.SetValue(BackgroundColorProperty, value);
+        }
+
+
+        /// <summary>
+        /// Length jump to next
+        /// </summary>
+        public static readonly BindableProperty LengthTextJumpToNextEntryBindableProperty =
+            BindableProperty.Create(nameof(LengthTextJumpToNextEntry), typeof(int), typeof(AdvancedEntry),
+                int.MaxValue, propertyChanged: PropertyTextLengthJumpToNextEntryChanged);
+
+        private static void PropertyTextLengthJumpToNextEntryChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            if (bindable is AdvancedEntry context)
             {
-                this.SetValue(BackgroundColorProperty, value);
+                if (context.Next != null)
+                {
+                    context.Behaviors.Add(new JumpToEntryOnLengthValidationBehaviour(context.Next)
+                    {
+                        CharacterLength = (int)newvalue
+                    });
+                }
             }
+        }
+
+        /// <summary>
+        /// Compare collection of entries text values
+        /// </summary>
+        public List<Entry> CompareEntries
+        {
+            get => (List<Entry>)this.GetValue(CompareEntriesBindableProperty);
+
+            set => this.SetValue(CompareEntriesBindableProperty, value);
+        }
+        /// <summary>
+        /// Compare Entries
+        /// </summary>
+        public static readonly BindableProperty CompareEntriesBindableProperty =
+            BindableProperty.Create(nameof(CompareEntries), typeof(List<Entry>), typeof(AdvancedEntry),
+                default(List<Entry>), propertyChanged: PropertyCompareEntriesChanged);
+
+        private static void PropertyCompareEntriesChanged(BindableObject bindable,
+            object oldvalue, object newvalue)
+        {
+            if (bindable is AdvancedEntry context)
+            {
+                if (newvalue is List<Entry> comparableList)
+                {
+                    if (comparableList.Any())
+                    {
+                        PasswordCompareValidationBehavior passwordCompareValidation =
+       new PasswordCompareValidationBehavior(comparableList)
+       {
+           BindingContext = context,
+           ValidColor = Color.Green,
+           InValidColor = Color.Red
+       };
+                        context.Behaviors.Add(passwordCompareValidation);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Jumps to next <see cref="Next"/> entry on text length.
+        /// </summary>
+        public int LengthTextJumpToNextEntry
+        {
+            get => (int)this.GetValue(LengthTextJumpToNextEntryBindableProperty);
+
+            set => this.SetValue(LengthTextJumpToNextEntryBindableProperty, value);
         }
 
         public AdvancedEntry()
         {
             EventTriggered += Goto;
+
+
         }
+
         /// <summary>
-        /// The Entry with next highlight
+        /// The Entry with next focus
         /// </summary>
 
         public AdvancedEntry Next { get; set; }
+
         /// <summary>
         /// The keyboard action command.
         /// </summary>
@@ -208,39 +231,32 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
             ((AdvancedEntry)sender)?.KeyBoardAction?.Execute(null);
         }
 
-        private static readonly BindableProperty ReturnTypeProperty = BindableProperty.Create(nameof(ReturnKeyType), typeof(ReturnKeyTypes), typeof(AdvancedEntry), ReturnKeyTypes.Done);
+        private static readonly BindableProperty ReturnTypeProperty =
+            BindableProperty.Create(nameof(ReturnKeyType), typeof(ReturnKeyTypes),
+                typeof(AdvancedEntry), ReturnKeyTypes.Done);
+
         public ReturnKeyTypes ReturnKeyType
         {
-            get { return (ReturnKeyTypes)GetValue(ReturnTypeProperty); }
-            set { SetValue(ReturnTypeProperty, value); }
+            get => (ReturnKeyTypes)GetValue(ReturnTypeProperty);
+            set => SetValue(ReturnTypeProperty, value);
         }
 
         public void EntryActionFired()
         {
             this.EventTriggered?.Invoke(this, null);
         }
-        private static string GetStringValue(Enum value)
-        {
-            Type type = value.GetType();
 
-            FieldInfo fieldInfo = type.GetRuntimeField(value.ToString());
-            StringValAttribute[] attrs = fieldInfo.GetCustomAttributes(typeof(StringValAttribute), false) as StringValAttribute[];
+        private static readonly BindableProperty UITextBorderStyleBindableProperty =
+            BindableProperty.Create(nameof(UITextBorderStyle), typeof(TextBorderStyle),
+                typeof(AdvancedEntry), TextBorderStyle.None);
 
-            if (attrs != null && attrs.Any())
-            {
-                return attrs[0].Value;
-            }
-
-            return string.Empty;
-        }
-        private static readonly BindableProperty UITextBorderStyleBindableProperty = BindableProperty.Create(nameof(UITextBorderStyle), typeof(TextBorderStyle), typeof(AdvancedEntry), TextBorderStyle.None);
         /// <summary>
-        /// Used for iOS only to determine the border style.
+        /// iOS border style (ignored android)
         /// </summary>
         public TextBorderStyle UITextBorderStyle
         {
-            get { return (TextBorderStyle)GetValue(UITextBorderStyleBindableProperty); }
-            set { SetValue(UITextBorderStyleBindableProperty, value); }
+            get => (TextBorderStyle)GetValue(UITextBorderStyleBindableProperty);
+            set => SetValue(UITextBorderStyleBindableProperty, value);
         }
     }
     /// <summary>
