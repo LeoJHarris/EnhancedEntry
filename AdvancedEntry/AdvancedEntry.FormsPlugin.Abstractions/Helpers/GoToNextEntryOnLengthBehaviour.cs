@@ -6,7 +6,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
     /// <summary>
     /// The password validation behavior.
     /// </summary>
-    public class JumpToEntryOnLengthValidationBehaviour : Behavior<Entry>
+    public class GoToNextEntryOnLengthBehaviour : Behavior<Entry>
     {
         /// <summary>
         /// The is valid property key.
@@ -20,7 +20,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
 
         private static readonly BindableProperty CharacterLengthBindableProperty =
             BindableProperty.Create(nameof(CharacterLength), typeof(int), typeof(AdvancedEntry), 6);
-        
+
         /// <summary>
         /// Character length
         /// </summary>
@@ -32,10 +32,10 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         }
 
         /// <summary>
-        /// 
+        /// Jump to the next <see cref="Entry"/> entry on <see cref="CharacterLength"/> value reached
         /// </summary>
         /// <param name="nextEntry"></param>
-        public JumpToEntryOnLengthValidationBehaviour(Entry nextEntry)
+        public GoToNextEntryOnLengthBehaviour(Entry nextEntry)
         {
             this.NextEntry = nextEntry;
         }
@@ -49,7 +49,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
 
             protected set => SetValue(IsValidPropertyKey, value);
         }
-
+        
         /// <summary>
         /// The on attached to.
         /// </summary>
@@ -59,7 +59,6 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         protected override void OnAttachedTo(Entry bindable)
         {
             base.OnAttachedTo(bindable);
-
             bindable.TextChanged += HandleTextChange;
         }
 
@@ -92,19 +91,13 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
             string t = e.NewTextValue;
 
             bool lengthCheck = t.Length == CharacterLength;
-           
+
             IsValid = lengthCheck && NextEntry == null;
             if (IsValid)
             {
-                if (NextEntry != null && NextEntry.Behaviors.Any())
-                {
-                   foreach(Behavior behavior in NextEntry.Behaviors)
-                       if (behavior is JumpToEntryOnLengthValidationBehaviour)
-                       {
-                           NextEntry.Focus();
-                       }
-                }
+                NextEntry?.Focus();
             }
         }
     }
 }
+

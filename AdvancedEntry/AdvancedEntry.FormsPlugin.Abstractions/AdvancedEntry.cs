@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers;
 using Xamarin.Forms;
 
@@ -39,20 +36,14 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
 
             set => this.SetValue(BorderWidthBindableProperty, value);
         }
-        /// <summary>
-        /// Border color
-        /// </summary>
-        public Color BorderColor
-        {
-            get => (Color)this.GetValue(BorderColorProperty);
 
-            set => this.SetValue(BorderColorProperty, value);
-        }
+
         private event EventHandler EventTriggered;
 
         public const string ReturnKeyPropertyName = "ReturnKeyType";
 
-        private static readonly BindableProperty LeftIconProperty = BindableProperty.Create(nameof(LeftIcon), typeof(string), typeof(AdvancedEntry), string.Empty);
+        private static readonly BindableProperty LeftIconProperty =
+            BindableProperty.Create(nameof(LeftIcon), typeof(string), typeof(AdvancedEntry), string.Empty);
 
 
         private static readonly BindableProperty PaddingIconTextBindableProperty =
@@ -62,8 +53,6 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
             BindableProperty.Create(nameof(BorderWidth), typeof(double), typeof(AdvancedEntry), 0.5);
 
 
-        public static readonly BindableProperty BorderColorProperty =
-            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(AdvancedEntry), Color.Gray);
 
         private static readonly BindableProperty CornerRadiusBindableProperty =
             BindableProperty.Create(nameof(CornerRadius), typeof(int), typeof(AdvancedEntry), 5);
@@ -78,7 +67,8 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
             set => this.SetValue(CornerRadiusBindableProperty, value);
         }
 
-        public static readonly BindableProperty LeftPaddingBindableProperty = BindableProperty.Create(nameof(LeftPadding), typeof(int), typeof(AdvancedEntry), 6);
+        public static readonly BindableProperty LeftPaddingBindableProperty
+            = BindableProperty.Create(nameof(LeftPadding), typeof(int), typeof(AdvancedEntry), 6);
 
         public int LeftPadding
         {
@@ -86,7 +76,8 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
 
             set => this.SetValue(LeftPaddingBindableProperty, value);
         }
-        public static readonly BindableProperty RightPaddingBindableProperty = BindableProperty.Create(nameof(RightPadding), typeof(int), typeof(AdvancedEntry), 6);
+        public static readonly BindableProperty RightPaddingBindableProperty
+            = BindableProperty.Create(nameof(RightPadding), typeof(int), typeof(AdvancedEntry), 6);
 
         public int RightPadding
         {
@@ -95,7 +86,8 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
             set => this.SetValue(RightPaddingBindableProperty, value);
         }
 
-        public static readonly BindableProperty TopBottomPaddingBindableProperty = BindableProperty.Create(nameof(TopBottomPadding), typeof(int), typeof(AdvancedEntry), 0);
+        public static readonly BindableProperty TopBottomPaddingBindableProperty
+            = BindableProperty.Create(nameof(TopBottomPadding), typeof(int), typeof(AdvancedEntry), 0);
 
         /// <summary>
         /// Specified top/bottom padding
@@ -108,8 +100,10 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
         }
 
 
-        public static readonly BindableProperty FocusBorderColorBindableProperty = BindableProperty.Create(nameof(FocusBorderColor), typeof(Color), typeof(AdvancedEntry), Color.Transparent);
-
+        public static readonly BindableProperty FocusBorderColorBindableProperty
+            = BindableProperty.Create(nameof(FocusBorderColor), typeof(Color),
+                typeof(AdvancedEntry), Color.Transparent);
+        
         /// <summary>
         /// Background color 
         /// </summary>
@@ -120,9 +114,31 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
 
             set => this.SetValue(FocusBorderColorBindableProperty, value);
         }
+        public static readonly BindableProperty BorderColorProperty =
+            BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(AdvancedEntry),
+                Color.Transparent, propertyChanged: PropertyBorderColorChanged);
+
+        private static void PropertyBorderColorChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (bindable is AdvancedEntry context)
+            {
+                context.FocusBorderColor = (Color)newValue;
+            }
+        }
+
+        /// <summary>
+        /// Border color
+        /// </summary>
+        public Color BorderColor
+        {
+            get => (Color)this.GetValue(BorderColorProperty);
+
+            set => this.SetValue(BorderColorProperty, value);
+        }
 
         public static readonly BindableProperty BackgroundColorProperty =
-            BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(AdvancedEntry), Color.White);
+            BindableProperty.Create(nameof(BackgroundColor), typeof(Color),
+                typeof(AdvancedEntry), Color.White);
 
         /// <summary>
         /// Background color 
@@ -135,81 +151,91 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
             set => this.SetValue(BackgroundColorProperty, value);
         }
 
-
         /// <summary>
-        /// Length jump to next
+        /// GoToNextEntryOnLengthBindableProperty
         /// </summary>
-        public static readonly BindableProperty LengthTextJumpToNextEntryBindableProperty =
-            BindableProperty.Create(nameof(LengthTextJumpToNextEntry), typeof(int), typeof(AdvancedEntry),
-                int.MaxValue, propertyChanged: PropertyTextLengthJumpToNextEntryChanged);
+        public static readonly BindableProperty GoToNextEntryOnLengthBindableProperty =
+            BindableProperty.Create(nameof(GoToNextEntryOnLengthBehaviour),
+                typeof(GoToNextEntryOnLengthBehaviour),
+                typeof(AdvancedEntry), propertyChanged: PropertyGoToNextChanged);
 
-        private static void PropertyTextLengthJumpToNextEntryChanged(BindableObject bindable, object oldvalue, object newvalue)
+        private static void PropertyGoToNextChanged(BindableObject bindable, object oldValue, object newValue)
         {
             if (bindable is AdvancedEntry context)
             {
-                if (context.Next != null)
-                {
-                    context.Behaviors.Add(new JumpToEntryOnLengthValidationBehaviour(context.Next)
-                    {
-                        CharacterLength = (int)newvalue
-                    });
-                }
+                context.Behaviors.Add((GoToNextEntryOnLengthBehaviour)newValue);
             }
         }
 
         /// <summary>
-        /// Compare collection of entries text values
+        /// Jump To Entry Behaviour 
         /// </summary>
-        public List<Entry> CompareEntries
+
+        public GoToNextEntryOnLengthBehaviour GoToNextEntryOnLengthBehaviour
         {
-            get => (List<Entry>)this.GetValue(CompareEntriesBindableProperty);
+            get => (GoToNextEntryOnLengthBehaviour)this.GetValue(GoToNextEntryOnLengthBindableProperty);
 
-            set => this.SetValue(CompareEntriesBindableProperty, value);
+            set => this.SetValue(GoToNextEntryOnLengthBindableProperty, value);
         }
-        /// <summary>
-        /// Compare Entries
-        /// </summary>
-        public static readonly BindableProperty CompareEntriesBindableProperty =
-            BindableProperty.Create(nameof(CompareEntries), typeof(List<Entry>), typeof(AdvancedEntry),
-                default(List<Entry>), propertyChanged: PropertyCompareEntriesChanged);
 
-        private static void PropertyCompareEntriesChanged(BindableObject bindable,
-            object oldvalue, object newvalue)
+        /// <summary>
+        /// GoToNextEntryOnLengthBindableProperty
+        /// </summary>
+        public static readonly BindableProperty EmailValidatorBehaviorBindableProperty =
+            BindableProperty.Create(nameof(EmailValidatorBehavior), typeof(EmailValidatorBehavior),
+                typeof(AdvancedEntry), propertyChanged: PropertyEmailValidatorChanged);
+
+        private static void PropertyEmailValidatorChanged(BindableObject bindable,
+            object oldValue, object newValue)
         {
             if (bindable is AdvancedEntry context)
             {
-                if (newvalue is List<Entry> comparableList)
-                {
-                    if (comparableList.Any())
-                    {
-                        PasswordCompareValidationBehavior passwordCompareValidation =
-       new PasswordCompareValidationBehavior(comparableList)
-       {
-           BindingContext = context,
-           ValidColor = Color.Green,
-           InValidColor = Color.Red
-       };
-                        context.Behaviors.Add(passwordCompareValidation);
-                    }
-                }
+                context.Behaviors.Add((EmailValidatorBehavior)newValue);
             }
         }
 
         /// <summary>
-        /// Jumps to next <see cref="Next"/> entry on text length.
+        /// Jump To next <see cref="Next"/> entry behaviour 
         /// </summary>
-        public int LengthTextJumpToNextEntry
+        public EmailValidatorBehavior EmailValidatorBehavior
         {
-            get => (int)this.GetValue(LengthTextJumpToNextEntryBindableProperty);
-
-            set => this.SetValue(LengthTextJumpToNextEntryBindableProperty, value);
+            get => (EmailValidatorBehavior)this.GetValue(EmailValidatorBehaviorBindableProperty);
+            set => this.SetValue(EmailValidatorBehaviorBindableProperty, value);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly BindableProperty PasswordCompareValidationBindableProperty =
+            BindableProperty.Create(nameof(PasswordCompareValidation),
+                typeof(PasswordCompareValidationBehavior),
+                typeof(AdvancedEntry), propertyChanged: PropertyChanged);
+
+        private static void PropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (bindable is AdvancedEntry context)
+            {
+                context.Behaviors.Add((PasswordCompareValidationBehavior)newValue);
+            }
+        }
+
+
+        /// <summary>
+        /// Password compare validation
+        /// </summary>
+        public PasswordCompareValidationBehavior PasswordCompareValidation
+        {
+            get => (PasswordCompareValidationBehavior)
+                this.GetValue(PasswordCompareValidationBindableProperty);
+            set => this.SetValue(PasswordCompareValidationBindableProperty, value);
+        }
+
+        /// <summary>
+        /// Advanced entry
+        /// </summary>
         public AdvancedEntry()
         {
             EventTriggered += Goto;
-
-
         }
 
         /// <summary>

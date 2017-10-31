@@ -23,7 +23,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.iOS
         /// <summary>
         /// Used for registration with dependency service
         /// </summary>
-        public static void Init() { var temp = DateTime.Now; }
+        public static void Init() { DateTime temp = DateTime.Now; }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
@@ -35,7 +35,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.iOS
             {
                 return;
             }
-          
+
             this.Control.LeftView = new UIView(new CGRect(0, 0, baseEntry.LeftPadding, this.Control.Frame.Height + baseEntry.TopBottomPadding));
             this.Control.RightView = new UIView(new CGRect(0, 0, baseEntry.RightPadding, this.Control.Frame.Height + baseEntry.TopBottomPadding));
             this.Control.LeftViewMode = UITextFieldViewMode.Always;
@@ -70,7 +70,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.iOS
             {
                 this.Control.Layer.BorderColor = baseEntry.BorderColor.ToCGColor();
             };
-            
+
 
             this.Control.Layer.CornerRadius = new nfloat(customEntry.CornerRadius);
             this.Control.Layer.BorderWidth = new nfloat(customEntry.BorderWidth);
@@ -84,7 +84,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.iOS
 
                 if (!string.IsNullOrEmpty(customEntry.LeftIcon))
                 {
-                    var leftImage = new UIImage(customEntry.LeftIcon);
+                    UIImage leftImage = new UIImage(customEntry.LeftIcon);
 
                     if (leftImage != null)
                     {

@@ -34,30 +34,33 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Droid
         {
             base.OnElementChanged(e);
 
-            var baseEntry = (Abstractions.AdvancedEntry)this.Element;
+            Abstractions.AdvancedEntry baseEntry = (Abstractions.AdvancedEntry)this.Element;
 
             if (!((this.Control != null) & (e.NewElement != null))) return;
 
             Abstractions.AdvancedEntry entryExt = e.NewElement as Abstractions.AdvancedEntry;
             if (baseEntry == null) return;
 
-            this.Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
-
-            this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);
-            gradietDrawable = new GradientDrawable();
-            gradietDrawable.SetShape(ShapeType.Rectangle);
-            gradietDrawable.SetColor(entryExt.BackgroundColor.ToAndroid());
-            gradietDrawable.SetStroke((int)baseEntry.BorderWidth, entryExt.BackgroundColor.ToAndroid());
-            gradietDrawable.SetCornerRadius(entryExt.CornerRadius);
-
-            Rect padding = new Rect
+            if (entryExt != null)
             {
-                Left = entryExt.LeftPadding,
-                Right = entryExt.RightPadding,
-                Top = entryExt.TopBottomPadding / 2,
-                Bottom = entryExt.TopBottomPadding / 2
-            };
-            gradietDrawable.GetPadding(padding: padding);
+                this.Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
+                
+                this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);
+                gradietDrawable = new GradientDrawable();
+                gradietDrawable.SetShape(ShapeType.Rectangle);
+                gradietDrawable.SetColor(entryExt.BackgroundColor.ToAndroid());
+                gradietDrawable.SetCornerRadius(entryExt.CornerRadius);
+                gradietDrawable.SetStroke((int)baseEntry.BorderWidth, baseEntry.BorderColor.ToAndroid());
+
+                Rect padding = new Rect
+                {
+                    Left = entryExt.LeftPadding,
+                    Right = entryExt.RightPadding,
+                    Top = entryExt.TopBottomPadding / 2,
+                    Bottom = entryExt.TopBottomPadding / 2
+                };
+                gradietDrawable.GetPadding(padding);
+            }
 
             e.NewElement.Focused += (sender, evt) =>
             {
@@ -70,14 +73,15 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Droid
             };
 
             Control.SetBackground(gradietDrawable);
+            
             if (this.Control != null && !string.IsNullOrEmpty(PackageName))
             {
                 if (!string.IsNullOrEmpty(baseEntry.LeftIcon))
                 {
-                    var identifier = Context.Resources.GetIdentifier(baseEntry.LeftIcon, "drawable", PackageName);
+                    int identifier = Context.Resources.GetIdentifier(baseEntry.LeftIcon, "drawable", PackageName);
                     if (identifier != 0)
                     {
-                        var drawable = Context.Resources.GetDrawable(identifier);
+                        Drawable drawable = Context.Resources.GetDrawable(identifier);
                         if (drawable != null)
                         {
                             this.Control.SetCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
@@ -91,6 +95,8 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Droid
             {
                 baseEntry.EntryActionFired();
             };
+
+           // gradietDrawable.SetColorFilter(Color.Black, PorterDuff.Mode.SrcIn);
         }
 
         /// <summary>
@@ -106,8 +112,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Droid
         {
             base.OnElementPropertyChanged(sender, e);
             if (e.PropertyName != Abstractions.AdvancedEntry.ReturnKeyPropertyName) return;
-            Abstractions.AdvancedEntry entryExt = sender as Abstractions.AdvancedEntry;
-            if (entryExt == null) return;
+            if (!(sender is Abstractions.AdvancedEntry entryExt)) return;
             this.Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
             this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);
         }
@@ -118,9 +123,8 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Droid
             if (!type.IsEnum) throw new InvalidOperationException();
             foreach (FieldInfo field in type.GetFields())
             {
-                DescriptionAttribute attribute = Attribute.GetCustomAttribute(field,
-                                                     typeof(DescriptionAttribute)) as DescriptionAttribute;
-                if (attribute != null)
+                if (Attribute.GetCustomAttribute(field,
+                    typeof(DescriptionAttribute)) is DescriptionAttribute attribute)
                 {
                     if (attribute.Description == value.ToString()) return (ImeAction)field.GetValue(null);
                 }

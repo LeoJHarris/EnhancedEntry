@@ -24,6 +24,10 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
             private set => SetValue(IsValidPropertyKey, value);
         }
 
+        /// <summary>
+        /// The entry to bind to
+        /// </summary>
+        /// <param name="bindable"></param>
         protected override void OnAttachedTo(Entry bindable)
         {
             bindable.TextChanged += BindableTextChanged;
