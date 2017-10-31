@@ -10,6 +10,8 @@ Advanced entry for Xamarin.forms projects that extends the current xamarin.forms
 
 • Left icons perfect for form entry with padding enabled.
 
+• Email and compare entries behavour validator
+
 **Screenshots**
 
 
@@ -44,6 +46,24 @@ _In your iOS_
                 BorderWidth = 2,
                 BackgroundColor = Color.Pink,
                 LeftIcon = "email",
+                EmailValidatorBehavior = new EmailValidatorBehavior()
+                {
+                    EmailRegularExpression = 
+                }
+            };`
+            
+            `new AdvancedEntry()
+            {
+                BorderWidth = 1,
+                CornerRadius = 2,
+                PasswordCompareValidation = new PasswordCompareValidationBehavior(new List<Entry>()
+                {
+                    OtherAdvancedEntry,
+                })
+                {
+                    ValidColor = Color.Orange,
+                    InValidColor = Color.Red
+                },
             };`
             
 **Bindable Properties**
