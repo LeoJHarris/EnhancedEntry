@@ -35,7 +35,7 @@ _In your iOS_
 `LeoJHarris.AdvancedEntry.Plugin.iOS.AdvancedEntryRenderer.Init(); `
 `LoadApplication(new App());`
 
-`new AdvancedEntry()
+            `new AdvancedEntry()
             {
                 KeyBoardAction = LoginCommand,
                 FocusBorderColor = Color.Yellow,
