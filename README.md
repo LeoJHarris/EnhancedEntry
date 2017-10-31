@@ -47,9 +47,6 @@ _In your iOS_
                 BackgroundColor = Color.Pink,
                 LeftIcon = "email",
                 EmailValidatorBehavior = new EmailValidatorBehavior()
-                {
-                    EmailRegularExpression = 
-                }
             };`
             
             `new AdvancedEntry()
