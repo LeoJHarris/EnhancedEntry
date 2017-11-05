@@ -10,7 +10,7 @@ Advanced entry for Xamarin.forms projects that extends the current xamarin.forms
 
 • Left icons perfect for form entry with padding enabled.
 
-• Email and compare entries behavour validator
+• Email and compare entries behavour validator (basically compares a collection of entries)
 
 **Screenshots**
 
