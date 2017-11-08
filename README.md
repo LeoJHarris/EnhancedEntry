@@ -13,7 +13,7 @@ Advanced entry for Xamarin.forms projects that extends the current xamarin.forms
 • Email and compare entries behavour validator (basically compares a collection of entries
 
 
-**PULL REQUESTS WELCOME IF YOUD LIKE TO CONTRIBUTE FUNCTIONAILITY OR ADDITIONAL BEHAVOURS**
+**PULL REQUESTS WELCOME IF YOUD LIKE TO CONTRIBUTE FUNCTIONAILITY OR ADD ADDITIONAL BEHAVOURS**
 
 **Screenshots**
 
