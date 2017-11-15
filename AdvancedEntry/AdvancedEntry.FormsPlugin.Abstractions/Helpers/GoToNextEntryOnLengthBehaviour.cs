@@ -1,7 +1,7 @@
-﻿using Xamarin.Forms;
-
-namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
+﻿namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
 {
+    using Xamarin.Forms;
+
     /// <summary>
     /// The password validation behavior.
     /// </summary>
@@ -44,11 +44,11 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         /// </summary>
         public bool IsValid
         {
-            get => (bool)GetValue(IsValidProperty);
+            get => (bool)this.GetValue(IsValidProperty);
 
-            protected set => SetValue(IsValidPropertyKey, value);
+            protected set => this.SetValue(IsValidPropertyKey, value);
         }
-        
+
         /// <summary>
         /// The on attached to.
         /// </summary>
@@ -58,7 +58,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         protected override void OnAttachedTo(Entry bindable)
         {
             base.OnAttachedTo(bindable);
-            bindable.TextChanged += HandleTextChange;
+            bindable.TextChanged += this.HandleTextChange;
         }
 
         private Entry NextEntry { get; set; }
@@ -73,7 +73,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         {
             base.OnDetachingFrom(bindable);
 
-            bindable.TextChanged -= HandleTextChange;
+            bindable.TextChanged -= this.HandleTextChange;
         }
 
         /// <summary>
@@ -89,12 +89,12 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         {
             string t = e.NewTextValue;
 
-            bool lengthCheck = t.Length == CharacterLength;
+            bool lengthCheck = t.Length >= this.CharacterLength;
 
-            IsValid = lengthCheck && NextEntry == null;
-            if (IsValid)
+            this.IsValid = lengthCheck && this.NextEntry != null;
+            if (this.IsValid)
             {
-                NextEntry?.Focus();
+                this.NextEntry?.Focus();
             }
         }
     }

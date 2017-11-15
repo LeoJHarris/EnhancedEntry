@@ -13,8 +13,8 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         /// <summary>
         /// The is valid property key.
         /// </summary>
-        private static readonly BindablePropertyKey IsValidPropertyKey = 
-            BindableProperty.CreateReadOnly(nameof(IsValid), typeof(bool), 
+        private static readonly BindablePropertyKey IsValidPropertyKey =
+            BindableProperty.CreateReadOnly(nameof(IsValid), typeof(bool),
                 typeof(PasswordCompareValidationBehavior), false);
 
         /// <summary>
@@ -34,8 +34,8 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         /// </summary>Z
         public int MinimumLength
         {
-            get => (int)GetValue(MinimumLengthBindableProperty);
-            set => SetValue(MinimumLengthBindableProperty, value);
+            get => (int)this.GetValue(MinimumLengthBindableProperty);
+            set => this.SetValue(MinimumLengthBindableProperty, value);
         }
 
         private static readonly BindableProperty HasUpperCaseCharactersBindableProperty =
@@ -47,9 +47,9 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         /// </summary>
         public bool HasUpperCaseCharacters
         {
-            get => (bool)GetValue(HasUpperCaseCharactersBindableProperty
+            get => (bool)this.GetValue(HasUpperCaseCharactersBindableProperty
                 );
-            set => SetValue(HasUpperCaseCharactersBindableProperty, value);
+            set => this.SetValue(HasUpperCaseCharactersBindableProperty, value);
         }
         private static readonly BindableProperty HasLowerCasesBindableProperty =
             BindableProperty.Create(nameof(HasLowerCaseCharacters), typeof(bool),
@@ -60,8 +60,8 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         /// </summary>Z
         public bool HasLowerCaseCharacters
         {
-            get => (bool)GetValue(HasLowerCasesBindableProperty);
-            set => SetValue(HasLowerCasesBindableProperty, value);
+            get => (bool)this.GetValue(HasLowerCasesBindableProperty);
+            set => this.SetValue(HasLowerCasesBindableProperty, value);
         }
 
         private static readonly BindableProperty HasNumbersBindableProperty =
@@ -73,8 +73,8 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         /// </summary>Z
         public bool HasNumbers
         {
-            get => (bool)GetValue(HasLowerCasesBindableProperty);
-            set => SetValue(HasNumbersBindableProperty, value);
+            get => (bool)this.GetValue(HasLowerCasesBindableProperty);
+            set => this.SetValue(HasNumbersBindableProperty, value);
         }
 
 
@@ -98,7 +98,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         /// </summary>
         public PasswordCompareValidationBehavior(IEnumerable<Entry> entryCompare)
         {
-            EntryComparables = entryCompare;
+            this.EntryComparables = entryCompare;
         }
 
         /// <summary>
@@ -106,11 +106,11 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         /// </summary>
         public bool IsValid
         {
-            get => (bool)GetValue(IsValidProperty);
+            get => (bool)this.GetValue(IsValidProperty);
 
-            protected set => SetValue(IsValidPropertyKey, value);
+            protected set => this.SetValue(IsValidPropertyKey, value);
         }
-        
+
 
         private static readonly BindableProperty ValidColorBindableProperty =
             BindableProperty.Create(nameof(ValidColor), typeof(Color),
@@ -121,8 +121,8 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         /// </summary>
         public Color ValidColor
         {
-            get => (Color)GetValue(ValidColorBindableProperty);
-            set => SetValue(ValidColorBindableProperty, value);
+            get => (Color)this.GetValue(ValidColorBindableProperty);
+            set => this.SetValue(ValidColorBindableProperty, value);
         }
 
         private static readonly BindableProperty InValidColorBindableProperty =
@@ -134,10 +134,11 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         /// </summary>
         public Color InValidColor
         {
-            get => (Color)GetValue(InValidColorBindableProperty);
-            set => SetValue(InValidColorBindableProperty, value);
+            get => (Color)this.GetValue(InValidColorBindableProperty);
+            set => this.SetValue(InValidColorBindableProperty, value);
         }
-        
+
+
         /// <summary>
         /// The on attached to.
         /// </summary>
@@ -148,7 +149,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         {
             base.OnAttachedTo(bindable);
 
-            bindable.TextChanged += HandleTextChange;
+            bindable.TextChanged += this.HandleTextChange;
         }
 
         private IEnumerable<Entry> EntryComparables { get; }
@@ -163,7 +164,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         {
             base.OnDetachingFrom(bindable);
 
-            bindable.TextChanged -= HandleTextChange;
+            bindable.TextChanged -= this.HandleTextChange;
         }
 
         /// <summary>
@@ -179,27 +180,28 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         {
             string t = e.NewTextValue;
 
-            bool lengthCheck = t.Length >= MinimumLength;
-            HasUpperCaseCharacters = UpperCasePattern.IsMatch(t);
-            HasLowerCaseCharacters = LowerCasePattern.IsMatch(t);
-            HasNumbers = NumberPattern.IsMatch(t);
+            bool lengthCheck = t.Length >= this.MinimumLength;
+            this.HasUpperCaseCharacters = UpperCasePattern.IsMatch(t);
+            this.HasLowerCaseCharacters = LowerCasePattern.IsMatch(t);
+            this.HasNumbers = NumberPattern.IsMatch(t);
 
-           IsValid =  lengthCheck && HasUpperCaseCharacters && HasLowerCaseCharacters && HasNumbers;
+            this.IsValid = lengthCheck && this.HasUpperCaseCharacters && this.HasLowerCaseCharacters && this.HasNumbers;
 
-           if(EntryComparables.Any())
+            if (this.EntryComparables.Any())
             {
-                foreach (Entry entry in EntryComparables)
+                foreach (Entry entry in this.EntryComparables)
                 {
                     if (entry.Text != t)
                     {
-                        IsValid = false;
+                        this.IsValid = false;
                         break;
                     }
                 }
             }
-            if (IsValid)
+
+            if (this.IsValid)
             {
-                foreach (Entry entry in EntryComparables)
+                foreach (Entry entry in this.EntryComparables)
                 {
                     if (entry != null && entry.Behaviors.Any())
                     {
@@ -207,13 +209,13 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
                         {
                             if (entryBehavior is PasswordCompareValidationBehavior behavior)
                                 behavior.IsValid = true;
-                            entry.TextColor = IsValid ? ValidColor : InValidColor;
-                        } 
+                            entry.TextColor = this.IsValid ? this.ValidColor : this.InValidColor;
+                        }
                     }
                 }
             }
 
-            ((Entry)sender).TextColor = IsValid ? ValidColor : InValidColor;
+            ((Entry)sender).TextColor = this.IsValid ? this.ValidColor : this.InValidColor;
         }
     }
 }

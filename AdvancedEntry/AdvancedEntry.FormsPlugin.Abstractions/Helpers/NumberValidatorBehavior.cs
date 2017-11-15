@@ -20,8 +20,8 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         /// </summary>
         public bool IsValid
         {
-            get => (bool)GetValue(IsValidProperty);
-            private set => SetValue(IsValidPropertyKey, value);
+            get => (bool)this.GetValue(IsValidProperty);
+            private set => this.SetValue(IsValidPropertyKey, value);
         }
 
         /// <summary>
@@ -30,18 +30,18 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         /// <param name="bindable"></param>
         protected override void OnAttachedTo(Entry bindable)
         {
-            bindable.TextChanged += BindableTextChanged;
+            bindable.TextChanged += this.BindableTextChanged;
         }
 
         private void BindableTextChanged(object sender, TextChangedEventArgs e)
         {
-            IsValid = double.TryParse(e.NewTextValue, out _);
-            ((Entry)sender).TextColor = IsValid ? Color.Default : Color.Red;
+            this.IsValid = double.TryParse(e.NewTextValue, out _);
+            ((Entry)sender).TextColor = this.IsValid ? Color.Default : Color.Red;
         }
 
         protected override void OnDetachingFrom(Entry bindable)
         {
-            bindable.TextChanged -= BindableTextChanged;
+            bindable.TextChanged -= this.BindableTextChanged;
         }
     }
 }

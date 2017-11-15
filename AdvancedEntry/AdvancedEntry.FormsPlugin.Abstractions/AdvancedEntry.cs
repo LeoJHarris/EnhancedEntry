@@ -18,6 +18,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
 
             set => this.SetValue(LeftIconProperty, value);
         }
+
         /// <summary>
         /// Padding for the left icon drawable
         /// </summary>
@@ -27,6 +28,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
 
             set => this.SetValue(PaddingIconTextBindableProperty, value);
         }
+
         /// <summary>
         /// Border width
         /// </summary>
@@ -103,7 +105,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
         public static readonly BindableProperty FocusBorderColorBindableProperty
             = BindableProperty.Create(nameof(FocusBorderColor), typeof(Color),
                 typeof(AdvancedEntry), Color.Transparent);
-        
+
         /// <summary>
         /// Background color 
         /// </summary>
@@ -235,7 +237,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
         /// </summary>
         public AdvancedEntry()
         {
-            EventTriggered += Goto;
+            this.EventTriggered += Goto;
         }
 
         /// <summary>
@@ -263,8 +265,8 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
 
         public ReturnKeyTypes ReturnKeyType
         {
-            get => (ReturnKeyTypes)GetValue(ReturnTypeProperty);
-            set => SetValue(ReturnTypeProperty, value);
+            get => (ReturnKeyTypes)this.GetValue(ReturnTypeProperty);
+            set => this.SetValue(ReturnTypeProperty, value);
         }
 
         public void EntryActionFired()
@@ -281,10 +283,11 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
         /// </summary>
         public TextBorderStyle UITextBorderStyle
         {
-            get => (TextBorderStyle)GetValue(UITextBorderStyleBindableProperty);
-            set => SetValue(UITextBorderStyleBindableProperty, value);
+            get => (TextBorderStyle)this.GetValue(UITextBorderStyleBindableProperty);
+            set => this.SetValue(UITextBorderStyleBindableProperty, value);
         }
     }
+
     /// <summary>
     /// Specify the keyboard action button text.
     /// </summary>

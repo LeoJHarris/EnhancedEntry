@@ -19,7 +19,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
             set => this.SetValue(EmailRegularExpressionBindableProperty, value);
         }
 
-        private static readonly BindablePropertyKey IsValidPropertyKey = 
+        private static readonly BindablePropertyKey IsValidPropertyKey =
             BindableProperty.CreateReadOnly("IsValid", typeof(bool), typeof(NumberValidatorBehavior), false);
 
         public static readonly BindableProperty IsValidProperty = IsValidPropertyKey.BindableProperty;
@@ -29,26 +29,27 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
         /// </summary>
         public bool IsValid
         {
-            get => (bool)GetValue(IsValidProperty);
-            private set => SetValue(IsValidPropertyKey, value);
+            get => (bool)this.GetValue(IsValidProperty);
+            private set => this.SetValue(IsValidPropertyKey, value);
         }
 
         protected override void OnAttachedTo(Entry bindable)
         {
-            bindable.TextChanged += HandleTextChanged;
+            bindable.TextChanged += this.HandleTextChanged;
         }
 
 
         private void HandleTextChanged(object sender, TextChangedEventArgs e)
         {
-            IsValid = Regex.IsMatch(e.NewTextValue, EmailRegularExpression, RegexOptions.IgnoreCase,
+            this.IsValid = Regex.IsMatch(e.NewTextValue,
+                this.EmailRegularExpression, RegexOptions.IgnoreCase,
                 TimeSpan.FromMilliseconds(250));
-            ((Entry)sender).TextColor = IsValid ? Color.Default : Color.Red;
+            ((Entry)sender).TextColor = this.IsValid ? Color.Default : Color.Red;
         }
 
         protected override void OnDetachingFrom(Entry bindable)
         {
-            bindable.TextChanged -= HandleTextChanged;
+            bindable.TextChanged -= this.HandleTextChanged;
         }
     }
 }
