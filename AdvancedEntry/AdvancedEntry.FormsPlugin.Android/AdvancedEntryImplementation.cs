@@ -1,18 +1,23 @@
+using System;
+using System.ComponentModel;
+using System.Reflection;
+
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Views.InputMethods;
+
 using LeoJHarris.AdvancedEntry.Plugin.Abstractions;
 using LeoJHarris.AdvancedEntry.Plugin.Droid;
-using System;
-using System.ComponentModel;
-using System.Reflection;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(AdvancedEntry), typeof(AdvancedEntryRenderer))]
 namespace LeoJHarris.AdvancedEntry.Plugin.Droid
 {
+    using AdvancedEntry = Abstractions.AdvancedEntry;
+
     /// <summary>
     /// 
     /// </summary>
@@ -26,6 +31,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Droid
 
         private GradientDrawable gradietDrawable;
 
+
         /// <summary>
         /// Used for registration with dependency service
         /// </summary>
@@ -34,23 +40,33 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Droid
         {
             base.OnElementChanged(e);
 
-            Abstractions.AdvancedEntry baseEntry = (Abstractions.AdvancedEntry)this.Element;
+            AdvancedEntry baseEntry = (AdvancedEntry)this.Element;
 
             if (!((this.Control != null) & (e.NewElement != null))) return;
 
-            Abstractions.AdvancedEntry entryExt = e.NewElement as Abstractions.AdvancedEntry;
+            AdvancedEntry entryExt = e.NewElement as AdvancedEntry;
             if (baseEntry == null) return;
+
+            // LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]
+            // {
+            // this.gradietDrawable
+            // });
+            // GradientDrawable strokeDrawable = (GradientDrawable)layerDrawable.findDrawableByLayerId(R.id.item_bottom_stroke);
+            // strokeDrawable.setColor(strokeColor[0]);
+            // GradientDrawable backgroundColor = (GradientDrawable)layerDrawable.findDrawableByLayerId(R.id.item_navbar_background);
+            // backgroundColor.setColors(bgColor);
 
             if (entryExt != null)
             {
                 this.Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
-                
+
                 this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);
-                gradietDrawable = new GradientDrawable();
-                gradietDrawable.SetShape(ShapeType.Rectangle);
-                gradietDrawable.SetColor(entryExt.BackgroundColor.ToAndroid());
-                gradietDrawable.SetCornerRadius(entryExt.CornerRadius);
-                gradietDrawable.SetStroke((int)baseEntry.BorderWidth, baseEntry.BorderColor.ToAndroid());
+
+                this.gradietDrawable = new GradientDrawable();
+                this.gradietDrawable.SetShape(ShapeType.Rectangle);
+                this.gradietDrawable.SetColor(entryExt.BackgroundColor.ToAndroid());
+                this.gradietDrawable.SetCornerRadius(entryExt.CornerRadius);
+                this.gradietDrawable.SetStroke((int)baseEntry.BorderWidth, baseEntry.BorderColor.ToAndroid());
 
                 Rect padding = new Rect
                 {
@@ -59,29 +75,29 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Droid
                     Top = entryExt.TopBottomPadding / 2,
                     Bottom = entryExt.TopBottomPadding / 2
                 };
-                gradietDrawable.GetPadding(padding);
+                this.gradietDrawable.GetPadding(padding);
             }
 
             e.NewElement.Focused += (sender, evt) =>
             {
-                gradietDrawable.SetStroke((int)baseEntry.BorderWidth, baseEntry.FocusBorderColor.ToAndroid());
+                this.gradietDrawable.SetStroke((int)baseEntry.BorderWidth, baseEntry.FocusBorderColor.ToAndroid());
             };
 
             e.NewElement.Unfocused += (sender, evt) =>
             {
-                gradietDrawable.SetStroke((int)baseEntry.BorderWidth, baseEntry.BorderColor.ToAndroid());
+                this.gradietDrawable.SetStroke((int)baseEntry.BorderWidth, baseEntry.BorderColor.ToAndroid());
             };
 
-            Control.SetBackground(gradietDrawable);
-            
+            this.Control.SetBackground(this.gradietDrawable);
+
             if (this.Control != null && !string.IsNullOrEmpty(PackageName))
             {
                 if (!string.IsNullOrEmpty(baseEntry.LeftIcon))
                 {
-                    int identifier = Context.Resources.GetIdentifier(baseEntry.LeftIcon, "drawable", PackageName);
+                    int identifier = this.Context.Resources.GetIdentifier(baseEntry.LeftIcon, "drawable", PackageName);
                     if (identifier != 0)
                     {
-                        Drawable drawable = Context.Resources.GetDrawable(identifier);
+                        Drawable drawable = this.Context.Resources.GetDrawable(identifier);
                         if (drawable != null)
                         {
                             this.Control.SetCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
@@ -96,7 +112,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Droid
                 baseEntry.EntryActionFired();
             };
 
-           // gradietDrawable.SetColorFilter(Color.Black, PorterDuff.Mode.SrcIn);
+            // gradietDrawable.SetColorFilter(Color.Black, PorterDuff.Mode.SrcIn);
         }
 
         /// <summary>
@@ -111,8 +127,8 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Droid
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            if (e.PropertyName != Abstractions.AdvancedEntry.ReturnKeyPropertyName) return;
-            if (!(sender is Abstractions.AdvancedEntry entryExt)) return;
+            if (e.PropertyName != AdvancedEntry.ReturnKeyPropertyName) return;
+            if (!(sender is AdvancedEntry entryExt)) return;
             this.Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
             this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);
         }
