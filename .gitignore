@@ -23,3 +23,4 @@
 *.user
 *.nupkg
 /UpgradeLog.htm
+/Sample/App1/App1.UWP
