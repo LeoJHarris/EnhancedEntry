@@ -1,23 +1,26 @@
-﻿
-using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
-using UIKit;
-using CoreGraphics;
+﻿using System;
 using System.ComponentModel;
 using System.Reflection;
+
+using CoreGraphics;
+
 using Foundation;
+
 using LeoJHarris.AdvancedEntry.Plugin.Abstractions;
 using LeoJHarris.AdvancedEntry.Plugin.iOS;
+
+using UIKit;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(AdvancedEntry), typeof(AdvancedEntryRenderer))]
 namespace LeoJHarris.AdvancedEntry.Plugin.iOS
 {
-
-    [Preserve(AllMembers = true)]
     /// <summary>
     /// AdvancedEntry Renderer
     /// </summary>
+    [Preserve(AllMembers = true)]
     public class AdvancedEntryRenderer : EntryRenderer
     {
         /// <summary>
@@ -27,7 +30,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.iOS
 
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
-            Abstractions.AdvancedEntry baseEntry = (LeoJHarris.AdvancedEntry.Plugin.Abstractions.AdvancedEntry)Element;
+            Abstractions.AdvancedEntry baseEntry = (Abstractions.AdvancedEntry)this.Element;
             base.OnElementChanged(e);
 
 
@@ -98,15 +101,15 @@ namespace LeoJHarris.AdvancedEntry.Plugin.iOS
                 }
 
                 this.Control.ShouldReturn += field =>
-                                {
-                                    if (baseEntry.NextEntry == null)
-                                    {
-                                        UIApplication.SharedApplication.KeyWindow.EndEditing(true);
-                                    }
+                {
+                    if (baseEntry.NextEntry == null)
+                    {
+                        UIApplication.SharedApplication.KeyWindow.EndEditing(true);
+                    }
 
-                                    baseEntry.EntryActionFired();
-                                    return true;
-                                };
+                    baseEntry.EntryActionFired();
+                    return true;
+                };
             }
         }
 

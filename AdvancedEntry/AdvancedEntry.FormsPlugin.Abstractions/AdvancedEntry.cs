@@ -268,8 +268,11 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
 
         public ReturnKeyTypes ReturnKeyType
         {
-            get => (ReturnKeyTypes)this.GetValue(ReturnTypeProperty);
-            set => this.SetValue(ReturnTypeProperty, value);
+            get { return (ReturnKeyTypes)this.GetValue(ReturnTypeProperty); }
+            set
+            {
+                this.SetValue(ReturnTypeProperty, value);
+            }
         }
 
         public void EntryActionFired()
