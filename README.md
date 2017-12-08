@@ -28,17 +28,18 @@ Available on NuGet: https://www.nuget.org/packages/LeoJHarris.AdvancedEntry NuGe
 
 _In your Android_
 
-Xamarin.Forms.Init();
-LeoJHarris.AdvancedEntry.Plugin.iOS.AdvancedEntryRenderer.Init();;
+            `Xamarin.Forms.Init();
+            LeoJHarris.AdvancedEntry.Plugin.iOS.AdvancedEntryRenderer.Init();;
+
 You must do this AFTER you call Xamarin.Forms.Init();
 
 _In your iOS_
 
-`Xamarin.Forms.Forms.Init(); `
-`LeoJHarris.AdvancedEntry.Plugin.iOS.AdvancedEntryRenderer.Init(); `
-`LoadApplication(new App());`
+            Xamarin.Forms.Forms.Init(); 
+            LeoJHarris.AdvancedEntry.Plugin.iOS.AdvancedEntryRenderer.Init();
+            LoadApplication(new App());
 
-            `new AdvancedEntry()
+            new AdvancedEntry()
             {
                 KeyBoardAction = LoginCommand,
                 FocusBorderColor = Color.Yellow,
@@ -50,9 +51,9 @@ _In your iOS_
                 BackgroundColor = Color.Pink,
                 LeftIcon = "email",
                 EmailValidatorBehavior = new EmailValidatorBehavior()
-            };`
+            };
             
-            `new AdvancedEntry()
+            new AdvancedEntry()
             {
                 BorderWidth = 1,
                 CornerRadius = 2,
@@ -64,7 +65,7 @@ _In your iOS_
                     ValidColor = Color.Orange,
                     InValidColor = Color.Red
                 },
-            };`
+            };
             
 **Bindable Properties**
 
