@@ -10,7 +10,7 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
     public class AdvancedEntry : Entry
     {
         /// <summary>
-        /// Left icon (Place images definitions in each of the drawable folders)
+        /// Left icon (Place images definitions in each of the drawable folders for android)
         /// </summary>
         public string LeftIcon
         {
@@ -109,7 +109,6 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
         /// <summary>
         /// Background color 
         /// </summary>
-
         public Color FocusBorderColor
         {
             get => (Color)this.GetValue(FocusBorderColorBindableProperty);
@@ -145,7 +144,6 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
         /// <summary>
         /// Background color 
         /// </summary>
-
         public Color BackgroundColor
         {
             get => (Color)this.GetValue(BackgroundColorProperty);
@@ -172,7 +170,6 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
         /// <summary>
         /// Jump To Entry Behaviour 
         /// </summary>
-
         public GoToNextEntryOnLengthBehaviour GoToNextEntryOnLengthBehaviour
         {
             get => (GoToNextEntryOnLengthBehaviour)this.GetValue(GoToNextEntryOnLengthBindableProperty);
@@ -221,6 +218,19 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
             }
         }
 
+        public static readonly BindableProperty NextEntryBindableProperty =
+            BindableProperty.Create(nameof(NextEntry), typeof(AdvancedEntry),
+                typeof(AdvancedEntry));
+
+        /// <summary>
+        /// The Entry with next focus
+        /// </summary>
+        public AdvancedEntry NextEntry
+        {
+            get => (AdvancedEntry)this.GetValue(NextEntryBindableProperty);
+
+            set => this.SetValue(NextEntryBindableProperty, value);
+        }
 
         /// <summary>
         /// Password compare validation
@@ -241,12 +251,6 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
         }
 
         /// <summary>
-        /// The Entry with next focus
-        /// </summary>
-
-        public AdvancedEntry Next { get; set; }
-
-        /// <summary>
         /// The keyboard action command.
         /// </summary>
         public Command KeyBoardAction { get; set; }
@@ -254,9 +258,8 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
 
         private static void Goto(object sender, EventArgs e)
         {
-            ((AdvancedEntry)sender)?.Next?.Focus();
-
             ((AdvancedEntry)sender)?.KeyBoardAction?.Execute(null);
+            ((AdvancedEntry)sender)?.NextEntry?.Focus();
         }
 
         private static readonly BindableProperty ReturnTypeProperty =

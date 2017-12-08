@@ -4,14 +4,20 @@
 			 xmlns:local="clr-namespace:App1"
 			 x:Class="App1.MainPage">
     <StackLayout VerticalOptions="Center">
-    <ContentView VerticalOptions="Fill"
-        x:Name="CVAdvancedEntry1"
-        ></ContentView>
         <ContentView VerticalOptions="Fill"
-                     x:Name="CVAdvancedEntry2"
-        ></ContentView>
+        x:Name="CVAdvancedEntry1"/>
         <ContentView VerticalOptions="Fill"
-                     x:Name="CVAdvancedEntry3"
-        ></ContentView>
+                     x:Name="CVAdvancedEntry2"/>
+        <ContentView VerticalOptions="Fill"
+                     x:Name="CVAdvancedEntry3"/>
+        <ContentView VerticalOptions="Fill"
+                     x:Name="CVAdvancedEntry4"/>
+        <ContentView VerticalOptions="Fill"
+                     x:Name="CVAdvancedEntry5"/>
+        <ContentView VerticalOptions="Fill"
+                     x:Name="CVAdvancedEntry6"/>
+        <ContentView VerticalOptions="Fill"
+                     x:Name="CVAdvancedEntry7"/>
+
     </StackLayout>
 </ContentPage>

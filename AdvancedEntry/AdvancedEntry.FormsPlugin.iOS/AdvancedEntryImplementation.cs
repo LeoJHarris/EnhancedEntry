@@ -99,10 +99,14 @@ namespace LeoJHarris.AdvancedEntry.Plugin.iOS
 
                 this.Control.ShouldReturn += field =>
                                 {
+                                    if (baseEntry.NextEntry == null)
+                                    {
+                                        UIApplication.SharedApplication.KeyWindow.EndEditing(true);
+                                    }
+
                                     baseEntry.EntryActionFired();
                                     return true;
                                 };
-
             }
         }
 

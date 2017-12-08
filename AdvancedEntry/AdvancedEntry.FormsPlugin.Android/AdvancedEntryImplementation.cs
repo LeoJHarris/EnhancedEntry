@@ -16,6 +16,9 @@ using Xamarin.Forms.Platform.Android;
 [assembly: ExportRenderer(typeof(AdvancedEntry), typeof(AdvancedEntryRenderer))]
 namespace LeoJHarris.AdvancedEntry.Plugin.Droid
 {
+    using Android.App;
+    using Android.OS;
+
     using AdvancedEntry = Abstractions.AdvancedEntry;
 
     /// <summary>
@@ -109,6 +112,19 @@ namespace LeoJHarris.AdvancedEntry.Plugin.Droid
 
             this.Control.EditorAction += (sender, args) =>
             {
+                if (entryExt.NextEntry == null)
+                {
+                    Context context = Forms.Context;
+                    InputMethodManager inputMethodManager = context.GetSystemService(Context.InputMethodService) as InputMethodManager;
+                    if (inputMethodManager != null && context is Activity)
+                    {
+                        Activity activity = (Activity)context;
+                        IBinder token = activity.CurrentFocus?.WindowToken;
+                        inputMethodManager.HideSoftInputFromWindow(token, HideSoftInputFlags.None);
+
+                        activity.Window.DecorView.ClearFocus();
+                    }
+                }
                 baseEntry.EntryActionFired();
             };
 

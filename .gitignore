@@ -24,3 +24,11 @@
 *.nupkg
 /UpgradeLog.htm
 /Sample/App1/App1.UWP
+/Sample/packages
+/Sample/App1/App1.Android/obj/Debug
+/Sample/App1/App1/obj
+/Sample/App1/App1/bin/Debug
+/Sample/.vs/App1/v15
+/Sample/App1/App1.Android/bin/Debug
+/Sample/App1/App1.Android/obj
+/Sample/App1/App1.iOS/obj

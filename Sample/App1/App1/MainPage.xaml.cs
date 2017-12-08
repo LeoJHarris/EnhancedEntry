@@ -1,15 +1,13 @@
 ﻿using LeoJHarris.AdvancedEntry.Plugin.Abstractions;
-using System;
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers;
 using Xamarin.Forms;
 
 namespace App1
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage
     {
         public MainPage()
         {
@@ -18,32 +16,33 @@ namespace App1
             AdvancedEntry advancedEntry = new AdvancedEntry
             {
                 BorderColor = Color.Red,
+                Placeholder = "Type an email in me...",
                 FocusBorderColor = Color.Green,
                 BackgroundColor = Color.Yellow,
                 BorderWidth = 1,
                 CornerRadius = 2,
-                EmailValidatorBehavior = new EmailValidatorBehavior()
+                EmailValidatorBehavior = new EmailValidatorBehavior(),
+                Keyboard = Keyboard.Email,
+                ReturnKeyType = ReturnKeyTypes.Done
             };
 
-            AdvancedEntry advancedEntry3 = new AdvancedEntry
+            AdvancedEntry entryPasswordConfirm = new AdvancedEntry
             {
                 BorderColor = Color.Red,
                 BorderWidth = 1,
                 CornerRadius = 2,
-                GoToNextEntryOnLengthBehaviour = new GoToNextEntryOnLengthBehaviour(advancedEntry)
-                {
-                    CharacterLength = 2
-                }
+                Placeholder = "Password confirm"
             };
 
-            AdvancedEntry advancedEntry2 = new AdvancedEntry
+            AdvancedEntry passwordEntry = new AdvancedEntry
             {
                 BorderColor = Color.Red,
                 BorderWidth = 1,
                 CornerRadius = 2,
+                Placeholder = "Password",
                 PasswordCompareValidation = new PasswordCompareValidationBehavior(new List<Entry>()
                 {
-                    advancedEntry3
+                    entryPasswordConfirm
                 })
                 {
                     ValidColor = Color.Orange,
@@ -51,22 +50,66 @@ namespace App1
                 },
             };
 
-
-            advancedEntry3.PasswordCompareValidation =
+            entryPasswordConfirm.PasswordCompareValidation =
                 new PasswordCompareValidationBehavior(new List<Entry>()
                 {
-                    advancedEntry2
+                    passwordEntry
                 })
                 {
                     ValidColor = Color.Orange,
                     InValidColor = Color.Red
                 };
 
+            AdvancedEntry entry3 = new AdvancedEntry
+            {
+                BorderColor = Color.Red,
+                BorderWidth = 1,
+                CornerRadius = 2,
+                Placeholder = "Tap done in keyboard to execute some code in keyboardaction...",
+                KeyBoardAction = new Command(
+                    () =>
+                        {
+                            this.DisplayAlert("Tapped", "Action executed", "OK");
+                        }),
+            };
+
+            AdvancedEntry entry1 = new AdvancedEntry
+            {
+                BorderColor = Color.Red,
+                Placeholder = "Jump to next entry on Next",
+                BorderWidth = 1,
+                CornerRadius = 2,
+                NextEntry = entry3,
+                ReturnKeyType = ReturnKeyTypes.Next
+            };
 
 
-            CVAdvancedEntry1.Content = advancedEntry;
-            CVAdvancedEntry2.Content = advancedEntry2;
-            CVAdvancedEntry3.Content = advancedEntry3;
+            AdvancedEntry entry4 = new AdvancedEntry
+            {
+                BorderColor = Color.Red,
+                Placeholder = "Focus next entry when text length is 2",
+                BorderWidth = 1,
+                CornerRadius = 2,
+                NextEntry = entry3,
+                ReturnKeyType = ReturnKeyTypes.Done,
+                GoToNextEntryOnLengthBehaviour = new GoToNextEntryOnLengthBehaviour(advancedEntry)
+                {
+                    CharacterLength = 2
+                },
+            };
+
+            if (entryPasswordConfirm.PasswordCompareValidation.IsValid && entryPasswordConfirm.PasswordCompareValidation.IsValid)
+            {
+                this.DisplayAlert("Passwords match!", "Both passwords match", "OK");
+            }
+
+            this.CVAdvancedEntry1.Content = advancedEntry;
+            this.CVAdvancedEntry2.Content = passwordEntry;
+            this.CVAdvancedEntry3.Content = entryPasswordConfirm;
+            this.CVAdvancedEntry4.Content = entry1;
+            this.CVAdvancedEntry5.Content = entry1;
+            this.CVAdvancedEntry6.Content = entry4;
+            this.CVAdvancedEntry7.Content = entry3;
         }
     }
 }

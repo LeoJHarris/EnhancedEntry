@@ -94,6 +94,8 @@
             this.IsValid = lengthCheck && this.NextEntry != null;
             if (this.IsValid)
             {
+                char character = t[t.Length - 1];
+
                 this.NextEntry?.Focus();
             }
         }
