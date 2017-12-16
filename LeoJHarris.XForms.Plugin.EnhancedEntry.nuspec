@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata minClientVersion="2.8.3">
+    <id>LeoJHarris.XForms.Plugin.EnhancedEntry</id>
+    <version>1.0.8</version>
+    <title>EnhancedEntry Control Plugin for Xamarin.Forms</title>
+    <authors>Leonard Harris</authors>
+    <owners>Leonard Harris</owners>
+    <licenseUrl>https://github.com/LeoJHarris/EnhancedEntry/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/LeoJHarris/EnhancedEntry</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/LeoJHarris/EnhancedEntry/master/thumb3.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      Enhanced entry for Xamarin.forms projects that extends the current Xamarin.forms entry
+    </description>
+    <summary>
+      Customize the keyboard's ImeOptions and either give your entry a command or assign the next entry you want focus.
+      Customize your entry to allow rounded corners with border color and background color.
+      Customize your entry to allows left icons perfect for form entry.
+    </summary>
+  </metadata>
+  <files>
+    <file src="EnhancedEntry\EnhancedEntry.FormsPlugin.Abstractions\bin\Release\LeoJHarris.EnhancedEntry.Plugin.Abstractions*.*" target="lib\portable-net45+wp80+win8+wpa81" />
+    <file src="EnhancedEntry\EnhancedEntry.FormsPlugin.iOS\bin\iPhone\Release\LeoJHarris.EnhancedEntry.Plugin.iOS*.*" target="lib\Xamarin.iOS10" />
+    <file src="EnhancedEntry\EnhancedEntry.FormsPlugin.Android\bin\Release\LeoJHarris.EnhancedEntry.Plugin.Droid*.*" target="lib\MonoAndroid10" />
+    <!--<file src="EnhancedEntry\EnhancedEntry.FormsPlugin.WindowsPhone\bin\Release\LeoJHarris.EnhancedEntry.Plugin.Abstractions*.*" target="lib\uap10.0" />-->
+  </files>
+</package>
