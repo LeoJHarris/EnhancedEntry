@@ -3,12 +3,12 @@
   <metadata minClientVersion="2.8.3">
     <id>LeoJHarris.AdvancedEntry</id>
     <version>1.0.8</version>
-    <title>AdvancedEntry Control Plugin for Xamarin.Forms</title>
+    <title>EnhancedEntry Control Plugin for Xamarin.Forms</title>
     <authors>Leonard Harris</authors>
     <owners>Leonard Harris</owners>
-    <licenseUrl>https://github.com/LeoJHarris/AdvancedEntry/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/LeoJHarris/AdvancedEntry</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/LeoJHarris/AdvancedEntry/master/thumb3.png</iconUrl>
+    <licenseUrl>https://github.com/LeoJHarris/EnhancedEntry/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/LeoJHarris/EnhancedEntry</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/LeoJHarris/EnhancedEntry/master/thumb3.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
       Advanced entry for Xamarin.forms projects that extends the current Xamarin.forms entry
@@ -20,9 +20,9 @@
     </summary>
   </metadata>
   <files>
-    <file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Abstractions\bin\Release\LeoJHarris.AdvancedEntry.Plugin.Abstractions*.*" target="lib\portable-net45+wp80+win8+wpa81" />
-    <file src="AdvancedEntry\AdvancedEntry.FormsPlugin.iOS\bin\iPhone\Release\LeoJHarris.AdvancedEntry.Plugin.iOS*.*" target="lib\Xamarin.iOS10" />
-    <file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Android\bin\Release\LeoJHarris.AdvancedEntry.Plugin.Droid*.*" target="lib\MonoAndroid10" />
-    <!--<file src="AdvancedEntry\AdvancedEntry.FormsPlugin.WindowsPhone\bin\Release\LeoJHarris.AdvancedEntry.Plugin.Abstractions*.*" target="lib\uap10.0" />-->
+    <file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Abstractions\bin\Release\LeoJHarris.EnhancedEntry.Plugin.Abstractions*.*" target="lib\portable-net45+wp80+win8+wpa81" />
+    <file src="AdvancedEntry\AdvancedEntry.FormsPlugin.iOS\bin\iPhone\Release\LeoJHarris.EnhancedEntry.Plugin.iOS*.*" target="lib\Xamarin.iOS10" />
+    <file src="AdvancedEntry\AdvancedEntry.FormsPlugin.Android\bin\Release\LeoJHarris.EnhancedEntry.Plugin.Droid*.*" target="lib\MonoAndroid10" />
+    <!--<file src="EnhancedEntry\EnhancedEntry.FormsPlugin.WindowsPhone\bin\Release\LeoJHarris.EnhancedEntry.Plugin.Abstractions*.*" target="lib\uap10.0" />-->
   </files>
 </package>

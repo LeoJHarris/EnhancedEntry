@@ -1,19 +1,19 @@
-﻿using LeoJHarris.AdvancedEntry.Plugin.Abstractions;
-
+﻿
 using System.Collections.Generic;
 
 using LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers;
-using Xamarin.Forms;
 
 namespace App1
 {
+    using LeoJHarris.AdvancedEntry.Plugin.Abstractions;
+
     public partial class MainPage
     {
         public MainPage()
         {
             InitializeComponent();
 
-            AdvancedEntry advancedEntry = new AdvancedEntry
+            EnhancedEntry advancedEntry = new EnhancedEntry
             {
                 BorderColor = Color.Red,
                 Placeholder = "Type an email in me...",
@@ -26,7 +26,7 @@ namespace App1
                 ReturnKeyType = ReturnKeyTypes.Done
             };
 
-            AdvancedEntry entryPasswordConfirm = new AdvancedEntry
+            EnhancedEntry entryPasswordConfirm = new EnhancedEntry
             {
                 BorderColor = Color.Red,
                 BorderWidth = 1,
@@ -34,7 +34,7 @@ namespace App1
                 Placeholder = "Password confirm"
             };
 
-            AdvancedEntry passwordEntry = new AdvancedEntry
+            EnhancedEntry passwordEntry = new EnhancedEntry
             {
                 BorderColor = Color.Red,
                 BorderWidth = 1,
@@ -60,7 +60,7 @@ namespace App1
                     InValidColor = Color.Red
                 };
 
-            AdvancedEntry entry3 = new AdvancedEntry
+            EnhancedEntry entry3 = new EnhancedEntry
             {
                 BorderColor = Color.Red,
                 BorderWidth = 1,
@@ -73,7 +73,7 @@ namespace App1
                         }),
             };
 
-            AdvancedEntry entry1 = new AdvancedEntry
+            EnhancedEntry entry1 = new EnhancedEntry
             {
                 BorderColor = Color.Red,
                 Placeholder = "Jump to next entry on Next",
@@ -84,7 +84,7 @@ namespace App1
             };
 
 
-            AdvancedEntry entry4 = new AdvancedEntry
+            EnhancedEntry entry4 = new EnhancedEntry
             {
                 BorderColor = Color.Red,
                 Placeholder = "Focus next entry when text length is 2",

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-
-namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions
+﻿namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
 {
+    using System;
+    using System.Linq;
+    using System.Reflection;
+
     public class StringValAttribute : Attribute
     {
         /// <summary>

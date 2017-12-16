@@ -1,9 +1,10 @@
-﻿using System;
-using System.Globalization;
-using Xamarin.Forms;
-
-namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
+﻿namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions.Helpers
 {
+    using System;
+    using System.Globalization;
+
+    using Xamarin.Forms;
+
     internal class BooleanToObjectConverter<T> : IValueConverter
     {
 

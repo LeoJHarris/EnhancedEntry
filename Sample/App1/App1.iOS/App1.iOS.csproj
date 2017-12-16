@@ -136,15 +136,11 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\AdvancedEntry\AdvancedEntry.FormsPlugin.iOS\AdvancedEntry.FormsPlugin.iOS.csproj">
+    <ProjectReference Include="..\..\..\AdvancedEntry\AdvancedEntry.FormsPlugin.iOS\EnhancedEntry.FormsPlugin.iOS.csproj">
       <Project>{d525f236-6a2d-4010-b1cc-4a4b8581c90b}</Project>
-      <Name>AdvancedEntry.FormsPlugin.iOS</Name>
+      <Name>EnhancedEntry.FormsPlugin.iOS</Name>
       <IsAppExtension>false</IsAppExtension>
       <IsWatchApp>false</IsWatchApp>
-    </ProjectReference>
-    <ProjectReference Include="..\App1\App1.csproj">
-      <Project>{2c15c5c8-56fd-4788-b8ce-aa8183eef7de}</Project>
-      <Name>App1</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -1,14 +1,15 @@
-﻿using System;
-using System.Text.RegularExpressions;
-using Xamarin.Forms;
-
-namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
+﻿namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions.Helpers
 {
+    using System;
+    using System.Text.RegularExpressions;
+
+    using Xamarin.Forms;
+
     public class EmailValidatorBehavior : Behavior<Entry>
     {
         public static readonly BindableProperty EmailRegularExpressionBindableProperty =
             BindableProperty.Create(nameof(EmailRegularExpression), typeof(string),
-                typeof(AdvancedEntry), @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                typeof(EnhancedEntry), @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
                                        @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$");
 
 

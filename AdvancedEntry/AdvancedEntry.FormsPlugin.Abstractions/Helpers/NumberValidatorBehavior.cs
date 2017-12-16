@@ -1,7 +1,7 @@
-﻿using Xamarin.Forms;
-
-namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
+﻿namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions.Helpers
 {
+    using Xamarin.Forms;
+
     /// <summary>
     /// The number validator behavior.
     /// </summary>

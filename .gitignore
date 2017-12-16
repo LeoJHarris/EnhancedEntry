@@ -34,3 +34,10 @@
 /Sample/App1/App1.iOS/obj
 /Sample/App1/App1/bin/Release
 /Sample/App1/App1.iOS/bin/iPhoneSimulator
+/Test/Test/bin
+/Test/Test/obj
+/Test/Test.Android/bin
+/Test/Test.Android/obj
+/Test/Test.iOS/bin/iPhoneSimulator
+/Test/Test.iOS/obj
+/Test/Test.UWP/obj/x86/Debug

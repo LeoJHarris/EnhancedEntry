@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Xamarin.Forms;
-
-namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
+﻿namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions.Helpers
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text.RegularExpressions;
+
+    using Xamarin.Forms;
+
     /// <summary>
     /// The password validation behavior.
     /// </summary>

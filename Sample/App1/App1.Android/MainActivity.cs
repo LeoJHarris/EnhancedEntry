@@ -19,7 +19,7 @@ namespace App1.Droid
 
             base.OnCreate(bundle);
 
-            LeoJHarris.AdvancedEntry.Plugin.Droid.AdvancedEntryRenderer.Init(this);
+            LeoJHarris.AdvancedEntry.Plugin.Droid.EnhancedEntryRenderer.Init(this);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());

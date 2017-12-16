@@ -1,4 +1,4 @@
-﻿namespace LeoJHarris.AdvancedEntry.Plugin.Abstractions.Helpers
+﻿namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions.Helpers
 {
     using Xamarin.Forms;
 
@@ -18,7 +18,7 @@
         public static readonly BindableProperty IsValidProperty = IsValidPropertyKey.BindableProperty;
 
         private static readonly BindableProperty CharacterLengthBindableProperty =
-            BindableProperty.Create(nameof(CharacterLength), typeof(int), typeof(AdvancedEntry), 6);
+            BindableProperty.Create(nameof(CharacterLength), typeof(int), typeof(EnhancedEntry), 6);
 
         /// <summary>
         /// Character length
