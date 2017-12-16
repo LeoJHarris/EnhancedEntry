@@ -1,16 +1,11 @@
-﻿using System;
-
-using Android.App;
-using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Android.OS;
-
-namespace SampleApp.Droid
+﻿namespace SampleApp.Droid
 {
+    using Android.App;
+    using Android.Content.PM;
+    using Android.OS;
+
     [Activity(Label = "SampleApp", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
@@ -19,8 +14,8 @@ namespace SampleApp.Droid
 
             base.OnCreate(bundle);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
+            Xamarin.Forms.Forms.Init(this, bundle);
+            this.LoadApplication(new App());
         }
     }
 }

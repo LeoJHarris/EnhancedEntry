@@ -19,14 +19,22 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
     using Android.App;
     using Android.OS;
 
-    using EnhancedEntry = LeoJHarris.EnhancedEntry.Plugin.Abstractions.EnhancedEntry;
+    using EnhancedEntry = Abstractions.EnhancedEntry;
 
     /// <summary>
     /// 
     /// </summary>
     public class EnhancedEntryRenderer : EntryRenderer
     {
-        static string PackageName
+        private Context context;
+
+        public EnhancedEntryRenderer(Context context) : base(context)
+        {
+            this.AutoPackage = false;
+            this.context = context;
+        }
+
+        private static string PackageName
         {
             get;
             set;
@@ -38,17 +46,20 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
         /// <summary>
         /// Used for registration with dependency service
         /// </summary>
+        /// <param name="context">
+        /// The context.
+        /// </param>
         public static void Init(Context context) { PackageName = context.PackageName; }
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             base.OnElementChanged(e);
 
-            EnhancedEntry baseEntry = (EnhancedEntry)this.Element;
+            // EnhancedEntry baseEntry = (EnhancedEntry)this.Element;
 
             if (!((this.Control != null) & (e.NewElement != null))) return;
 
             EnhancedEntry entryExt = e.NewElement as EnhancedEntry;
-            if (baseEntry == null) return;
+            if (entryExt == null) return;
 
             // LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]
             // {
@@ -58,7 +69,6 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
             // strokeDrawable.setColor(strokeColor[0]);
             // GradientDrawable backgroundColor = (GradientDrawable)layerDrawable.findDrawableByLayerId(R.id.item_navbar_background);
             // backgroundColor.setColors(bgColor);
-
             if (entryExt != null)
             {
                 this.Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
@@ -69,7 +79,7 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
                 this.gradietDrawable.SetShape(ShapeType.Rectangle);
                 this.gradietDrawable.SetColor(entryExt.BackgroundColor.ToAndroid());
                 this.gradietDrawable.SetCornerRadius(entryExt.CornerRadius);
-                this.gradietDrawable.SetStroke((int)baseEntry.BorderWidth, baseEntry.BorderColor.ToAndroid());
+                this.gradietDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
 
                 Rect padding = new Rect
                 {
@@ -79,54 +89,59 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
                     Bottom = entryExt.TopBottomPadding / 2
                 };
                 this.gradietDrawable.GetPadding(padding);
-            }
 
-            e.NewElement.Focused += (sender, evt) =>
-            {
-                this.gradietDrawable.SetStroke((int)baseEntry.BorderWidth, baseEntry.FocusBorderColor.ToAndroid());
-            };
 
-            e.NewElement.Unfocused += (sender, evt) =>
-            {
-                this.gradietDrawable.SetStroke((int)baseEntry.BorderWidth, baseEntry.BorderColor.ToAndroid());
-            };
-
-            this.Control.SetBackground(this.gradietDrawable);
-
-            if (this.Control != null && !string.IsNullOrEmpty(PackageName))
-            {
-                if (!string.IsNullOrEmpty(baseEntry.LeftIcon))
-                {
-                    int identifier = this.Context.Resources.GetIdentifier(baseEntry.LeftIcon, "drawable", PackageName);
-                    if (identifier != 0)
+                e.NewElement.Focused += (sender, evt) =>
                     {
-                        Drawable drawable = this.Context.Resources.GetDrawable(identifier);
-                        if (drawable != null)
+                        this.gradietDrawable.SetStroke(
+                            (int)entryExt.BorderWidth,
+                            entryExt.FocusBorderColor.ToAndroid());
+                    };
+
+                e.NewElement.Unfocused += (sender, evt) =>
+                    {
+                        this.gradietDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
+                    };
+
+                this.Control.SetBackground(this.gradietDrawable);
+
+                if (this.Control != null && !string.IsNullOrEmpty(PackageName))
+                {
+                    if (!string.IsNullOrEmpty(entryExt.LeftIcon))
+                    {
+                        int identifier = this.Context.Resources.GetIdentifier(
+                            entryExt.LeftIcon,
+                            "drawable",
+                            PackageName);
+                        if (identifier != 0)
                         {
-                            this.Control.SetCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
-                            this.Control.CompoundDrawablePadding = baseEntry.PaddingLeftIcon;
+                            Drawable drawable = this.Context.Resources.GetDrawable(identifier);
+                            if (drawable != null)
+                            {
+                                this.Control.SetCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+                                this.Control.CompoundDrawablePadding = entryExt.PaddingLeftIcon;
+                            }
                         }
                     }
                 }
-            }
 
-            this.Control.EditorAction += (sender, args) =>
-            {
-                if (entryExt.NextEntry == null)
-                {
-                    Context context = Forms.Context;
-                    InputMethodManager inputMethodManager = context.GetSystemService(Context.InputMethodService) as InputMethodManager;
-                    if (inputMethodManager != null && context is Activity)
+                this.Control.EditorAction += (sender, args) =>
                     {
-                        Activity activity = (Activity)context;
-                        IBinder token = activity.CurrentFocus?.WindowToken;
-                        inputMethodManager.HideSoftInputFromWindow(token, HideSoftInputFlags.None);
+                        if (entryExt.NextEntry == null)
+                        {
+                            if (this.context.GetSystemService(Context.InputMethodService) is InputMethodManager inputMethodManager && this.context is Activity)
+                            {
+                                Activity activity = (Activity)this.context;
+                                IBinder token = activity.CurrentFocus?.WindowToken;
+                                inputMethodManager.HideSoftInputFromWindow(token, HideSoftInputFlags.None);
 
-                        activity.Window.DecorView.ClearFocus();
-                    }
-                }
-                baseEntry.EntryActionFired();
-            };
+                                activity.Window.DecorView.ClearFocus();
+                            }
+                        }
+
+                        entryExt.EntryActionFired();
+                    };
+            }
 
             // gradietDrawable.SetColorFilter(Color.Black, PorterDuff.Mode.SrcIn);
         }
@@ -155,8 +170,7 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
             if (!type.IsEnum) throw new InvalidOperationException();
             foreach (FieldInfo field in type.GetFields())
             {
-                if (Attribute.GetCustomAttribute(field,
-                    typeof(DescriptionAttribute)) is DescriptionAttribute attribute)
+                if (Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) is DescriptionAttribute attribute)
                 {
                     if (attribute.Description == value.ToString()) return (ImeAction)field.GetValue(null);
                 }

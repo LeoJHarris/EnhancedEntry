@@ -48,54 +48,55 @@ namespace LeoJHarris.EnhancedEntry.Plugin.iOS
 
             this.Element.HeightRequest = 30;
 
-            EnhancedEntry customEntry = e.NewElement as EnhancedEntry;
-
-            switch (customEntry.UITextBorderStyle)
+            if (e.NewElement is EnhancedEntry customEntry)
             {
-                case TextBorderStyle.None:
-                    this.Control.BorderStyle = UITextBorderStyle.None;
-                    break;
-                case TextBorderStyle.Line:
-                    this.Control.BorderStyle = UITextBorderStyle.Line;
-                    break;
-                case TextBorderStyle.Bezel:
-                    this.Control.BorderStyle = UITextBorderStyle.Bezel;
-                    break;
-                case TextBorderStyle.RoundedRect:
-                    this.Control.BorderStyle = UITextBorderStyle.RoundedRect;
-                    break;
-            }
+                switch (customEntry.UITextBorderStyle)
+                {
+                    case TextBorderStyle.None:
+                        this.Control.BorderStyle = UITextBorderStyle.None;
+                        break;
+                    case TextBorderStyle.Line:
+                        this.Control.BorderStyle = UITextBorderStyle.Line;
+                        break;
+                    case TextBorderStyle.Bezel:
+                        this.Control.BorderStyle = UITextBorderStyle.Bezel;
+                        break;
+                    case TextBorderStyle.RoundedRect:
+                        this.Control.BorderStyle = UITextBorderStyle.RoundedRect;
+                        break;
+                }
 
-            e.NewElement.Focused += (sender, evt) =>
-            {
-                this.Control.Layer.BorderColor = baseEntry.FocusBorderColor.ToCGColor();
-            };
+                e.NewElement.Focused += (sender, evt) =>
+                    {
+                        this.Control.Layer.BorderColor = baseEntry.FocusBorderColor.ToCGColor();
+                    };
 
-            e.NewElement.Unfocused += (sender, evt) =>
-            {
+                e.NewElement.Unfocused += (sender, evt) =>
+                    {
+                        this.Control.Layer.BorderColor = baseEntry.BorderColor.ToCGColor();
+                    };
+
+
+                this.Control.Layer.CornerRadius = new nfloat(customEntry.CornerRadius);
+                this.Control.Layer.BorderWidth = new nfloat(customEntry.BorderWidth);
+                this.Control.Layer.BackgroundColor = baseEntry.BackgroundColor.ToCGColor();
                 this.Control.Layer.BorderColor = baseEntry.BorderColor.ToCGColor();
-            };
 
-
-            this.Control.Layer.CornerRadius = new nfloat(customEntry.CornerRadius);
-            this.Control.Layer.BorderWidth = new nfloat(customEntry.BorderWidth);
-            this.Control.Layer.BackgroundColor = baseEntry.BackgroundColor.ToCGColor();
-            this.Control.Layer.BorderColor = baseEntry.BorderColor.ToCGColor();
-
-            if (customEntry != null)
-            {
                 this.Control.ReturnKeyType =
-                   GetValueFromDescription<UIReturnKeyType>(customEntry.ReturnKeyType.ToString());
+                    GetValueFromDescription<UIReturnKeyType>(customEntry.ReturnKeyType.ToString());
 
                 if (!string.IsNullOrEmpty(customEntry.LeftIcon))
                 {
                     UIImage leftImage = new UIImage(customEntry.LeftIcon);
 
-                    if (leftImage != null)
                     {
                         UIImageView viewImage = new UIImageView(leftImage);
 
-                        viewImage.Frame = new CGRect(0.0, 0.0, viewImage.Image.Size.Width + customEntry.PaddingLeftIcon, viewImage.Image.Size.Height + customEntry.PaddingLeftIcon);
+                        viewImage.Frame = new CGRect(
+                            0.0,
+                            0.0,
+                            viewImage.Image.Size.Width + customEntry.PaddingLeftIcon,
+                            viewImage.Image.Size.Height + customEntry.PaddingLeftIcon);
                         viewImage.ContentMode = UIViewContentMode.Center;
 
                         this.Control.LeftView = viewImage;
@@ -103,15 +104,15 @@ namespace LeoJHarris.EnhancedEntry.Plugin.iOS
                 }
 
                 this.Control.ShouldReturn += field =>
-                {
-                    if (baseEntry.NextEntry == null)
                     {
-                        UIApplication.SharedApplication.KeyWindow.EndEditing(true);
-                    }
+                        if (baseEntry.NextEntry == null)
+                        {
+                            UIApplication.SharedApplication.KeyWindow.EndEditing(true);
+                        }
 
-                    baseEntry.EntryActionFired();
-                    return true;
-                };
+                        baseEntry.EntryActionFired();
+                        return true;
+                    };
             }
         }
 
@@ -123,9 +124,9 @@ namespace LeoJHarris.EnhancedEntry.Plugin.iOS
                 return;
             }
 
-            EnhancedEntry customEntry = sender as EnhancedEntry;
-            if (customEntry != null)
-                this.Control.ReturnKeyType = GetValueFromDescription<UIReturnKeyType>(customEntry.ReturnKeyType.ToString());
+            if (sender is EnhancedEntry customEntry)
+                this.Control.ReturnKeyType =
+                    GetValueFromDescription<UIReturnKeyType>(customEntry.ReturnKeyType.ToString());
         }
 
         private static T GetValueFromDescription<T>(string description)

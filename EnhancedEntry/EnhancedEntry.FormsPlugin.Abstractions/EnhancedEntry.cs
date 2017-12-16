@@ -81,6 +81,9 @@
         public static readonly BindableProperty RightPaddingBindableProperty
             = BindableProperty.Create(nameof(RightPadding), typeof(int), typeof(EnhancedEntry), 6);
 
+        /// <summary>
+        /// Right padding
+        /// </summary>
         public int RightPadding
         {
             get => (int)this.GetValue(RightPaddingBindableProperty);
@@ -107,7 +110,7 @@
                 typeof(EnhancedEntry), Color.Transparent);
 
         /// <summary>
-        /// Background color 
+        /// Background color On focus of entry
         /// </summary>
         public Color FocusBorderColor
         {
@@ -128,7 +131,7 @@
         }
 
         /// <summary>
-        /// Border color
+        /// Border color requires <see cref="BorderWidth"/> to be set
         /// </summary>
         public Color BorderColor
         {
@@ -168,7 +171,7 @@
         }
 
         /// <summary>
-        /// Jump To Entry Behaviour 
+        /// Jump next to entry behaviour, requires <see cref="NextEntry"/> to be set.
         /// </summary>
         public GoToNextEntryOnLengthBehaviour GoToNextEntryOnLengthBehaviour
         {
@@ -194,7 +197,7 @@
         }
 
         /// <summary>
-        /// Jump To next <see cref="Next"/> entry behaviour 
+        /// Sets the email to entry.
         /// </summary>
         public EmailValidatorBehavior EmailValidatorBehavior
         {
@@ -202,9 +205,6 @@
             set => this.SetValue(EmailValidatorBehaviorBindableProperty, value);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public static readonly BindableProperty PasswordCompareValidationBindableProperty =
             BindableProperty.Create(nameof(PasswordCompareValidation),
                 typeof(PasswordCompareValidationBehavior),
@@ -223,7 +223,7 @@
                 typeof(EnhancedEntry));
 
         /// <summary>
-        /// The Entry with next focus
+        /// The Entry with next focus.
         /// </summary>
         public EnhancedEntry NextEntry
         {
@@ -251,7 +251,7 @@
         }
 
         /// <summary>
-        /// The keyboard action command.
+        /// The keyboard action command, please set <see cref="ReturnKeyType"/>
         /// </summary>
         public Command KeyBoardAction { get; set; }
 
@@ -285,7 +285,7 @@
                 typeof(EnhancedEntry), TextBorderStyle.None);
 
         /// <summary>
-        /// iOS border style (ignored android)
+        /// iOS border style
         /// </summary>
         public TextBorderStyle UITextBorderStyle
         {
