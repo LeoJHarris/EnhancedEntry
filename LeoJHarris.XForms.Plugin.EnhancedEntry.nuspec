@@ -2,8 +2,8 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.3">
     <id>LeoJHarris.XForms.Plugin.EnhancedEntry</id>
-    <version>1.0.8</version>
-    <title>EnhancedEntry Control Plugin for Xamarin.Forms</title>
+    <version>1.0.0</version>
+    <title>Enhanced Entry Control Plugin for Xamarin.Forms</title>
     <authors>Leonard Harris</authors>
     <owners>Leonard Harris</owners>
     <licenseUrl>https://github.com/LeoJHarris/EnhancedEntry/blob/master/LICENSE</licenseUrl>
@@ -11,12 +11,20 @@
     <iconUrl>https://raw.githubusercontent.com/LeoJHarris/EnhancedEntry/master/thumb3.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
-      Enhanced entry for Xamarin.forms projects that extends the current Xamarin.forms entry
+      Enhanced entry for Xamarin.Forms projects that extends the current Xamarin.forms entry
     </description>
     <summary>
-      Customize the keyboard's ImeOptions and either give your entry a command or assign the next entry you want focus.
-      Customize your entry to allow rounded corners with border color and background color.
-      Customize your entry to allows left icons perfect for form entry.
+      Enhanced entry for Xamarin.forms projects that extends the current Xamarin.forms entry. Unofficial.
+
+      • Must have set keyboard return button command or set focus to next entry when user taps the Input Method Editor i.e. Done/Next button on keyboard tapped => do something / set focus on the next specified entry.
+
+      • Customize keyboard return button.
+
+      • Rounded corners, border color, border width and background color.
+
+      • Left icons perfect for form entry with padding enabled.
+
+      • Email validation (with default regex but can be overriden if required) and compare two or more entries.
     </summary>
   </metadata>
   <files>

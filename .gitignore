@@ -38,3 +38,9 @@
 /SampleApp/SampleApp.iOS/obj
 /UpgradeLog3.htm
 /UpgradeLog2.htm
+/EnhancedEntry/EnhancedEntry.FormsPlugin.Abstractions/bin/Release
+/EnhancedEntry/EnhancedEntry.FormsPlugin.Android/bin/Release
+/EnhancedEntry/EnhancedEntry.FormsPlugin.iOS/bin/iPhone/Release
+/SampleApp/SampleApp/bin/Release/netstandard2.0
+/SampleApp/SampleApp.Android/bin/Release
+/SampleApp/SampleApp.UWP/obj/x86/Release
