@@ -27,8 +27,8 @@ Available on NuGet: https://www.nuget.org/packages/LeoJHarris.XForms.Plugin.Enha
 
 _In your Android_
 
-            `Xamarin.Forms.Init();
-            LeoJHarris.EnhancedEntryEntry.Plugin.iOS.EnhancedEntryRenderer.Init();;
+            Xamarin.Forms.Init();
+            LeoJHarris.EnhancedEntryEntry.Plugin.iOS.EnhancedEntryRenderer.Init();
 
 You must do this AFTER you call Xamarin.Forms.Init();
 
