@@ -90,7 +90,7 @@ You are able to set the `PasswordCompareValidationBehavior` which will compare t
 
 You are able to set the `EmailValidatorBehavior` for entries that will be used for emails, the `EmailRegularExpression` can be overriden if desired.
 
-You are able to set `GoToNextEntryOnLengthBehaviour` which will set focus to the `NextEntry` on the given `CharacterLength` 
+You are able to set `GoToNextEntryOnLengthBehaviour` which will set focus to the `NextEntry` on the given `CharacterLength`, use the `MaxLengthValidator` i.e. MaxLength="1" as well to ensure that entry doesnt exceed the `CharacterLength`
 
 **License**
 
