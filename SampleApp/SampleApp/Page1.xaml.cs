@@ -13,7 +13,6 @@
     {
         public Page1()
         {
-
             EnhancedEntry advancedEntry = new EnhancedEntry
             {
                 BorderColor = Color.Red,
@@ -143,7 +142,13 @@
                                                     }
                                             }
             };
-            Content = stack;
+
+            ScrollView scrollView = new ScrollView
+            {
+                Content = stack
+            };
+
+            Content = scrollView;
 
             InitializeComponent();
         }

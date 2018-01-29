@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.3">
     <id>LeoJHarris.XForms.Plugin.EnhancedEntry</id>
-    <version>1.0.0</version>
+    <version>1.0.9</version>
     <title>Enhanced Entry Control Plugin for Xamarin.Forms</title>
     <authors>Leonard Harris</authors>
     <owners>Leonard Harris</owners>
@@ -28,9 +28,11 @@
     </summary>
   </metadata>
   <files>
-    <file src="EnhancedEntry\EnhancedEntry.FormsPlugin.Abstractions\bin\Release\LeoJHarris.EnhancedEntry.Plugin.Abstractions*.*" target="lib\portable-net45+wp80+win8+wpa81" />
+    <!--Standard/PCL-->
+    <file src="EnhancedEntry\EnhancedEntry.FormsPlugin.Abstractions\bin\Release\netstandard1.0\LeoJHarris.EnhancedEntry.Plugin.Abstractions.*" target="lib\netstandard1.0" />
+    <!--Xamarin.iOS-->
     <file src="EnhancedEntry\EnhancedEntry.FormsPlugin.iOS\bin\iPhone\Release\LeoJHarris.EnhancedEntry.Plugin.iOS*.*" target="lib\Xamarin.iOS10" />
+    <!--Xamarin.Android-->
     <file src="EnhancedEntry\EnhancedEntry.FormsPlugin.Android\bin\Release\LeoJHarris.EnhancedEntry.Plugin.Droid*.*" target="lib\MonoAndroid10" />
-    <!--<file src="EnhancedEntry\EnhancedEntry.FormsPlugin.WindowsPhone\bin\Release\LeoJHarris.EnhancedEntry.Plugin.Abstractions*.*" target="lib\uap10.0" />-->
   </files>
 </package>
