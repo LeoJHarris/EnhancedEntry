@@ -1,4 +1,6 @@
-﻿namespace SampleApp
+﻿using System.Linq;
+
+namespace SampleApp
 {
     using System.Collections.Generic;
 
@@ -16,14 +18,20 @@
             EnhancedEntry advancedEntry = new EnhancedEntry
             {
                 BorderColor = Color.Red,
+                LeftIcon = "account",
                 Placeholder = "Type email",
                 FocusBorderColor = Color.Green,
                 BackgroundColor = Color.Yellow,
                 BorderWidth = 3,
+                HasShowAndHidePassword = true,
                 CornerRadius = 10,
                 Behaviors =
                 {
-                    new EmailValidatorBehavior(),
+                    new EmailValidatorBehavior()
+                    {
+                        InValidColor = Color.Red,
+                        ValidColor = Color.Green
+                    },
                 },
                 Keyboard = Keyboard.Email,
                 ReturnKeyType = ReturnKeyTypes.Done
@@ -32,6 +40,7 @@
             EnhancedEntry entryPasswordConfirm = new EnhancedEntry
             {
                 BorderColor = Color.Red,
+                LeftIcon = "password",
                 BorderWidth = 1,
                 CornerRadius = 2,
                 Placeholder = "Password confirm",
@@ -41,38 +50,38 @@
             EnhancedEntry passwordEntry = new EnhancedEntry
             {
                 BorderColor = Color.Red,
+                LeftIcon = "password",
                 BorderWidth = 1,
                 CornerRadius = 2,
                 Placeholder = "Password",
                 IsPassword = true,
-                PasswordCompareValidation = new PasswordCompareValidationBehavior(new List<Entry>()
+                Behaviors = { new PasswordCompareValidationBehavior(new List<Entry>()
                 {
                     entryPasswordConfirm
                 })
-
                 {
-                    ValidColor = Color.Orange,
-                    InValidColor = Color.Red
+                    ValidColor = Color.Green,
+                    InValidColor = Color.Red,
                 }
-
-                ,
+                }
             };
 
-            entryPasswordConfirm.PasswordCompareValidation =
+            entryPasswordConfirm.Behaviors.Add(
                 new PasswordCompareValidationBehavior(new List<Entry>()
                 {
                     passwordEntry
                 })
                 {
-                    ValidColor = Color.Orange,
+                    ValidColor = Color.Green,
                     InValidColor = Color.Red
-                };
+                });
 
             EnhancedEntry entry3 = new EnhancedEntry
             {
                 BorderColor = Color.Red,
                 BorderWidth = 1,
                 CornerRadius = 2,
+                FontSize = 11,
                 Placeholder = "Tap done in keyboard to execute some code in keyboardaction...",
                 KeyBoardAction = new Command(
                     () =>
@@ -90,7 +99,7 @@
                 ReturnKeyType = ReturnKeyTypes.Next,
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                HorizontalTextAlignment = TextAlignment.Center
+                HorizontalTextAlignment = TextAlignment.Center,
             };
 
             EnhancedEntry jumpToEntry2 = new EnhancedEntry
@@ -148,7 +157,14 @@
                 }
             };
 
-            if (entryPasswordConfirm.PasswordCompareValidation.IsValid && entryPasswordConfirm.PasswordCompareValidation.IsValid)
+
+            if (((PasswordCompareValidationBehavior)passwordEntry.Behaviors
+                    .FirstOrDefault(behavior => behavior.GetType() ==
+                                                typeof(PasswordCompareValidationBehavior)))
+                .IsValid && ((PasswordCompareValidationBehavior)entryPasswordConfirm.Behaviors
+                    .FirstOrDefault(behavior => behavior.GetType() ==
+                                                typeof(PasswordCompareValidationBehavior)))
+                .IsValid)
             {
                 this.DisplayAlert("Passwords match!", "Both passwords match", "OK");
             }
