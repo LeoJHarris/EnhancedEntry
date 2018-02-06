@@ -18,8 +18,7 @@ Enhanced entry for Xamarin.forms projects that extends the current xamarin.forms
 
 **Screenshots**
 
-![iOS Screenshot](https://github.com/LeoJHarris/EnhancedEntry/blob/master/ios.jpg)
-![Android Screenshot](https://github.com/LeoJHarris/EnhancedEntry/blob/master/thumb3.png)
+![EnhancedEntry Gif](https://github.com/LeoJHarris/EnhancedEntry/blob/master/EnhancedEntryDemo.gif)
 
 **Setup**
 
