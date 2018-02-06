@@ -14,9 +14,7 @@ Enhanced entry for Xamarin.forms projects that extends the current xamarin.forms
 
 • Email and compare entries behavour validator (basically compares a collection of entries
 
-**PULL REQUESTS WELCOME IF YOUD LIKE TO CONTRIBUTE FUNCTIONAILITY OR ADD ADDITIONAL BEHAVOURS**
-
-**Screenshots**
+**Gif Demo**
 
 ![EnhancedEntry Gif](https://github.com/LeoJHarris/EnhancedEntry/blob/master/EnhancedEntry.gif)
 
