@@ -1,5 +1,7 @@
 **Enhanced Entry for Xamarin forms**
 
+[![Build Status](https://www.bitrise.io/app/7f1dafa3432c4b0f/status.svg?token=q5DIlKQd3GcOeNAipGvxKQ&branch=master)](https://www.bitrise.io/app/7f1dafa3432c4b0f)
+
 Enhanced entry for Xamarin.forms projects that extends the current xamarin.forms entry. Unofficial. 
 
 • Must have set keyboard return button command or set focus to next entry when user taps the Input Method Editor i.e. Done/Next button on keyboard tapped => do something / set focus on the next specified entry. 
@@ -16,8 +18,7 @@ Enhanced entry for Xamarin.forms projects that extends the current xamarin.forms
 
 **Screenshots**
 
-![iOS Screenshot](https://github.com/LeoJHarris/EnhancedEntry/blob/master/ios.jpg)
-![Android Screenshot](https://github.com/LeoJHarris/EnhancedEntry/blob/master/thumb3.png)
+![EnhancedEntry Gif](https://github.com/LeoJHarris/EnhancedEntry/blob/master/EnhancedEntryDemo.gif)
 
 **Setup**
 
