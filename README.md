@@ -14,6 +14,11 @@ Enhanced entry for Xamarin.forms projects that extends the current xamarin.forms
 
 • Email and compare entries behavour validator (basically compares a collection of entries
 
+**Road Map**
+
++ .NET Standard
++ Show Password
+
 **Gif Demo**
 
 ![EnhancedEntry Gif](https://github.com/LeoJHarris/EnhancedEntry/blob/master/EnhancedEntry.gif)
