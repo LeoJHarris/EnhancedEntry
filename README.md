@@ -19,7 +19,7 @@ Enhanced entry for Xamarin.forms projects that extends the current xamarin.forms
 **Road Map**
 
 + .NET Standard
-+ Show Password
++ Show Password (toggle)
 
 **Gif Demo**
 
