@@ -1,8 +1,12 @@
 ﻿using Android.Text.Method;
 using Android.Views;
 using Android.Widget;
+using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using View = Android.Views.View;
 
+[assembly: ResolutionGroupName("Xamarin")]
+[assembly: ExportEffect(typeof(LeoJHarris.EnhancedEntry.Plugin.Droid.Effects.ShowHiddenEntryEffect), "ShowHiddenEntryEffect")]
 namespace LeoJHarris.EnhancedEntry.Plugin.Droid.Effects
 {
     public class ShowHiddenEntryEffect : PlatformEffect
@@ -19,14 +23,14 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid.Effects
         private void ConfigureControl()
         {
             EditText editText = ((EditText)Control);
-            editText.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, Resource.Drawable.show_pass,0);
+            editText.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, Resource.Drawable.show_pass, 0);
             editText.SetOnTouchListener(new OnDrawableTouchListener());
         }
     }
 
-    public class OnDrawableTouchListener : Java.Lang.Object, Android.Views.View.IOnTouchListener
+    public class OnDrawableTouchListener : Java.Lang.Object, View.IOnTouchListener
     {
-        public bool OnTouch(Android.Views.View v, MotionEvent e)
+        public bool OnTouch(View v, MotionEvent e)
         {
             if (v is EditText editText && e.Action == MotionEventActions.Up)
             {

@@ -1,13 +1,12 @@
-﻿using EnhancedEntry.FormsPlugin.Abstractions.Effects;
+﻿using LeoJHarris.EnhancedEntry.Plugin.Abstractions.Effects;
 
 namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
 {
     using System;
 
-    using LeoJHarris.EnhancedEntry.Plugin.Abstractions.Helpers;
+    using Helpers;
 
     using Xamarin.Forms;
-
 
     public class EnhancedEntry : Entry
     {
@@ -267,11 +266,7 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         public EnhancedEntry()
         {
             this.EventTriggered += Goto;
-            
-            this.Effects.Add(new ShowHiddenEntryEffect());
         }
-
-
 
         /// <summary>
         /// The keyboard action command, please set <see cref="ReturnKeyType"/>

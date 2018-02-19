@@ -1,17 +1,17 @@
 ﻿using System.Linq;
+using LeoJHarris.EnhancedEntry.Plugin.Abstractions.Effects;
+using LeoJHarris.EnhancedEntry.Plugin.Abstractions.Helpers;
 
 namespace SampleApp
 {
     using System.Collections.Generic;
 
-    using LeoJHarris.EnhancedEntry.Plugin.Abstractions;
-    using LeoJHarris.EnhancedEntry.Plugin.Abstractions.Helpers;
-
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
+    using LeoJHarris.EnhancedEntry.Plugin.Abstractions;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page1 : ContentPage
+    public partial class Page1
     {
         public Page1()
         {
@@ -33,6 +33,7 @@ namespace SampleApp
                         ValidColor = Color.Green
                     },
                 },
+
                 Keyboard = Keyboard.Email,
                 ReturnKeyType = ReturnKeyTypes.Done
             };
@@ -41,6 +42,7 @@ namespace SampleApp
             {
                 BorderColor = Color.Red,
                 LeftIcon = "password",
+                Effects = { new ShowHiddenEntryEffect() },
                 BorderWidth = 1,
                 CornerRadius = 2,
                 Placeholder = "Password confirm",
@@ -54,6 +56,7 @@ namespace SampleApp
                 BorderWidth = 1,
                 CornerRadius = 2,
                 Placeholder = "Password",
+                Effects = { new ShowHiddenEntryEffect() },
                 IsPassword = true,
                 Behaviors = { new PasswordCompareValidationBehavior(new List<Entry>()
                 {
@@ -157,14 +160,12 @@ namespace SampleApp
                 }
             };
 
-
             if (((PasswordCompareValidationBehavior)passwordEntry.Behaviors
                     .FirstOrDefault(behavior => behavior.GetType() ==
-                                                typeof(PasswordCompareValidationBehavior)))
-                .IsValid && ((PasswordCompareValidationBehavior)entryPasswordConfirm.Behaviors
+                                                typeof(PasswordCompareValidationBehavior))).IsValid &&
+                ((PasswordCompareValidationBehavior)entryPasswordConfirm.Behaviors
                     .FirstOrDefault(behavior => behavior.GetType() ==
-                                                typeof(PasswordCompareValidationBehavior)))
-                .IsValid)
+                                                typeof(PasswordCompareValidationBehavior))).IsValid)
             {
                 this.DisplayAlert("Passwords match!", "Both passwords match", "OK");
             }

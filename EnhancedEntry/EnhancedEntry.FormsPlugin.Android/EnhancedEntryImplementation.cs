@@ -15,7 +15,7 @@ using LeoJHarris.EnhancedEntry.Plugin.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(LeoJHarris.EnhancedEntry.Plugin.Abstractions.EnhancedEntry), typeof(EnhancedEntryRenderer))]
+[assembly: ExportRenderer(typeof(EnhancedEntry), typeof(EnhancedEntryRenderer))]
 namespace LeoJHarris.EnhancedEntry.Plugin.Droid
 {
     using Android.App;
@@ -28,12 +28,12 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
     /// </summary>
     public class EnhancedEntryRenderer : EntryRenderer
     {
-        private readonly Context context;
+        private readonly Context _context;
 
         public EnhancedEntryRenderer(Context context) : base(context)
         {
             this.AutoPackage = false;
-            this.context = context;
+            this._context = context;
         }
 
         private static string PackageName
@@ -42,7 +42,7 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
             set;
         }
 
-        private GradientDrawable gradietDrawable;
+        private GradientDrawable _gradietDrawable;
 
 
         /// <summary>
@@ -64,11 +64,12 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
 
                 this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);
 
-                this.gradietDrawable = new GradientDrawable();
-                this.gradietDrawable.SetShape(ShapeType.Rectangle);
-                this.gradietDrawable.SetColor(entryExt.BackgroundColor.ToAndroid());
-                this.gradietDrawable.SetCornerRadius(entryExt.CornerRadius);
-                this.gradietDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
+                this._gradietDrawable = new GradientDrawable();
+                this._gradietDrawable.SetShape(ShapeType.Rectangle);
+                this._gradietDrawable.SetColor(entryExt.BackgroundColor.ToAndroid());
+                this._gradietDrawable.SetCornerRadius(entryExt.CornerRadius);
+                this._gradietDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
+
 
                 Rect padding = new Rect
                 {
@@ -77,21 +78,21 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
                     Top = entryExt.TopBottomPadding / 2,
                     Bottom = entryExt.TopBottomPadding / 2
                 };
-                this.gradietDrawable.GetPadding(padding);
+                this._gradietDrawable.GetPadding(padding);
 
                 e.NewElement.Focused += (sender, evt) =>
                 {
-                    this.gradietDrawable.SetStroke(
+                    this._gradietDrawable.SetStroke(
                         (int)entryExt.BorderWidth,
                         entryExt.FocusBorderColor.ToAndroid());
                 };
 
                 e.NewElement.Unfocused += (sender, evt) =>
                 {
-                    this.gradietDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
+                    this._gradietDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
                 };
 
-                this.Control.SetBackground(this.gradietDrawable);
+                this.Control.SetBackground(this._gradietDrawable);
 
                 if (this.Control != null && !string.IsNullOrEmpty(PackageName))
                 {
@@ -123,9 +124,9 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
                 {
                     if (entryExt.NextEntry == null)
                     {
-                        if (this.context.GetSystemService(Context.InputMethodService) is InputMethodManager inputMethodManager && this.context is Activity)
+                        if (this._context.GetSystemService(Context.InputMethodService) is InputMethodManager inputMethodManager && this._context is Activity)
                         {
-                            Activity activity = (Activity)this.context;
+                            Activity activity = (Activity)this._context;
                             IBinder token = activity.CurrentFocus?.WindowToken;
                             inputMethodManager.HideSoftInputFromWindow(token, HideSoftInputFlags.None);
 

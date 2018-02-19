@@ -1,12 +1,5 @@
 ﻿namespace SampleApp
 {
-    using System.Collections.Generic;
-
-    using LeoJHarris.EnhancedEntry.Plugin.Abstractions;
-    using LeoJHarris.EnhancedEntry.Plugin.Abstractions.Helpers;
-
-    using Xamarin.Forms;
-
     public partial class App
     {
         public App()
