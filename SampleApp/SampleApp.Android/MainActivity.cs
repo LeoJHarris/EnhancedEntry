@@ -12,6 +12,8 @@
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            LeoJHarris.EnhancedEntry.Plugin.Droid.EnhancedEntryRenderer.Init(this);
+
             base.OnCreate(bundle);
 
             Xamarin.Forms.Forms.Init(this, bundle);

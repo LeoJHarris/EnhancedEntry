@@ -5,8 +5,10 @@ using System.Reflection;
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
+using Android.Text.Method;
+using Android.Views;
 using Android.Views.InputMethods;
-
+using Android.Widget;
 using LeoJHarris.EnhancedEntry.Plugin.Abstractions;
 using LeoJHarris.EnhancedEntry.Plugin.Droid;
 
@@ -26,12 +28,12 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
     /// </summary>
     public class EnhancedEntryRenderer : EntryRenderer
     {
-        private Context context;
+        private readonly Context _context;
 
         public EnhancedEntryRenderer(Context context) : base(context)
         {
             this.AutoPackage = false;
-            this.context = context;
+            this._context = context;
         }
 
         private static string PackageName
@@ -40,7 +42,7 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
             set;
         }
 
-        private GradientDrawable gradietDrawable;
+        private GradientDrawable _gradietDrawable;
 
 
         /// <summary>
@@ -54,32 +56,20 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
         {
             base.OnElementChanged(e);
 
-            // EnhancedEntry baseEntry = (EnhancedEntry)this.Element;
-
             if (!((this.Control != null) & (e.NewElement != null))) return;
 
-            EnhancedEntry entryExt = e.NewElement as EnhancedEntry;
-            if (entryExt == null) return;
-
-            // LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]
-            // {
-            // this.gradietDrawable
-            // });
-            // GradientDrawable strokeDrawable = (GradientDrawable)layerDrawable.findDrawableByLayerId(R.id.item_bottom_stroke);
-            // strokeDrawable.setColor(strokeColor[0]);
-            // GradientDrawable backgroundColor = (GradientDrawable)layerDrawable.findDrawableByLayerId(R.id.item_navbar_background);
-            // backgroundColor.setColors(bgColor);
-            if (entryExt != null)
+            if (!(e.NewElement is EnhancedEntry entryExt)) return;
             {
                 this.Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
 
                 this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);
 
-                this.gradietDrawable = new GradientDrawable();
-                this.gradietDrawable.SetShape(ShapeType.Rectangle);
-                this.gradietDrawable.SetColor(entryExt.BackgroundColor.ToAndroid());
-                this.gradietDrawable.SetCornerRadius(entryExt.CornerRadius);
-                this.gradietDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
+                this._gradietDrawable = new GradientDrawable();
+                this._gradietDrawable.SetShape(ShapeType.Rectangle);
+                this._gradietDrawable.SetColor(entryExt.BackgroundColor.ToAndroid());
+                this._gradietDrawable.SetCornerRadius(entryExt.CornerRadius);
+                this._gradietDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
+
 
                 Rect padding = new Rect
                 {
@@ -88,25 +78,30 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
                     Top = entryExt.TopBottomPadding / 2,
                     Bottom = entryExt.TopBottomPadding / 2
                 };
-                this.gradietDrawable.GetPadding(padding);
-
+                this._gradietDrawable.GetPadding(padding);
 
                 e.NewElement.Focused += (sender, evt) =>
-                    {
-                        this.gradietDrawable.SetStroke(
-                            (int)entryExt.BorderWidth,
-                            entryExt.FocusBorderColor.ToAndroid());
-                    };
+                {
+                    this._gradietDrawable.SetStroke(
+                        (int)entryExt.BorderWidth,
+                        entryExt.FocusBorderColor.ToAndroid());
+                };
 
                 e.NewElement.Unfocused += (sender, evt) =>
-                    {
-                        this.gradietDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
-                    };
+                {
+                    this._gradietDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
+                };
 
-                this.Control.SetBackground(this.gradietDrawable);
+                this.Control.SetBackground(this._gradietDrawable);
 
                 if (this.Control != null && !string.IsNullOrEmpty(PackageName))
                 {
+                    //if (entryExt.HasShowAndHidePassword)
+                    //{
+                    //    Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, Resource.Drawable.show_pass, 0);
+                    //    Control.SetOnTouchListener(new OnDrawableTouchListener());
+                    //}
+
                     if (!string.IsNullOrEmpty(entryExt.LeftIcon))
                     {
                         int identifier = this.Context.Resources.GetIdentifier(
@@ -115,7 +110,7 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
                             PackageName);
                         if (identifier != 0)
                         {
-                            Drawable drawable = this.Context.Resources.GetDrawable(identifier);
+                            Drawable drawable = Resources.GetDrawable(identifier);
                             if (drawable != null)
                             {
                                 this.Control.SetCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
@@ -126,24 +121,49 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
                 }
 
                 this.Control.EditorAction += (sender, args) =>
+                {
+                    if (entryExt.NextEntry == null)
                     {
-                        if (entryExt.NextEntry == null)
+                        if (this._context.GetSystemService(Context.InputMethodService) is InputMethodManager inputMethodManager && this._context is Activity)
                         {
-                            if (this.context.GetSystemService(Context.InputMethodService) is InputMethodManager inputMethodManager && this.context is Activity)
-                            {
-                                Activity activity = (Activity)this.context;
-                                IBinder token = activity.CurrentFocus?.WindowToken;
-                                inputMethodManager.HideSoftInputFromWindow(token, HideSoftInputFlags.None);
+                            Activity activity = (Activity)this._context;
+                            IBinder token = activity.CurrentFocus?.WindowToken;
+                            inputMethodManager.HideSoftInputFromWindow(token, HideSoftInputFlags.None);
 
-                                activity.Window.DecorView.ClearFocus();
-                            }
+                            activity.Window.DecorView.ClearFocus();
+                        }
+                    }
+
+                    entryExt.EntryActionFired();
+                };
+            }
+        }
+
+        public class OnDrawableTouchListener : Java.Lang.Object, Android.Views.View.IOnTouchListener
+        {
+            public bool OnTouch(Android.Views.View v, MotionEvent e)
+            {
+                if (v is EditText editText && e.Action == MotionEventActions.Up)
+                {
+                    if (e.RawX >= (editText.Right - editText.GetCompoundDrawables()[2].Bounds.Width()))
+                    {
+                        if (editText.TransformationMethod == null)
+                        {
+                            editText.TransformationMethod = PasswordTransformationMethod.Instance;
+                            editText.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, Resource.Drawable.show_pass, 0);
+                        }
+                        else
+                        {
+                            editText.TransformationMethod = null;
+                            editText.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, Resource.Drawable.hide_pass, 0);
                         }
 
-                        entryExt.EntryActionFired();
-                    };
-            }
+                        return true;
+                    }
+                }
 
-            // gradietDrawable.SetColorFilter(Color.Black, PorterDuff.Mode.SrcIn);
+                return false;
+            }
         }
 
         /// <summary>

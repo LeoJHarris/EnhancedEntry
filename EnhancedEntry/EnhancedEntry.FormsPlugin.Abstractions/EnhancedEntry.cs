@@ -1,11 +1,12 @@
-﻿namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
+﻿using LeoJHarris.EnhancedEntry.Plugin.Abstractions.Effects;
+
+namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
 {
     using System;
 
-    using LeoJHarris.EnhancedEntry.Plugin.Abstractions.Helpers;
+    using Helpers;
 
     using Xamarin.Forms;
-
 
     public class EnhancedEntry : Entry
     {
@@ -154,6 +155,20 @@
             set => this.SetValue(BackgroundColorProperty, value);
         }
 
+        public static readonly BindableProperty HasShowAndHidePasswordProperty =
+            BindableProperty.Create(nameof(HasShowAndHidePassword), typeof(bool),
+                typeof(EnhancedEntry), false);
+
+        /// <summary>
+        /// Background color 
+        /// </summary>
+        public bool HasShowAndHidePassword
+        {
+            get => (bool)this.GetValue(HasShowAndHidePasswordProperty);
+
+            set => this.SetValue(HasShowAndHidePasswordProperty, value);
+        }
+
         /// <summary>
         /// GoToNextEntryOnLengthBindableProperty
         /// </summary>
@@ -173,6 +188,7 @@
         /// <summary>
         /// Jump next to entry behaviour, requires <see cref="NextEntry"/> to be set.
         /// </summary>
+        [Obsolete("Add to Behavior collection instead")]
         public GoToNextEntryOnLengthBehaviour GoToNextEntryOnLengthBehaviour
         {
             get => (GoToNextEntryOnLengthBehaviour)this.GetValue(GoToNextEntryOnLengthBindableProperty);
@@ -199,6 +215,7 @@
         /// <summary>
         /// Sets the email to entry.
         /// </summary>
+        [Obsolete("Add to Behavior collection instead")]
         public EmailValidatorBehavior EmailValidatorBehavior
         {
             get => (EmailValidatorBehavior)this.GetValue(EmailValidatorBehaviorBindableProperty);
@@ -235,6 +252,7 @@
         /// <summary>
         /// Password compare validation
         /// </summary>
+        [Obsolete("Add to Behavior collection instead")]
         public PasswordCompareValidationBehavior PasswordCompareValidation
         {
             get => (PasswordCompareValidationBehavior)
