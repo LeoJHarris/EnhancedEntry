@@ -29,3 +29,6 @@
 /UpgradeLog4.htm
 /SampleApp/SampleApp/bin/Debug/netstandard1.4
 *.htm
+/EnhancedEntry/EnhancedEntry.FormsPlugin.Abstractions.Portable/bin
+/EnhancedEntry/EnhancedEntry.FormsPlugin.Abstractions.Portable/obj
+/EnhancedEntry/EnhancedEntry.FormsPlugin.iOS/bin/Release

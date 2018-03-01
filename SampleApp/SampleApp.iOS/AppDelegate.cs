@@ -17,7 +17,7 @@ namespace SampleApp.iOS
         {
             Xamarin.Forms.Forms.Init();
 
-            LeoJHarris.EnhancedEntry.Plugin.iOS.EnhancedEntryRenderer.Init();
+            //LeoJHarris.EnhancedEntry.Plugin.iOS.EnhancedEntryRenderer.Init();
 
             this.LoadApplication(new App());
 
