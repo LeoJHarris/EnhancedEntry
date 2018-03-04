@@ -35,8 +35,8 @@
         /// </summary>Z
         public int MinimumLength
         {
-            get => (int)this.GetValue(MinimumLengthBindableProperty);
-            set => this.SetValue(MinimumLengthBindableProperty, value);
+            get => (int)GetValue(MinimumLengthBindableProperty);
+            set => SetValue(MinimumLengthBindableProperty, value);
         }
 
         private static readonly BindableProperty HasUpperCaseCharactersBindableProperty =
@@ -48,9 +48,9 @@
         /// </summary>
         public bool HasUpperCaseCharacters
         {
-            get => (bool)this.GetValue(HasUpperCaseCharactersBindableProperty
+            get => (bool)GetValue(HasUpperCaseCharactersBindableProperty
                 );
-            set => this.SetValue(HasUpperCaseCharactersBindableProperty, value);
+            set => SetValue(HasUpperCaseCharactersBindableProperty, value);
         }
         private static readonly BindableProperty HasLowerCasesBindableProperty =
             BindableProperty.Create(nameof(HasLowerCaseCharacters), typeof(bool),
@@ -61,8 +61,8 @@
         /// </summary>Z
         public bool HasLowerCaseCharacters
         {
-            get => (bool)this.GetValue(HasLowerCasesBindableProperty);
-            set => this.SetValue(HasLowerCasesBindableProperty, value);
+            get => (bool)GetValue(HasLowerCasesBindableProperty);
+            set => SetValue(HasLowerCasesBindableProperty, value);
         }
 
         private static readonly BindableProperty HasNumbersBindableProperty =
@@ -74,8 +74,8 @@
         /// </summary>Z
         public bool HasNumbers
         {
-            get => (bool)this.GetValue(HasLowerCasesBindableProperty);
-            set => this.SetValue(HasNumbersBindableProperty, value);
+            get => (bool)GetValue(HasLowerCasesBindableProperty);
+            set => SetValue(HasNumbersBindableProperty, value);
         }
 
 
@@ -99,7 +99,7 @@
         /// </summary>
         public PasswordCompareValidationBehavior(IEnumerable<Entry> entryCompare)
         {
-            this.EntryComparables = entryCompare;
+            EntryComparables = entryCompare;
         }
 
         /// <summary>
@@ -107,9 +107,9 @@
         /// </summary>
         public bool IsValid
         {
-            get => (bool)this.GetValue(IsValidProperty);
+            get => (bool)GetValue(IsValidProperty);
 
-            protected set => this.SetValue(IsValidPropertyKey, value);
+            protected set => SetValue(IsValidPropertyKey, value);
         }
 
 
@@ -122,8 +122,8 @@
         /// </summary>
         public Color ValidColor
         {
-            get => (Color)this.GetValue(ValidColorBindableProperty);
-            set => this.SetValue(ValidColorBindableProperty, value);
+            get => (Color)GetValue(ValidColorBindableProperty);
+            set => SetValue(ValidColorBindableProperty, value);
         }
 
         private static readonly BindableProperty InValidColorBindableProperty =
@@ -135,8 +135,8 @@
         /// </summary>
         public Color InValidColor
         {
-            get => (Color)this.GetValue(InValidColorBindableProperty);
-            set => this.SetValue(InValidColorBindableProperty, value);
+            get => (Color)GetValue(InValidColorBindableProperty);
+            set => SetValue(InValidColorBindableProperty, value);
         }
 
 
@@ -150,7 +150,7 @@
         {
             base.OnAttachedTo(bindable);
 
-            bindable.TextChanged += this.HandleTextChange;
+            bindable.TextChanged += HandleTextChange;
         }
 
         private IEnumerable<Entry> EntryComparables { get; }
@@ -165,7 +165,7 @@
         {
             base.OnDetachingFrom(bindable);
 
-            bindable.TextChanged -= this.HandleTextChange;
+            bindable.TextChanged -= HandleTextChange;
         }
 
         /// <summary>
@@ -181,28 +181,28 @@
         {
             string t = e.NewTextValue;
 
-            bool lengthCheck = t.Length >= this.MinimumLength;
-            this.HasUpperCaseCharacters = UpperCasePattern.IsMatch(t);
-            this.HasLowerCaseCharacters = LowerCasePattern.IsMatch(t);
-            this.HasNumbers = NumberPattern.IsMatch(t);
+            bool lengthCheck = t.Length >= MinimumLength;
+            HasUpperCaseCharacters = UpperCasePattern.IsMatch(t);
+            HasLowerCaseCharacters = LowerCasePattern.IsMatch(t);
+            HasNumbers = NumberPattern.IsMatch(t);
 
-            this.IsValid = lengthCheck && this.HasUpperCaseCharacters && this.HasLowerCaseCharacters && this.HasNumbers;
+            IsValid = lengthCheck && HasUpperCaseCharacters && HasLowerCaseCharacters && HasNumbers;
 
-            if (this.EntryComparables.Any())
+            if (EntryComparables.Any())
             {
-                foreach (Entry entry in this.EntryComparables)
+                foreach (Entry entry in EntryComparables)
                 {
                     if (entry.Text != t)
                     {
-                        this.IsValid = false;
+                        IsValid = false;
                         break;
                     }
                 }
             }
 
-            if (this.IsValid)
+            if (IsValid)
             {
-                foreach (Entry entry in this.EntryComparables)
+                foreach (Entry entry in EntryComparables)
                 {
                     if (entry != null && entry.Behaviors.Any())
                     {
@@ -210,13 +210,13 @@
                         {
                             if (entryBehavior is PasswordCompareValidationBehavior behavior)
                                 behavior.IsValid = true;
-                            entry.TextColor = this.IsValid ? this.ValidColor : this.InValidColor;
+                            entry.TextColor = IsValid ? ValidColor : InValidColor;
                         }
                     }
                 }
             }
 
-            ((Entry)sender).TextColor = this.IsValid ? this.ValidColor : this.InValidColor;
+            ((Entry)sender).TextColor = IsValid ? ValidColor : InValidColor;
         }
     }
 }

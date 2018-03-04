@@ -14,7 +14,7 @@
         /// </param>
         public StringValAttribute(string value)
         {
-            this.Value = value;
+            Value = value;
         }
 
         /// <summary>

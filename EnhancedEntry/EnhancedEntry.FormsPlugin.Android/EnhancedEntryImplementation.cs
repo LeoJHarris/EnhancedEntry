@@ -32,8 +32,8 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
 
         public EnhancedEntryRenderer(Context context) : base(context)
         {
-            this.AutoPackage = false;
-            this._context = context;
+            AutoPackage = false;
+            _context = context;
         }
 
         private static string PackageName
@@ -56,19 +56,19 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
         {
             base.OnElementChanged(e);
 
-            if (!((this.Control != null) & (e.NewElement != null))) return;
+            if (!((Control != null) & (e.NewElement != null))) return;
 
             if (!(e.NewElement is EnhancedEntry entryExt)) return;
             {
-                this.Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
+                Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
 
-                this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);
+                Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), Control.ImeOptions);
 
-                this._gradietDrawable = new GradientDrawable();
-                this._gradietDrawable.SetShape(ShapeType.Rectangle);
-                this._gradietDrawable.SetColor(entryExt.BackgroundColor.ToAndroid());
-                this._gradietDrawable.SetCornerRadius(entryExt.CornerRadius);
-                this._gradietDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
+                _gradietDrawable = new GradientDrawable();
+                _gradietDrawable.SetShape(ShapeType.Rectangle);
+                _gradietDrawable.SetColor(entryExt.BackgroundColor.ToAndroid());
+                _gradietDrawable.SetCornerRadius(entryExt.CornerRadius);
+                _gradietDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
 
 
                 Rect padding = new Rect
@@ -78,23 +78,23 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
                     Top = entryExt.TopBottomPadding / 2,
                     Bottom = entryExt.TopBottomPadding / 2
                 };
-                this._gradietDrawable.GetPadding(padding);
+                _gradietDrawable.GetPadding(padding);
 
                 e.NewElement.Focused += (sender, evt) =>
                 {
-                    this._gradietDrawable.SetStroke(
+                    _gradietDrawable.SetStroke(
                         (int)entryExt.BorderWidth,
                         entryExt.FocusBorderColor.ToAndroid());
                 };
 
                 e.NewElement.Unfocused += (sender, evt) =>
                 {
-                    this._gradietDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
+                    _gradietDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
                 };
 
-                this.Control.SetBackground(this._gradietDrawable);
+                Control.SetBackground(_gradietDrawable);
 
-                if (this.Control != null && !string.IsNullOrEmpty(PackageName))
+                if (Control != null && !string.IsNullOrEmpty(PackageName))
                 {
                     //if (entryExt.HasShowAndHidePassword)
                     //{
@@ -104,7 +104,7 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
 
                     if (!string.IsNullOrEmpty(entryExt.LeftIcon))
                     {
-                        int identifier = this.Context.Resources.GetIdentifier(
+                        int identifier = Context.Resources.GetIdentifier(
                             entryExt.LeftIcon,
                             "drawable",
                             PackageName);
@@ -113,20 +113,20 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
                             Drawable drawable = Resources.GetDrawable(identifier);
                             if (drawable != null)
                             {
-                                this.Control.SetCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
-                                this.Control.CompoundDrawablePadding = entryExt.PaddingLeftIcon;
+                                Control.SetCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+                                Control.CompoundDrawablePadding = entryExt.PaddingLeftIcon;
                             }
                         }
                     }
                 }
 
-                this.Control.EditorAction += (sender, args) =>
+                Control.EditorAction += (sender, args) =>
                 {
                     if (entryExt.NextEntry == null)
                     {
-                        if (this._context.GetSystemService(Context.InputMethodService) is InputMethodManager inputMethodManager && this._context is Activity)
+                        if (_context.GetSystemService(Context.InputMethodService) is InputMethodManager inputMethodManager && _context is Activity)
                         {
-                            Activity activity = (Activity)this._context;
+                            Activity activity = (Activity)_context;
                             IBinder token = activity.CurrentFocus?.WindowToken;
                             inputMethodManager.HideSoftInputFromWindow(token, HideSoftInputFlags.None);
 
@@ -139,7 +139,7 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
             }
         }
 
-        public class OnDrawableTouchListener : Java.Lang.Object, Android.Views.View.IOnTouchListener
+        public class OnDrawableTouchListener : Java.Lang.Object, IOnTouchListener
         {
             public bool OnTouch(Android.Views.View v, MotionEvent e)
             {
@@ -180,8 +180,8 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
             base.OnElementPropertyChanged(sender, e);
             if (e.PropertyName != EnhancedEntry.ReturnKeyPropertyName) return;
             if (!(sender is EnhancedEntry entryExt)) return;
-            this.Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
-            this.Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), this.Control.ImeOptions);
+            Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
+            Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), Control.ImeOptions);
         }
 
         private static ImeAction GetValueFromDescription(ReturnKeyTypes value)

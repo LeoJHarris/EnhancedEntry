@@ -15,9 +15,9 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         /// </summary>
         public string LeftIcon
         {
-            get => (string)this.GetValue(LeftIconProperty);
+            get => (string)GetValue(LeftIconProperty);
 
-            set => this.SetValue(LeftIconProperty, value);
+            set => SetValue(LeftIconProperty, value);
         }
 
         /// <summary>
@@ -25,9 +25,9 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         /// </summary>
         public int PaddingLeftIcon
         {
-            get => (int)this.GetValue(PaddingIconTextBindableProperty);
+            get => (int)GetValue(PaddingIconTextBindableProperty);
 
-            set => this.SetValue(PaddingIconTextBindableProperty, value);
+            set => SetValue(PaddingIconTextBindableProperty, value);
         }
 
         /// <summary>
@@ -35,9 +35,9 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         /// </summary>
         public double BorderWidth
         {
-            get => (double)this.GetValue(BorderWidthBindableProperty);
+            get => (double)GetValue(BorderWidthBindableProperty);
 
-            set => this.SetValue(BorderWidthBindableProperty, value);
+            set => SetValue(BorderWidthBindableProperty, value);
         }
 
 
@@ -65,9 +65,9 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         /// </summary>
         public int CornerRadius
         {
-            get => (int)this.GetValue(CornerRadiusBindableProperty);
+            get => (int)GetValue(CornerRadiusBindableProperty);
 
-            set => this.SetValue(CornerRadiusBindableProperty, value);
+            set => SetValue(CornerRadiusBindableProperty, value);
         }
 
         public static readonly BindableProperty LeftPaddingBindableProperty
@@ -75,9 +75,9 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
 
         public int LeftPadding
         {
-            get => (int)this.GetValue(LeftPaddingBindableProperty);
+            get => (int)GetValue(LeftPaddingBindableProperty);
 
-            set => this.SetValue(LeftPaddingBindableProperty, value);
+            set => SetValue(LeftPaddingBindableProperty, value);
         }
         public static readonly BindableProperty RightPaddingBindableProperty
             = BindableProperty.Create(nameof(RightPadding), typeof(int), typeof(EnhancedEntry), 6);
@@ -87,9 +87,9 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         /// </summary>
         public int RightPadding
         {
-            get => (int)this.GetValue(RightPaddingBindableProperty);
+            get => (int)GetValue(RightPaddingBindableProperty);
 
-            set => this.SetValue(RightPaddingBindableProperty, value);
+            set => SetValue(RightPaddingBindableProperty, value);
         }
 
         public static readonly BindableProperty TopBottomPaddingBindableProperty
@@ -100,9 +100,9 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         /// </summary>
         public int TopBottomPadding
         {
-            get => (int)this.GetValue(TopBottomPaddingBindableProperty);
+            get => (int)GetValue(TopBottomPaddingBindableProperty);
 
-            set => this.SetValue(TopBottomPaddingBindableProperty, value);
+            set => SetValue(TopBottomPaddingBindableProperty, value);
         }
 
 
@@ -115,9 +115,9 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         /// </summary>
         public Color FocusBorderColor
         {
-            get => (Color)this.GetValue(FocusBorderColorBindableProperty);
+            get => (Color)GetValue(FocusBorderColorBindableProperty);
 
-            set => this.SetValue(FocusBorderColorBindableProperty, value);
+            set => SetValue(FocusBorderColorBindableProperty, value);
         }
         public static readonly BindableProperty BorderColorProperty =
             BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(EnhancedEntry),
@@ -136,9 +136,9 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         /// </summary>
         public Color BorderColor
         {
-            get => (Color)this.GetValue(BorderColorProperty);
+            get => (Color)GetValue(BorderColorProperty);
 
-            set => this.SetValue(BorderColorProperty, value);
+            set => SetValue(BorderColorProperty, value);
         }
 
         public static readonly BindableProperty BackgroundColorProperty =
@@ -150,9 +150,9 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         /// </summary>
         public Color BackgroundColor
         {
-            get => (Color)this.GetValue(BackgroundColorProperty);
+            get => (Color)GetValue(BackgroundColorProperty);
 
-            set => this.SetValue(BackgroundColorProperty, value);
+            set => SetValue(BackgroundColorProperty, value);
         }
 
         public static readonly BindableProperty HasShowAndHidePasswordProperty =
@@ -164,9 +164,9 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         /// </summary>
         public bool HasShowAndHidePassword
         {
-            get => (bool)this.GetValue(HasShowAndHidePasswordProperty);
+            get => (bool)GetValue(HasShowAndHidePasswordProperty);
 
-            set => this.SetValue(HasShowAndHidePasswordProperty, value);
+            set => SetValue(HasShowAndHidePasswordProperty, value);
         }
 
         /// <summary>
@@ -191,9 +191,9 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         [Obsolete("Add to Behavior collection instead")]
         public GoToNextEntryOnLengthBehaviour GoToNextEntryOnLengthBehaviour
         {
-            get => (GoToNextEntryOnLengthBehaviour)this.GetValue(GoToNextEntryOnLengthBindableProperty);
+            get => (GoToNextEntryOnLengthBehaviour)GetValue(GoToNextEntryOnLengthBindableProperty);
 
-            set => this.SetValue(GoToNextEntryOnLengthBindableProperty, value);
+            set => SetValue(GoToNextEntryOnLengthBindableProperty, value);
         }
 
         /// <summary>
@@ -218,8 +218,8 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         [Obsolete("Add to Behavior collection instead")]
         public EmailValidatorBehavior EmailValidatorBehavior
         {
-            get => (EmailValidatorBehavior)this.GetValue(EmailValidatorBehaviorBindableProperty);
-            set => this.SetValue(EmailValidatorBehaviorBindableProperty, value);
+            get => (EmailValidatorBehavior)GetValue(EmailValidatorBehaviorBindableProperty);
+            set => SetValue(EmailValidatorBehaviorBindableProperty, value);
         }
 
         public static readonly BindableProperty PasswordCompareValidationBindableProperty =
@@ -244,9 +244,9 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         /// </summary>
         public EnhancedEntry NextEntry
         {
-            get => (EnhancedEntry)this.GetValue(NextEntryBindableProperty);
+            get => (EnhancedEntry)GetValue(NextEntryBindableProperty);
 
-            set => this.SetValue(NextEntryBindableProperty, value);
+            set => SetValue(NextEntryBindableProperty, value);
         }
 
         /// <summary>
@@ -256,8 +256,8 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         public PasswordCompareValidationBehavior PasswordCompareValidation
         {
             get => (PasswordCompareValidationBehavior)
-                this.GetValue(PasswordCompareValidationBindableProperty);
-            set => this.SetValue(PasswordCompareValidationBindableProperty, value);
+                GetValue(PasswordCompareValidationBindableProperty);
+            set => SetValue(PasswordCompareValidationBindableProperty, value);
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         /// </summary>
         public EnhancedEntry()
         {
-            this.EventTriggered += Goto;
+            EventTriggered += Goto;
         }
 
         /// <summary>
@@ -286,16 +286,16 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
 
         public ReturnKeyTypes ReturnKeyType
         {
-            get { return (ReturnKeyTypes)this.GetValue(ReturnTypeProperty); }
+            get { return (ReturnKeyTypes)GetValue(ReturnTypeProperty); }
             set
             {
-                this.SetValue(ReturnTypeProperty, value);
+                SetValue(ReturnTypeProperty, value);
             }
         }
 
         public void EntryActionFired()
         {
-            this.EventTriggered?.Invoke(this, null);
+            EventTriggered?.Invoke(this, null);
         }
 
         private static readonly BindableProperty UITextBorderStyleBindableProperty =
@@ -307,8 +307,8 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
         /// </summary>
         public TextBorderStyle UITextBorderStyle
         {
-            get => (TextBorderStyle)this.GetValue(UITextBorderStyleBindableProperty);
-            set => this.SetValue(UITextBorderStyleBindableProperty, value);
+            get => (TextBorderStyle)GetValue(UITextBorderStyleBindableProperty);
+            set => SetValue(UITextBorderStyleBindableProperty, value);
         }
     }
 

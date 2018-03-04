@@ -11,12 +11,12 @@
             BindableProperty.Create(nameof(EmailRegularExpression), typeof(string),
                 typeof(EnhancedEntry), @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
                                        @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$");
-        
+
         public string EmailRegularExpression
         {
-            get => (string)this.GetValue(EmailRegularExpressionBindableProperty);
+            get => (string)GetValue(EmailRegularExpressionBindableProperty);
 
-            set => this.SetValue(EmailRegularExpressionBindableProperty, value);
+            set => SetValue(EmailRegularExpressionBindableProperty, value);
         }
 
         private static readonly BindablePropertyKey IsValidPropertyKey =
@@ -29,8 +29,8 @@
         /// </summary>
         public bool IsValid
         {
-            get => (bool)this.GetValue(IsValidProperty);
-            private set => this.SetValue(IsValidPropertyKey, value);
+            get => (bool)GetValue(IsValidProperty);
+            private set => SetValue(IsValidPropertyKey, value);
         }
 
         public static readonly BindableProperty ValidColorBindableProperty =
@@ -39,9 +39,9 @@
 
         public Color ValidColor
         {
-            get => (Color)this.GetValue(ValidColorBindableProperty);
+            get => (Color)GetValue(ValidColorBindableProperty);
 
-            set => this.SetValue(ValidColorBindableProperty, value);
+            set => SetValue(ValidColorBindableProperty, value);
         }
 
         public static readonly BindableProperty InValidColorBindableProperty =
@@ -50,28 +50,28 @@
 
         public Color InValidColor
         {
-            get => (Color)this.GetValue(InValidColorBindableProperty);
+            get => (Color)GetValue(InValidColorBindableProperty);
 
-            set => this.SetValue(InValidColorBindableProperty, value);
+            set => SetValue(InValidColorBindableProperty, value);
         }
 
         protected override void OnAttachedTo(Entry bindable)
         {
-            bindable.TextChanged += this.HandleTextChanged;
+            bindable.TextChanged += HandleTextChanged;
         }
 
 
         private void HandleTextChanged(object sender, TextChangedEventArgs e)
         {
-            this.IsValid = Regex.IsMatch(e.NewTextValue,
-                this.EmailRegularExpression, RegexOptions.IgnoreCase,
+            IsValid = Regex.IsMatch(e.NewTextValue,
+                EmailRegularExpression, RegexOptions.IgnoreCase,
                 TimeSpan.FromMilliseconds(250));
-            ((Entry)sender).TextColor = this.IsValid ? ValidColor : InValidColor;
+            ((Entry)sender).TextColor = IsValid ? ValidColor : InValidColor;
         }
 
         protected override void OnDetachingFrom(Entry bindable)
         {
-            bindable.TextChanged -= this.HandleTextChanged;
+            bindable.TextChanged -= HandleTextChanged;
         }
     }
 }

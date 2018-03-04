@@ -20,8 +20,8 @@
         /// </summary>
         public bool IsValid
         {
-            get => (bool)this.GetValue(IsValidProperty);
-            private set => this.SetValue(IsValidPropertyKey, value);
+            get => (bool)GetValue(IsValidProperty);
+            private set => SetValue(IsValidPropertyKey, value);
         }
 
         /// <summary>
@@ -30,18 +30,18 @@
         /// <param name="bindable"></param>
         protected override void OnAttachedTo(Entry bindable)
         {
-            bindable.TextChanged += this.BindableTextChanged;
+            bindable.TextChanged += BindableTextChanged;
         }
 
         private void BindableTextChanged(object sender, TextChangedEventArgs e)
         {
-            this.IsValid = double.TryParse(e.NewTextValue, out _);
-            ((Entry)sender).TextColor = this.IsValid ? Color.Default : Color.Red;
+            IsValid = double.TryParse(e.NewTextValue, out _);
+            ((Entry)sender).TextColor = IsValid ? Color.Default : Color.Red;
         }
 
         protected override void OnDetachingFrom(Entry bindable)
         {
-            bindable.TextChanged -= this.BindableTextChanged;
+            bindable.TextChanged -= BindableTextChanged;
         }
     }
 }

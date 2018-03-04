@@ -25,9 +25,9 @@
         /// </summary>
         public int CharacterLength
         {
-            get => (int)this.GetValue(CharacterLengthBindableProperty);
+            get => (int)GetValue(CharacterLengthBindableProperty);
 
-            set => this.SetValue(CharacterLengthBindableProperty, value);
+            set => SetValue(CharacterLengthBindableProperty, value);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@
         /// <param name="nextEntry"></param>
         public GoToNextEntryOnLengthBehaviour(Entry nextEntry)
         {
-            this.NextEntry = nextEntry;
+            NextEntry = nextEntry;
         }
 
         /// <summary>
@@ -44,9 +44,9 @@
         /// </summary>
         public bool IsValid
         {
-            get => (bool)this.GetValue(IsValidProperty);
+            get => (bool)GetValue(IsValidProperty);
 
-            protected set => this.SetValue(IsValidPropertyKey, value);
+            protected set => SetValue(IsValidPropertyKey, value);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@
         protected override void OnAttachedTo(Entry bindable)
         {
             base.OnAttachedTo(bindable);
-            bindable.TextChanged += this.HandleTextChange;
+            bindable.TextChanged += HandleTextChange;
         }
 
         private Entry NextEntry { get; set; }
@@ -73,7 +73,7 @@
         {
             base.OnDetachingFrom(bindable);
 
-            bindable.TextChanged -= this.HandleTextChange;
+            bindable.TextChanged -= HandleTextChange;
         }
 
         /// <summary>
@@ -89,14 +89,14 @@
         {
             string t = e.NewTextValue;
 
-            bool lengthCheck = t.Length >= this.CharacterLength;
+            bool lengthCheck = t.Length >= CharacterLength;
 
-            this.IsValid = lengthCheck && this.NextEntry != null;
-            if (this.IsValid)
+            IsValid = lengthCheck && NextEntry != null;
+            if (IsValid)
             {
                 char character = t[t.Length - 1];
 
-                this.NextEntry?.Focus();
+                NextEntry?.Focus();
             }
         }
     }
