@@ -1,7 +1,7 @@
-﻿namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions.Helpers
-{
-    using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
+namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
+{
     /// <summary>
     /// The max length validator.
     /// </summary>

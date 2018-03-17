@@ -1,13 +1,9 @@
-﻿using LeoJHarris.EnhancedEntry.Plugin.Abstractions.Effects;
+﻿using System;
+using LeoJHarris.EnhancedEntry.Plugin.Abstractions.Portable.Helpers;
+using Xamarin.Forms;
 
-namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
+namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions.Portable
 {
-    using System;
-
-    using Helpers;
-
-    using Xamarin.Forms;
-
     public class EnhancedEntry : Entry
     {
         /// <summary>

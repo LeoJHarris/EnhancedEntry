@@ -1,6 +1,4 @@
-﻿using LeoJHarris.EnhancedEntry.Plugin.Abstractions;
-
-namespace SampleApp.Droid
+﻿namespace SampleApp.Droid
 {
     using Android.App;
     using Android.Content.PM;
@@ -14,12 +12,12 @@ namespace SampleApp.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            LeoJHarris.EnhancedEntry.Plugin.Droid.EnhancedEntryRenderer.Init(this);
+            LeoJHarris.FormsPlugin.Droid.EnhancedEntryRenderer.Init(this);
 
             base.OnCreate(bundle);
 
             Xamarin.Forms.Forms.Init(this, bundle);
-            this.LoadApplication(new App());
+            LoadApplication(new App());
         }
     }
 }

@@ -1,43 +1,31 @@
-﻿//using LeoJHarris.EnhancedEntry.Plugin.Abstractions.Effects;
-//using LeoJHarris.EnhancedEntry.Plugin.Abstractions.Helpers;
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using LeoJHarris.EnhancedEntry.Plugin.Abstractions;
-using LeoJHarris.EnhancedEntry.Plugin.Abstractions.Effects;
-using LeoJHarris.EnhancedEntry.Plugin.Abstractions.Helpers;
-using Xamarin.Forms.Xaml;
+using LeoJHarris.FormsPlugin.Abstractions;
+using LeoJHarris.FormsPlugin.Abstractions.Effects;
+using LeoJHarris.FormsPlugin.Abstractions.Helpers;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace SampleApp
 {
-    //using LeoJHarris.EnhancedEntry.Plugin.Abstractions;
-
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Page1
     {
         public Page1()
         {
-            EnhancedEntry advancedEntry = new EnhancedEntry
+            EnhancedEntry entry3 = new EnhancedEntry
             {
                 BorderColor = Color.Red,
-                LeftIcon = "account",
-                Placeholder = "Type email",
-                FocusBorderColor = Color.Green,
-                BackgroundColor = Color.Yellow,
-                BorderWidth = 3,
-                CornerRadius = 10,
-                Behaviors =
-                {
-                    new EmailValidatorBehavior()
+                BorderWidth = 1,
+                CornerRadius = 2,
+                FontSize = 11,
+                ReturnKeyType = ReturnKeyTypes.Done,
+                Placeholder = "Tap done in keyboard to execute some code in keyboardaction...",
+                KeyBoardAction = new Command(
+                    () =>
                     {
-                        InValidColor = Color.Red,
-                        ValidColor = Color.Green
-                    },
-                },
-
-                Keyboard = Keyboard.Email,
-                ReturnKeyType = ReturnKeyTypes.Done
+                        DisplayAlert("Tapped", "Action executed", "OK");
+                    })
             };
 
             EnhancedEntry entryPasswordConfirm = new EnhancedEntry
@@ -48,7 +36,9 @@ namespace SampleApp
                 BorderWidth = 1,
                 CornerRadius = 2,
                 Placeholder = "Password confirm",
-                IsPassword = true
+                IsPassword = true,
+                NextEntry = entry3,
+                ReturnKeyType = ReturnKeyTypes.Next
             };
 
             EnhancedEntry passwordEntry = new EnhancedEntry
@@ -60,19 +50,43 @@ namespace SampleApp
                 Placeholder = "Password",
                 Effects = { new ShowHiddenEntryEffect() },
                 IsPassword = true,
-                Behaviors = { new PasswordCompareValidationBehavior(new List<Entry>()
+                Behaviors = { new PasswordCompareValidationBehavior(new List<Entry>
+                    {
+                        entryPasswordConfirm
+                    })
+                    {
+                        ValidColor = Color.Green,
+                        InValidColor = Color.Red
+                    }
+                },
+                NextEntry = entryPasswordConfirm,
+                ReturnKeyType = ReturnKeyTypes.Done
+            };
+
+            EnhancedEntry advancedEntry = new EnhancedEntry
+            {
+                BorderColor = Color.Red,
+                LeftIcon = "account",
+                Placeholder = "Type email",
+                FocusBorderColor = Color.Green,
+                BackgroundColor = Color.Yellow,
+                BorderWidth = 3,
+                CornerRadius = 10,
+                Behaviors =
                 {
-                    entryPasswordConfirm
-                })
-                {
-                    ValidColor = Color.Green,
-                    InValidColor = Color.Red,
-                }
-                }
+                    new EmailValidatorBehavior
+                    {
+                        InValidColor = Color.Red,
+                        ValidColor = Color.Green
+                    }
+                },
+                NextEntry = passwordEntry,
+                Keyboard = Keyboard.Email,
+                ReturnKeyType = ReturnKeyTypes.Next
             };
 
             entryPasswordConfirm.Behaviors.Add(
-                new PasswordCompareValidationBehavior(new List<Entry>()
+                new PasswordCompareValidationBehavior(new List<Entry>
                 {
                     passwordEntry
                 })
@@ -81,30 +95,15 @@ namespace SampleApp
                     InValidColor = Color.Red
                 });
 
-            EnhancedEntry entry3 = new EnhancedEntry
-            {
-                BorderColor = Color.Red,
-                BorderWidth = 1,
-                CornerRadius = 2,
-                FontSize = 11,
-                Placeholder = "Tap done in keyboard to execute some code in keyboardaction...",
-                KeyBoardAction = new Command(
-                    () =>
-                    {
-                        DisplayAlert("Tapped", "Action executed", "OK");
-                    }),
-            };
-
             EnhancedEntry jumpToEntry3 = new EnhancedEntry
             {
                 BorderColor = Color.Red,
                 BorderWidth = 1,
                 CornerRadius = 2,
-                NextEntry = entry3,
-                ReturnKeyType = ReturnKeyTypes.Next,
+                ReturnKeyType = ReturnKeyTypes.Done,
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                HorizontalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Center
             };
 
             EnhancedEntry jumpToEntry2 = new EnhancedEntry
@@ -117,7 +116,7 @@ namespace SampleApp
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
-                Behaviors = { new MaxLengthValidator()
+                Behaviors = { new MaxLengthValidator
                     {
                         MaxLength = 2
                     },
@@ -138,8 +137,8 @@ namespace SampleApp
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
-                Behaviors = { new MaxLengthValidator()
-                {
+                Behaviors = { new MaxLengthValidator
+                    {
                     MaxLength = 2
                 },
                       new GoToNextEntryOnLengthBehaviour(jumpToEntry2)
@@ -180,32 +179,31 @@ namespace SampleApp
                 Children =
                 {
                     new ContentView
-                        {
+                    {
                         VerticalOptions = LayoutOptions.Fill,
                         Content = advancedEntry
-                        },
+                    },
                     new ContentView
                     {
                         VerticalOptions = LayoutOptions.Fill,
-                                                        Content = passwordEntry
-                                                    },
-                                                new ContentView
-                                                    {
-                                                        VerticalOptions = LayoutOptions.Fill,
-                                                        Content = entryPasswordConfirm
-                                                    },
+                        Content = passwordEntry
+                    },
+                    new ContentView
+                    {
+                        VerticalOptions = LayoutOptions.Fill,
+                        Content = entryPasswordConfirm
+                    },
                     new ContentView
                     {
                         VerticalOptions = LayoutOptions.Fill,
                         Content = entry3
                     },
-                                                new ContentView
-                                                    {
-                                                        VerticalOptions = LayoutOptions.Fill,
-                                                        Content = stackNextEntries
-                                                    },
-
-                                            }
+                    new ContentView
+                    {
+                        VerticalOptions = LayoutOptions.Fill,
+                        Content = stackNextEntries
+                    }
+                }
             };
 
             ScrollView scrollView = new ScrollView

@@ -1,10 +1,10 @@
-﻿using LeoJHarris.EnhancedEntry.Plugin.Abstractions;
-using LeoJHarris.EnhancedEntry.Plugin.iOS;
-
+﻿
+using LeoJHarris.FormsPlugin.Abstractions;
+using LeoJHarris.FormsPlugin.iOS;
 using Xamarin.Forms;
 
 [assembly: ExportRenderer(typeof(EnhancedEntry), typeof(EnhancedEntryRenderer))]
-namespace LeoJHarris.EnhancedEntry.Plugin.iOS
+namespace LeoJHarris.FormsPlugin.iOS
 {
     using System;
     using System.ComponentModel;
@@ -19,7 +19,7 @@ namespace LeoJHarris.EnhancedEntry.Plugin.iOS
     using Xamarin.Forms;
     using Xamarin.Forms.Platform.iOS;
 
-    using EnhancedEntry = Abstractions.EnhancedEntry;
+    using EnhancedEntry = EnhancedEntry;
 
     [Preserve(AllMembers = true)]
     public class EnhancedEntryRenderer : EntryRenderer

@@ -1,10 +1,9 @@
-﻿namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions.Helpers
+﻿using System;
+using System.Text.RegularExpressions;
+using Xamarin.Forms;
+
+namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions.Portable.Helpers
 {
-    using System;
-    using System.Text.RegularExpressions;
-
-    using Xamarin.Forms;
-
     public class EmailValidatorBehavior : Behavior<Entry>
     {
         public static readonly BindableProperty EmailRegularExpressionBindableProperty =

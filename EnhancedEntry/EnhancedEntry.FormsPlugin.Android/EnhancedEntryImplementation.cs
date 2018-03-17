@@ -1,28 +1,23 @@
 using System;
 using System.ComponentModel;
 using System.Reflection;
-
+using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
+using Android.OS;
 using Android.Text.Method;
 using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
-using LeoJHarris.EnhancedEntry.Plugin.Abstractions;
-using LeoJHarris.EnhancedEntry.Plugin.Droid;
-
+using LeoJHarris.FormsPlugin.Abstractions;
+using LeoJHarris.FormsPlugin.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(EnhancedEntry), typeof(EnhancedEntryRenderer))]
-namespace LeoJHarris.EnhancedEntry.Plugin.Droid
+namespace LeoJHarris.FormsPlugin.Droid
 {
-    using Android.App;
-    using Android.OS;
-
-    using EnhancedEntry = Abstractions.EnhancedEntry;
-
     /// <summary>
     /// 
     /// </summary>
@@ -43,7 +38,6 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
         }
 
         private GradientDrawable _gradietDrawable;
-
 
         /// <summary>
         /// Used for registration with dependency service
@@ -96,12 +90,6 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
 
                 if (Control != null && !string.IsNullOrEmpty(PackageName))
                 {
-                    //if (entryExt.HasShowAndHidePassword)
-                    //{
-                    //    Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, Resource.Drawable.show_pass, 0);
-                    //    Control.SetOnTouchListener(new OnDrawableTouchListener());
-                    //}
-
                     if (!string.IsNullOrEmpty(entryExt.LeftIcon))
                     {
                         int identifier = Context.Resources.GetIdentifier(
@@ -147,16 +135,7 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Droid
                 {
                     if (e.RawX >= (editText.Right - editText.GetCompoundDrawables()[2].Bounds.Width()))
                     {
-                        if (editText.TransformationMethod == null)
-                        {
-                            editText.TransformationMethod = PasswordTransformationMethod.Instance;
-                            editText.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, Resource.Drawable.show_pass, 0);
-                        }
-                        else
-                        {
-                            editText.TransformationMethod = null;
-                            editText.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, Resource.Drawable.hide_pass, 0);
-                        }
+                        editText.TransformationMethod = editText.TransformationMethod == null ? PasswordTransformationMethod.Instance : null;
 
                         return true;
                     }

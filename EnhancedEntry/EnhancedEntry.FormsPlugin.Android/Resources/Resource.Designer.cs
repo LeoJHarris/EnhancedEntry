@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("LeoJHarris.EnhancedEntry.Plugin.Droid.Resource", IsApplication=false)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("LeoJHarris.FormsPlugin.Droid.Resource", IsApplication=false)]
 
-namespace LeoJHarris.EnhancedEntry.Plugin.Droid
+namespace LeoJHarris.FormsPlugin.Droid
 {
 	
 	

@@ -6,8 +6,8 @@ using Xamarin.Forms.Platform.Android;
 using View = Android.Views.View;
 
 [assembly: ResolutionGroupName("Xamarin")]
-[assembly: ExportEffect(typeof(LeoJHarris.EnhancedEntry.Plugin.Droid.Effects.ShowHiddenEntryEffect), "ShowHiddenEntryEffect")]
-namespace LeoJHarris.EnhancedEntry.Plugin.Droid.Effects
+[assembly: ExportEffect(typeof(LeoJHarris.FormsPlugin.Droid.Effects.ShowHiddenEntryEffect), "ShowHiddenEntryEffect")]
+namespace LeoJHarris.FormsPlugin.Droid.Effects
 {
     public class ShowHiddenEntryEffect : PlatformEffect
     {

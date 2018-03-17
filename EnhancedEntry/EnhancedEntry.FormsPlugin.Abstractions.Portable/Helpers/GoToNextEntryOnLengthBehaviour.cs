@@ -1,7 +1,7 @@
-﻿namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions.Helpers
-{
-    using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
+namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions.Portable.Helpers
+{
     /// <summary>
     /// The password validation behavior.
     /// </summary>

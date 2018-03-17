@@ -1,13 +1,10 @@
-﻿using LeoJHarris.EnhancedEntry.Plugin.Abstractions.Effects;
+﻿
+using System;
+using LeoJHarris.FormsPlugin.Abstractions.Helpers;
+using Xamarin.Forms;
 
-namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
+namespace LeoJHarris.FormsPlugin.Abstractions
 {
-    using System;
-
-    using Helpers;
-
-    using Xamarin.Forms;
-
     public class EnhancedEntry : Entry
     {
         /// <summary>
@@ -153,20 +150,6 @@ namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
             get => (Color)GetValue(BackgroundColorProperty);
 
             set => SetValue(BackgroundColorProperty, value);
-        }
-
-        public static readonly BindableProperty HasShowAndHidePasswordProperty =
-            BindableProperty.Create(nameof(HasShowAndHidePassword), typeof(bool),
-                typeof(EnhancedEntry), false);
-
-        /// <summary>
-        /// Background color 
-        /// </summary>
-        public bool HasShowAndHidePassword
-        {
-            get => (bool)GetValue(HasShowAndHidePasswordProperty);
-
-            set => SetValue(HasShowAndHidePasswordProperty, value);
         }
 
         /// <summary>

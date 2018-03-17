@@ -1,9 +1,9 @@
-﻿namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions
-{
-    using System;
-    using System.Linq;
-    using System.Reflection;
+﻿using System;
+using System.Linq;
+using System.Reflection;
 
+namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions.Portable
+{
     public class StringValAttribute : Attribute
     {
         /// <summary>

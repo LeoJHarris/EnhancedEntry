@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions.Effects
+namespace LeoJHarris.EnhancedEntry.Plugin.Abstractions.Portable.Effects
 {
     public class ShowHiddenEntryEffect : RoutingEffect
     {

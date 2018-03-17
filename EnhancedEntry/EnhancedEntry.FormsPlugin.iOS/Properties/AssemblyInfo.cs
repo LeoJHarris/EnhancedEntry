@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LeoJHarris.EnhancedEntry.Plugin.iOS")]
+[assembly: AssemblyTitle("LeoJHarris.FormsPlugin.iOS")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LeoJHarris.EnhancedEntry.Plugin.iOS")]
+[assembly: AssemblyProduct("LeoJHarris.FormsPlugin.iOS")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

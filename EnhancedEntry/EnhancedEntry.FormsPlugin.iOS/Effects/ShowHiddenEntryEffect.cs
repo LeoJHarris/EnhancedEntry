@@ -1,12 +1,12 @@
 ﻿using System;
-using LeoJHarris.EnhancedEntry.Plugin.iOS.Effects;
+using LeoJHarris.FormsPlugin.iOS.Effects;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ResolutionGroupName("Xamarin")]
 [assembly: ExportEffect(typeof(ShowHiddenEntryEffect), "ShowHiddenEntryEffect")]
-namespace LeoJHarris.EnhancedEntry.Plugin.iOS.Effects
+namespace LeoJHarris.FormsPlugin.iOS.Effects
 {
     public class ShowHiddenEntryEffect : PlatformEffect
     {

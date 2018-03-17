@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
  <PropertyGroup>
-    <TargetFramework>netstandard1.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <PackageTargetFallback>$(PackageTargetFallback);portable-win+net45+wp8+win81+wpa8</PackageTargetFallback>
     <ReleaseVersion>1.0.0</ReleaseVersion>
 </PropertyGroup>
 
  <ItemGroup>
-   <PackageReference Include="LeoJHarris.XForms.Plugin.EnhancedEntry" Version="2.0.7" />
+   <PackageReference Include="LeoJHarris.XForms.Plugin.EnhancedEntry" Version="2.0.6" />
    <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
  </ItemGroup>
 
