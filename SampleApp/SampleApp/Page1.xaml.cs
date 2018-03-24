@@ -32,7 +32,7 @@ namespace SampleApp
             {
                 BorderColor = Color.Red,
                 LeftIcon = "password",
-                Effects = { new ShowHiddenEntryEffect() },
+                // Effects = { new ShowHiddenEntryEffect() },
                 BorderWidth = 1,
                 CornerRadius = 2,
                 Placeholder = "Password confirm",
@@ -44,11 +44,10 @@ namespace SampleApp
             EnhancedEntry passwordEntry = new EnhancedEntry
             {
                 BorderColor = Color.Red,
-                LeftIcon = "password",
+                LeftIcon = "account",
                 BorderWidth = 1,
                 CornerRadius = 2,
                 Placeholder = "Password",
-                Effects = { new ShowHiddenEntryEffect() },
                 IsPassword = true,
                 Behaviors = { new PasswordCompareValidationBehavior(new List<Entry>
                     {
