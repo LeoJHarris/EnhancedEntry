@@ -7,13 +7,10 @@
 </PropertyGroup>
 
  <ItemGroup>
-   <PackageReference Include="LeoJHarris.XForms.Plugin.EnhancedEntry" Version="2.0.9" />
    <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
  </ItemGroup>
 
  <ItemGroup>
-   <Reference Include="Xamarin.Forms.Xaml">
-     <HintPath>..\..\packages\Xamarin.Forms.2.5.0.280555\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
-   </Reference>
+   <ProjectReference Include="..\..\EnhancedEntry\EnhancedEntry.FormsPlugin.Abstractions\EnhancedEntry.FormsPlugin.Abstractions.csproj" />
  </ItemGroup>
 </Project>

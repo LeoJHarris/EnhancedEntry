@@ -35,3 +35,5 @@
 /SampleApp/SampleApp/bin
 *.ini
 *.bak
+/SampleApp/SampleApp.iOS/bin/iPhone/Debug
+/SampleApp/SampleApp.iOS/bin/iPhone/Debug

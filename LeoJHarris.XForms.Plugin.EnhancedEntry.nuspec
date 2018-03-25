@@ -27,7 +27,7 @@
 
       • Left icons perfect for form entry with padding enabled.
 
-      • Email validation (with default regex but can be overriden if required) and compare two or more entries.
+      • Email validation (with default reg ex but can be overridden if required) and compare two or more entries.
     </summary>
   </metadata>
   <files>
