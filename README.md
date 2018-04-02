@@ -57,7 +57,9 @@ You are able to set the `KeyBoardAction` which will take some given command para
 
 **Custom Behaviours** 
 
-You are able to set the `PasswordCompareValidationBehavior` which will compare these entries with some condition checks, each entry should contain the collection `PasswordCompareValidation` of entries to compare (see examples above), you are also able to set the `ValidColor` and `InValidColor` of the entry for the given condition of the password when there is or int a match. PLEASE NOTE: Although these bindable properties are set per entry, they should all have the same values for all entries to check in the collection. You are able to set the `MinimumLength` of the passwords. Currently the password validator requires an uppercase, lowercase and a number, therefore the minimum length can be set.
+You are able to set the `PasswordCompareValidationBehavior` which will compare these entries with some condition checks, each entry should contain the collection `PasswordCompareValidation` of entries to compare (see examples above), you are also able to set the `ValidColor` and `InValidColor` of the entry for the given condition of the password when there is or int a match. 
+
+PLEASE NOTE: Although these bindable properties are set per entry, they should all have the same values for all entries to check in the collection. You are able to set the `MinimumLength` of the passwords. Currently the password validator requires an uppercase, lowercase and a number, therefore the minimum length can be set.
 
 You are able to set the `EmailValidatorBehavior` for entries that will be used for emails, the `EmailRegularExpression` can be overriden if desired.
 
