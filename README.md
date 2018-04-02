@@ -24,46 +24,18 @@ Available on NuGet: https://www.nuget.org/packages/LeoJHarris.XForms.Plugin.Enha
 
 **Usage**
 
+You must do this AFTER you call Xamarin.Forms.Init();
+
 _In your Android_
 
             Xamarin.Forms.Init();
             LeoJHarris.EnhancedEntryEntry.Plugin.iOS.EnhancedEntryRenderer.Init();
-
-You must do this AFTER you call Xamarin.Forms.Init();
 
 _In your iOS_
 
             Xamarin.Forms.Forms.Init(); 
             LeoJHarris.EnhancedEntry.Plugin.iOS.EnhancedEntryRenderer.Init();
             LoadApplication(new App());
-
-            new EnhancedEntry()
-            {
-                KeyBoardAction = LoginCommand,
-                FocusBorderColor = Color.Yellow,
-                BorderColor = Color.Red,
-                LeftPadding = 10,
-                RightPadding = 20,
-                TopBottomPadding = 20,
-                BorderWidth = 2,
-                BackgroundColor = Color.Pink,
-                LeftIcon = "email",
-                EmailValidatorBehavior = new EmailValidatorBehavior()
-            };
-            
-            new EnhancedEntry()
-            {
-                BorderWidth = 1,
-                CornerRadius = 2,
-                PasswordCompareValidation = new PasswordCompareValidationBehavior(new List<Entry>()
-                {
-                    SomeEnhancedEntry,
-                })
-                {
-                    ValidColor = Color.Orange,
-                    InValidColor = Color.Red
-                },
-            };
             
 **Bindable Properties**
 
