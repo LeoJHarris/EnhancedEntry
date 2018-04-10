@@ -53,7 +53,7 @@ You are able to set the `ReturnKeyType` which will set the text displayed for th
 
 You are able to set the `NextEntry` which is the entry that will be given focus if when keyboard action button invoked or if `GoToNextEntryOnLengthBehaviour` condition is satisfied.
 
-You are able to set the `KeyBoardAction` which will take some given command parameter to exceute.
+You are able to set the `KeyBoardAction` which will take some given command to execute.
 
 **Custom Behaviours** 
 
