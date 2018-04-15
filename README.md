@@ -36,7 +36,15 @@ _In your iOS_
             Xamarin.Forms.Forms.Init(); 
             LeoJHarris.EnhancedEntry.Plugin.iOS.EnhancedEntryRenderer.Init();
             LoadApplication(new App());
-            
+
+**XAML**
+
+First add the xmlns namespace:
+
+`xmlns:enhancedEntry="clr-namespace:LeoJHarris.FormsPlugin.Abstractions;assembly=LeoJHarris.FormsPlugin.Abstractions"`
+
+Then add the xaml (or just use the code behind)
+
 **Bindable Properties**
 
 You are able to set the `LeftIcon` which will place an icon to the left inside the entry, icons to be placed inside respective drawable folders and iOS in the resources files, set the `PaddingLeftIcon` for padding space between icon and entry text.
