@@ -29,12 +29,12 @@ You must do this AFTER you call Xamarin.Forms.Init();
 _In your Android_
 
             Xamarin.Forms.Init();
-            LeoJHarris.EnhancedEntryEntry.Plugin.iOS.EnhancedEntryRenderer.Init();
+            LeoJHarris.FormsPlugin.Droid.EnhancedEntryRenderer.Init(this);
 
 _In your iOS_
 
             Xamarin.Forms.Forms.Init(); 
-            LeoJHarris.EnhancedEntry.Plugin.iOS.EnhancedEntryRenderer.Init();
+            LeoJHarris.FormsPlugin.iOS.EnhancedEntryRenderer.Init();
             LoadApplication(new App());
 
 **XAML**
