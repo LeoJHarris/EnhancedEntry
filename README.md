@@ -14,16 +14,9 @@ Enhanced entry for Xamarin.forms projects that extends the current xamarin.forms
 
 • Email and compare entries behavour validator (basically compares a collection of entries
 
-**AS I DO NOT ALWAYS HAVE THE TIME TO WORK ON THIS LIBRARY: I VERY MUCH WELCOME DEVELOPERS TO CONTRIBUTE ON FEATURE ITEMS BELOW I WOULD LIKE TO IMPLEMENT**
-
-**Road Map**
-
-+ .NET Standard
-+ Show Password (toggle)
-
 **Gif Demo**
 
-![EnhancedEntry Gif](https://github.com/LeoJHarris/EnhancedEntry/blob/master/EnhancedEntry.gif)
+![EnhancedEntry Gif](https://github.com/LeoJHarris/EnhancedEntry/blob/master/gif.gif)
 
 **Setup**
 
@@ -31,47 +24,27 @@ Available on NuGet: https://www.nuget.org/packages/LeoJHarris.XForms.Plugin.Enha
 
 **Usage**
 
+You must do this AFTER you call Xamarin.Forms.Init();
+
 _In your Android_
 
             Xamarin.Forms.Init();
-            LeoJHarris.EnhancedEntryEntry.Plugin.iOS.EnhancedEntryRenderer.Init();
-
-You must do this AFTER you call Xamarin.Forms.Init();
+            LeoJHarris.FormsPlugin.Droid.EnhancedEntryRenderer.Init(this);
 
 _In your iOS_
 
             Xamarin.Forms.Forms.Init(); 
-            LeoJHarris.EnhancedEntry.Plugin.iOS.EnhancedEntryRenderer.Init();
+            LeoJHarris.FormsPlugin.iOS.EnhancedEntryRenderer.Init();
             LoadApplication(new App());
 
-            new EnhancedEntry()
-            {
-                KeyBoardAction = LoginCommand,
-                FocusBorderColor = Color.Yellow,
-                BorderColor = Color.Red,
-                LeftPadding = 10,
-                RightPadding = 20,
-                TopBottomPadding = 20,
-                BorderWidth = 2,
-                BackgroundColor = Color.Pink,
-                LeftIcon = "email",
-                EmailValidatorBehavior = new EmailValidatorBehavior()
-            };
-            
-            new EnhancedEntry()
-            {
-                BorderWidth = 1,
-                CornerRadius = 2,
-                PasswordCompareValidation = new PasswordCompareValidationBehavior(new List<Entry>()
-                {
-                    SomeEnhancedEntry,
-                })
-                {
-                    ValidColor = Color.Orange,
-                    InValidColor = Color.Red
-                },
-            };
-            
+**XAML**
+
+First add the xmlns namespace:
+
+`xmlns:enhancedEntry="clr-namespace:LeoJHarris.FormsPlugin.Abstractions;assembly=LeoJHarris.FormsPlugin.Abstractions"`
+
+Then add the xaml (or just use the code behind)
+
 **Bindable Properties**
 
 You are able to set the `LeftIcon` which will place an icon to the left inside the entry, icons to be placed inside respective drawable folders and iOS in the resources files, set the `PaddingLeftIcon` for padding space between icon and entry text.
@@ -88,11 +61,13 @@ You are able to set the `ReturnKeyType` which will set the text displayed for th
 
 You are able to set the `NextEntry` which is the entry that will be given focus if when keyboard action button invoked or if `GoToNextEntryOnLengthBehaviour` condition is satisfied.
 
-You are able to set the `KeyBoardAction` which will take some given command parameter to exceute.
+You are able to set the `KeyBoardAction` which will take some given command to execute.
 
 **Custom Behaviours** 
 
-You are able to set the `PasswordCompareValidationBehavior` which will compare these entries with some condition checks, each entry should contain the collection `PasswordCompareValidation` of entries to compare (see examples above), you are also able to set the `ValidColor` and `InValidColor` of the entry for the given condition of the password when there is or int a match. PLEASE NOTE: Although these bindable properties are set per entry, they should all have the same values for all entries to check in the collection. You are able to set the `MinimumLength` of the passwords. Currently the password validator requires an uppercase, lowercase and a number, therefore the minimum length can be set.
+You are able to set the `PasswordCompareValidationBehavior` which will compare these entries with some condition checks, each entry should contain the collection `PasswordCompareValidation` of entries to compare (see examples above), you are also able to set the `ValidColor` and `InValidColor` of the entry for the given condition of the password when there is or int a match. 
+
+PLEASE NOTE: Although these bindable properties are set per entry, they should all have the same values for all entries to check in the collection. You are able to set the `MinimumLength` of the passwords. Currently the password validator requires an uppercase, lowercase and a number, therefore the minimum length can be set.
 
 You are able to set the `EmailValidatorBehavior` for entries that will be used for emails, the `EmailRegularExpression` can be overriden if desired.
 
