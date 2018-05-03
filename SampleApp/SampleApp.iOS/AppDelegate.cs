@@ -1,5 +1,6 @@
 ﻿using Foundation;
 using UIKit;
+using Xamarin.Forms;
 
 namespace SampleApp.iOS
 {
@@ -15,9 +16,9 @@ namespace SampleApp.iOS
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            Xamarin.Forms.Forms.Init();
+            Forms.Init();
 
-            // LeoJHarris.EnhancedEntry.Plugin.Abstractions.EnhancedEntryRenderer.Init();
+            LeoJHarris.FormsPlugin.iOS.EnhancedEntryRenderer.Init();
 
             this.LoadApplication(new App());
 

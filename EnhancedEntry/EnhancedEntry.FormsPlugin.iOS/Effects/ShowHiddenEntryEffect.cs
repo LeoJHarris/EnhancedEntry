@@ -1,5 +1,5 @@
-﻿using System;
-using LeoJHarris.FormsPlugin.iOS.Effects;
+﻿using LeoJHarris.FormsPlugin.iOS.Effects;
+using System;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -10,7 +10,6 @@ namespace LeoJHarris.FormsPlugin.iOS.Effects
 {
     public class ShowHiddenEntryEffect : PlatformEffect
     {
-
         protected override void OnAttached()
         {
             ConfigureControl();
@@ -18,7 +17,6 @@ namespace LeoJHarris.FormsPlugin.iOS.Effects
 
         protected override void OnDetached()
         {
-
         }
 
         private void ConfigureControl()
@@ -27,18 +25,18 @@ namespace LeoJHarris.FormsPlugin.iOS.Effects
             {
                 UITextField vUpdatedEntry = (UITextField)Control;
                 UIButton buttonRect = UIButton.FromType(UIButtonType.Custom);
-                buttonRect.SetImage(new UIImage("show_pass"), UIControlState.Normal);
+                buttonRect.SetImage(new UIImage("ShowPass"), UIControlState.Normal);
                 buttonRect.TouchUpInside += (object sender, EventArgs e1) =>
                 {
                     if (vUpdatedEntry.SecureTextEntry)
                     {
                         vUpdatedEntry.SecureTextEntry = false;
-                        buttonRect.SetImage(new UIImage("hide_pass"), UIControlState.Normal);
+                        buttonRect.SetImage(new UIImage("HidePass"), UIControlState.Normal);
                     }
                     else
                     {
                         vUpdatedEntry.SecureTextEntry = true;
-                        buttonRect.SetImage(new UIImage("show_pass"), UIControlState.Normal);
+                        buttonRect.SetImage(new UIImage("ShowPass"), UIControlState.Normal);
                     }
                 };
 
@@ -49,7 +47,6 @@ namespace LeoJHarris.FormsPlugin.iOS.Effects
                     vUpdatedEntry.Text = result;
                     return false;
                 };
-
 
                 buttonRect.Frame = new CoreGraphics.CGRect(10.0f, 0.0f, 15.0f, 15.0f);
                 buttonRect.ContentMode = UIViewContentMode.Right;
@@ -67,7 +64,6 @@ namespace LeoJHarris.FormsPlugin.iOS.Effects
                 Control.Layer.MasksToBounds = true;
                 vUpdatedEntry.TextAlignment = UITextAlignment.Left;
             }
-
         }
     }
 }

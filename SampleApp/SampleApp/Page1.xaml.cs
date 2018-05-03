@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using LeoJHarris.FormsPlugin.Abstractions;
+﻿using LeoJHarris.FormsPlugin.Abstractions;
 using LeoJHarris.FormsPlugin.Abstractions.Effects;
 using LeoJHarris.FormsPlugin.Abstractions.Helpers;
+using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,28 +13,28 @@ namespace SampleApp
     {
         public Page1()
         {
+            InitializeComponent();
+
             EnhancedEntry entry3 = new EnhancedEntry
             {
                 BorderColor = Color.Red,
                 BorderWidth = 1,
                 CornerRadius = 2,
+                IsVisible = false,
                 FontSize = 11,
                 ReturnKeyType = ReturnKeyTypes.Done,
-                Placeholder = "Tap done in keyboard to execute some code in keyboardaction...",
-                KeyBoardAction = new Command(
-                    () =>
-                    {
-                        DisplayAlert("Tapped", "Action executed", "OK");
-                    })
+                Placeholder = "Show dialog on tap",
+                KeyBoardAction = new Command(() => DisplayAlert("Passwords match!", "Both passwords match", "OK"))
             };
 
             EnhancedEntry entryPasswordConfirm = new EnhancedEntry
             {
                 BorderColor = Color.Red,
                 LeftIcon = "password",
-                // Effects = { new ShowHiddenEntryEffect() },
+                Effects = { new ShowHiddenEntryEffect() },
                 BorderWidth = 1,
                 CornerRadius = 2,
+                IsVisible = false,
                 Placeholder = "Password confirm",
                 IsPassword = true,
                 NextEntry = entry3,
@@ -44,10 +44,12 @@ namespace SampleApp
             EnhancedEntry passwordEntry = new EnhancedEntry
             {
                 BorderColor = Color.Red,
-                LeftIcon = "account",
+                LeftIcon = "password",
                 BorderWidth = 1,
                 CornerRadius = 2,
+                IsVisible = false,
                 Placeholder = "Password",
+                Effects = { new ShowHiddenEntryEffect() },
                 IsPassword = true,
                 Behaviors = { new PasswordCompareValidationBehavior(new List<Entry>
                     {
@@ -66,6 +68,7 @@ namespace SampleApp
             {
                 BorderColor = Color.Red,
                 LeftIcon = "account",
+                IsVisible = false,
                 Placeholder = "Type email",
                 FocusBorderColor = Color.Green,
                 BackgroundColor = Color.Yellow,
@@ -84,21 +87,19 @@ namespace SampleApp
                 ReturnKeyType = ReturnKeyTypes.Next
             };
 
-            entryPasswordConfirm.Behaviors.Add(
-                new PasswordCompareValidationBehavior(new List<Entry>
-                {
-                    passwordEntry
-                })
-                {
-                    ValidColor = Color.Green,
-                    InValidColor = Color.Red
-                });
+            entryPasswordConfirm.Behaviors.Add(new PasswordCompareValidationBehavior(new List<Entry> { passwordEntry
+    })
+            {
+                ValidColor = Color.Green,
+                InValidColor = Color.Red
+            });
 
             EnhancedEntry jumpToEntry3 = new EnhancedEntry
             {
                 BorderColor = Color.Red,
                 BorderWidth = 1,
                 CornerRadius = 2,
+                IsVisible = false,
                 ReturnKeyType = ReturnKeyTypes.Done,
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -112,6 +113,7 @@ namespace SampleApp
                 CornerRadius = 2,
                 NextEntry = entry3,
                 ReturnKeyType = ReturnKeyTypes.Next,
+                IsVisible = false,
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
@@ -131,6 +133,8 @@ namespace SampleApp
                 BorderColor = Color.Red,
                 BorderWidth = 1,
                 CornerRadius = 2,
+                IsVisible = false,
+
                 NextEntry = entry3,
                 ReturnKeyType = ReturnKeyTypes.Next,
                 Keyboard = Keyboard.Numeric,
@@ -161,10 +165,10 @@ namespace SampleApp
             };
 
             if (((PasswordCompareValidationBehavior)passwordEntry.Behaviors
-                    .FirstOrDefault(behavior => behavior.GetType() ==
+                       .FirstOrDefault(behavior => behavior.GetType() ==
                                                 typeof(PasswordCompareValidationBehavior))).IsValid &&
                 ((PasswordCompareValidationBehavior)entryPasswordConfirm.Behaviors
-                    .FirstOrDefault(behavior => behavior.GetType() ==
+                       .FirstOrDefault(behavior => behavior.GetType() ==
                                                 typeof(PasswordCompareValidationBehavior))).IsValid)
             {
                 this.DisplayAlert("Passwords match!", "Both passwords match", "OK");
@@ -205,14 +209,7 @@ namespace SampleApp
                 }
             };
 
-            ScrollView scrollView = new ScrollView
-            {
-                Content = stack
-            };
-
-            Content = scrollView;
-
-            InitializeComponent();
+            CV.Content = stack;
         }
     }
 }
