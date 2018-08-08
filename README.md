@@ -75,6 +75,8 @@ You are able to set the `EmailValidatorBehavior` for entries that will be used f
 
 You are able to set `GoToNextEntryOnLengthBehaviour` which will set focus to the `NextEntry` on the given `CharacterLength`, use the `MaxLengthValidator` i.e. MaxLength="1" as well to ensure that entry doesnt exceed the `CharacterLength`
 
+You are able to add new effect of `ShowHiddenEntryEffect` to unmask the entry property, this will toggle between masked and unmasked of a password field i.e. use `Effects = { new ShowHiddenEntryEffect() }`
+
 **License**
 
 Licensed under MIT, see license file
