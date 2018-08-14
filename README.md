@@ -4,7 +4,7 @@
 
 Enhanced entry for Xamarin.forms projects that extends the current xamarin.forms entry. Unofficial. 
 
-**Collaboraters welcome! Submit a feature request, fork the project, add you feature, PR and Ill review and merge :)**
+**Collaboraters welcome! Submit a feature request, fork the project, add your feature, PR and Ill review and merge :)**
 
 • Must have set keyboard return button command or set focus to next entry when user taps the Input Method Editor i.e. Done/Next button on keyboard tapped => do something / set focus on the next specified entry. 
 
