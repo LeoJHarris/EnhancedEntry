@@ -1,9 +1,13 @@
 ﻿using System;
-using System.Linq;
 using System.Reflection;
 
 namespace LeoJHarris.FormsPlugin.Abstractions
 {
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = false)]
+    /// <summary>
+    /// StringValAttribute
+    /// </summary>
+    /// <seealso cref="System.Attribute" />
     public class StringValAttribute : Attribute
     {
         /// <summary>
@@ -27,14 +31,10 @@ namespace LeoJHarris.FormsPlugin.Abstractions
             Type type = value.GetType();
 
             FieldInfo fieldInfo = type.GetRuntimeField(value.ToString());
-            StringValAttribute[] attrs = fieldInfo.GetCustomAttributes(typeof(StringValAttribute), false) as StringValAttribute[];
 
-            if (attrs != null && attrs.Any())
-            {
-                return attrs[0].Value;
-            }
-
-            return string.Empty;
+            return fieldInfo.GetCustomAttributes(typeof(StringValAttribute), false) is StringValAttribute[] attrs && attrs.Length > 0
+                ? attrs[0].Value
+                : string.Empty;
         }
     }
 }

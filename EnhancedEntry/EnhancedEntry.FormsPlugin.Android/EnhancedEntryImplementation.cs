@@ -1,17 +1,18 @@
-using System;
-using System.ComponentModel;
-using System.Reflection;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.OS;
+using Android.Support.V4.Content;
 using Android.Text.Method;
 using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
 using LeoJHarris.FormsPlugin.Abstractions;
 using LeoJHarris.FormsPlugin.Droid;
+using System;
+using System.ComponentModel;
+using System.Reflection;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
@@ -19,25 +20,41 @@ using Xamarin.Forms.Platform.Android;
 namespace LeoJHarris.FormsPlugin.Droid
 {
     /// <summary>
-    /// 
+    /// EnhancedEntryRenderer
     /// </summary>
     public class EnhancedEntryRenderer : EntryRenderer
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private readonly Context _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EnhancedEntryRenderer"/> class.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public EnhancedEntryRenderer(Context context) : base(context)
         {
             AutoPackage = false;
             _context = context;
         }
 
+        /// <summary>
+        /// Gets or sets the name of the package.
+        /// </summary>
+        /// <value>
+        /// The name of the package.
+        /// </value>
         private static string PackageName
         {
             get;
             set;
         }
 
-        private GradientDrawable _gradietDrawable;
+        /// <summary>
+        /// The gradient drawable
+        /// </summary>
+        private GradientDrawable _gradientDrawable;
 
         /// <summary>
         /// Used for registration with dependency service
@@ -46,6 +63,11 @@ namespace LeoJHarris.FormsPlugin.Droid
         /// The context.
         /// </param>
         public static void Init(Context context) { PackageName = context.PackageName; }
+
+        /// <summary>
+        /// Raises the <see cref="E:ElementChanged" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="ElementChangedEventArgs{Entry}"/> instance containing the event data.</param>
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             base.OnElementChanged(e);
@@ -54,16 +76,15 @@ namespace LeoJHarris.FormsPlugin.Droid
 
             if (!(e.NewElement is EnhancedEntry entryExt)) return;
             {
-                Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
+                Control.ImeOptions = getValueFromDescription(entryExt.ReturnKeyType);
 
                 Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), Control.ImeOptions);
 
-                _gradietDrawable = new GradientDrawable();
-                _gradietDrawable.SetShape(ShapeType.Rectangle);
-                _gradietDrawable.SetColor(entryExt.BackgroundColor.ToAndroid());
-                _gradietDrawable.SetCornerRadius(entryExt.CornerRadius);
-                _gradietDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
-
+                _gradientDrawable = new GradientDrawable();
+                _gradientDrawable.SetShape(ShapeType.Rectangle);
+                _gradientDrawable.SetColor(entryExt.BackgroundColor.ToAndroid());
+                _gradientDrawable.SetCornerRadius(entryExt.CornerRadius);
+                _gradientDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
 
                 Rect padding = new Rect
                 {
@@ -72,38 +93,35 @@ namespace LeoJHarris.FormsPlugin.Droid
                     Top = entryExt.TopBottomPadding / 2,
                     Bottom = entryExt.TopBottomPadding / 2
                 };
-                _gradietDrawable.GetPadding(padding);
+                _gradientDrawable.GetPadding(padding);
 
                 e.NewElement.Focused += (sender, evt) =>
                 {
-                    _gradietDrawable.SetStroke(
+                    _gradientDrawable.SetStroke(
                         (int)entryExt.BorderWidth,
                         entryExt.FocusBorderColor.ToAndroid());
                 };
 
                 e.NewElement.Unfocused += (sender, evt) =>
                 {
-                    _gradietDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
+                    _gradientDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
                 };
 
-                Control.SetBackground(_gradietDrawable);
+                Control.SetBackground(_gradientDrawable);
 
-                if (Control != null && !string.IsNullOrEmpty(PackageName))
+                if (Control != null && !string.IsNullOrEmpty(PackageName) && !string.IsNullOrEmpty(entryExt.LeftIcon))
                 {
-                    if (!string.IsNullOrEmpty(entryExt.LeftIcon))
+                    int identifier = Context.Resources.GetIdentifier(
+                        entryExt.LeftIcon,
+                        "drawable",
+                        PackageName);
+                    if (identifier != 0)
                     {
-                        int identifier = Context.Resources.GetIdentifier(
-                            entryExt.LeftIcon,
-                            "drawable",
-                            PackageName);
-                        if (identifier != 0)
+                        Drawable drawable = ContextCompat.GetDrawable(_context, identifier);
+                        if (drawable != null)
                         {
-                            Drawable drawable = Resources.GetDrawable(identifier);
-                            if (drawable != null)
-                            {
-                                Control.SetCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
-                                Control.CompoundDrawablePadding = entryExt.PaddingLeftIcon;
-                            }
+                            Control.SetCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+                            Control.CompoundDrawablePadding = entryExt.PaddingLeftIcon;
                         }
                     }
                 }
@@ -127,6 +145,11 @@ namespace LeoJHarris.FormsPlugin.Droid
             }
         }
 
+        /// <summary>
+        /// OnDrawableTouchListener
+        /// </summary>
+        /// <seealso cref="Java.Lang.Object" />
+        /// <seealso cref="Android.Views.View.IOnTouchListener" />
         public class OnDrawableTouchListener : Java.Lang.Object, IOnTouchListener
         {
             public bool OnTouch(Android.Views.View v, MotionEvent e)
@@ -159,11 +182,18 @@ namespace LeoJHarris.FormsPlugin.Droid
             base.OnElementPropertyChanged(sender, e);
             if (e.PropertyName != EnhancedEntry.ReturnKeyPropertyName) return;
             if (!(sender is EnhancedEntry entryExt)) return;
-            Control.ImeOptions = GetValueFromDescription(entryExt.ReturnKeyType);
+            Control.ImeOptions = getValueFromDescription(entryExt.ReturnKeyType);
             Control.SetImeActionLabel(entryExt.ReturnKeyType.ToString(), Control.ImeOptions);
         }
 
-        private static ImeAction GetValueFromDescription(ReturnKeyTypes value)
+        /// <summary>
+        /// Gets the value from description.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException"></exception>
+        /// <exception cref="NotSupportedException"></exception>
+        private static ImeAction getValueFromDescription(ReturnKeyTypes value)
         {
             Type type = typeof(ImeAction);
             if (!type.IsEnum) throw new InvalidOperationException();

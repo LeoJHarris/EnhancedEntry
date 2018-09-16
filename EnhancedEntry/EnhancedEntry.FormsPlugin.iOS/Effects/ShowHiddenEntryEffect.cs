@@ -12,39 +12,42 @@ namespace LeoJHarris.FormsPlugin.iOS.Effects
     {
         protected override void OnAttached()
         {
-            ConfigureControl();
+            configureControl();
         }
 
         protected override void OnDetached()
         {
         }
 
-        private void ConfigureControl()
+        /// <summary>
+        /// Configures the control.
+        /// </summary>
+        private void configureControl()
         {
             if (Control != null)
             {
-                UITextField vUpdatedEntry = (UITextField)Control;
+                UITextField enhancedEntry = (UITextField)Control;
                 UIButton buttonRect = UIButton.FromType(UIButtonType.Custom);
                 buttonRect.SetImage(new UIImage("ShowPass"), UIControlState.Normal);
                 buttonRect.TouchUpInside += (object sender, EventArgs e1) =>
                 {
-                    if (vUpdatedEntry.SecureTextEntry)
+                    if (enhancedEntry.SecureTextEntry)
                     {
-                        vUpdatedEntry.SecureTextEntry = false;
+                        enhancedEntry.SecureTextEntry = false;
                         buttonRect.SetImage(new UIImage("HidePass"), UIControlState.Normal);
                     }
                     else
                     {
-                        vUpdatedEntry.SecureTextEntry = true;
+                        enhancedEntry.SecureTextEntry = true;
                         buttonRect.SetImage(new UIImage("ShowPass"), UIControlState.Normal);
                     }
                 };
 
-                vUpdatedEntry.ShouldChangeCharacters += (textField, range, replacementString) =>
+                enhancedEntry.ShouldChangeCharacters += (textField, range, replacementString) =>
                 {
-                    string text = vUpdatedEntry.Text;
+                    string text = enhancedEntry.Text;
                     string result = text.Substring(0, (int)range.Location) + replacementString + text.Substring((int)range.Location + (int)range.Length);
-                    vUpdatedEntry.Text = result;
+                    enhancedEntry.Text = result;
                     return false;
                 };
 
@@ -56,13 +59,13 @@ namespace LeoJHarris.FormsPlugin.iOS.Effects
                 paddingViewRight.ContentMode = UIViewContentMode.BottomRight;
 
 
-                vUpdatedEntry.LeftView = paddingViewRight;
-                vUpdatedEntry.LeftViewMode = UITextFieldViewMode.Always;
+                enhancedEntry.LeftView = paddingViewRight;
+                enhancedEntry.LeftViewMode = UITextFieldViewMode.Always;
 
                 Control.Layer.CornerRadius = 4;
                 Control.Layer.BorderColor = new CoreGraphics.CGColor(255, 255, 255);
                 Control.Layer.MasksToBounds = true;
-                vUpdatedEntry.TextAlignment = UITextAlignment.Left;
+                enhancedEntry.TextAlignment = UITextAlignment.Left;
             }
         }
     }

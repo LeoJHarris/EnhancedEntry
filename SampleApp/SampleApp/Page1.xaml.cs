@@ -90,6 +90,24 @@ namespace SampleApp
                 InValidColor = Color.Red
             });
 
+            EnhancedEntry maskEntry = new EnhancedEntry
+            {
+                BorderColor = Color.Red,
+                BorderWidth = 1,
+                CornerRadius = 2,
+                ReturnKeyType = ReturnKeyTypes.Done,
+                Keyboard = Keyboard.Numeric,
+                Behaviors =
+                {
+                    new MaskedBehavior
+                    {
+                        Mask="XXXX-XXXX-XXXX-XXXX"
+                    }
+                },
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                HorizontalTextAlignment = TextAlignment.Center
+            };
+
             EnhancedEntry jumpToEntry3 = new EnhancedEntry
             {
                 BorderColor = Color.Red,
@@ -152,7 +170,8 @@ namespace SampleApp
                 {
                     jumpToEntry1,
                     jumpToEntry2,
-                    jumpToEntry3
+                    jumpToEntry3,
+
                 }
             };
 
@@ -197,6 +216,11 @@ namespace SampleApp
                     {
                         VerticalOptions = LayoutOptions.Fill,
                         Content = stackNextEntries
+                    },
+                    new ContentView
+                    {
+                        VerticalOptions = LayoutOptions.Fill,
+                        Content = maskEntry
                     }
                 }
             };

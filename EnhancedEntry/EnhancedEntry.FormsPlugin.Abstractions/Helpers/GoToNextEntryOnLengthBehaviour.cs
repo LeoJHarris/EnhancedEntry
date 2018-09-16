@@ -17,7 +17,10 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
         /// </summary>
         public static readonly BindableProperty IsValidProperty = IsValidPropertyKey.BindableProperty;
 
-        private static readonly BindableProperty CharacterLengthBindableProperty =
+        /// <summary>
+        /// The character length bindable property
+        /// </summary>
+        private static readonly BindableProperty _characterLengthBindableProperty =
             BindableProperty.Create(nameof(CharacterLength), typeof(int), typeof(EnhancedEntry), 6);
 
         /// <summary>
@@ -25,9 +28,9 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
         /// </summary>
         public int CharacterLength
         {
-            get => (int)GetValue(CharacterLengthBindableProperty);
+            get => (int)GetValue(_characterLengthBindableProperty);
 
-            set => SetValue(CharacterLengthBindableProperty, value);
+            set => SetValue(_characterLengthBindableProperty, value);
         }
 
         /// <summary>
@@ -58,9 +61,15 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
         protected override void OnAttachedTo(Entry bindable)
         {
             base.OnAttachedTo(bindable);
-            bindable.TextChanged += HandleTextChange;
+            bindable.TextChanged += handleTextChange;
         }
 
+        /// <summary>
+        /// Gets or sets the next entry.
+        /// </summary>
+        /// <value>
+        /// The next entry.
+        /// </value>
         private Entry NextEntry { get; set; }
 
         /// <summary>
@@ -73,7 +82,7 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
         {
             base.OnDetachingFrom(bindable);
 
-            bindable.TextChanged -= HandleTextChange;
+            bindable.TextChanged -= handleTextChange;
         }
 
         /// <summary>
@@ -85,7 +94,7 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
         /// <param name="e">
         /// The e.
         /// </param>
-        private void HandleTextChange(object sender, TextChangedEventArgs e)
+        private void handleTextChange(object sender, TextChangedEventArgs e)
         {
             string t = e.NewTextValue;
 
@@ -101,4 +110,3 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
         }
     }
 }
-

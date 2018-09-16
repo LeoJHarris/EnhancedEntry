@@ -149,7 +149,7 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
         {
             base.OnAttachedTo(bindable);
 
-            bindable.TextChanged += HandleTextChange;
+            bindable.TextChanged += handleTextChange;
         }
 
         private IEnumerable<Entry> EntryComparables { get; }
@@ -164,7 +164,7 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
         {
             base.OnDetachingFrom(bindable);
 
-            bindable.TextChanged -= HandleTextChange;
+            bindable.TextChanged -= handleTextChange;
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
         /// <param name="e">
         /// The e.
         /// </param>
-        private void HandleTextChange(object sender, TextChangedEventArgs e)
+        private void handleTextChange(object sender, TextChangedEventArgs e)
         {
             string t = e.NewTextValue;
 

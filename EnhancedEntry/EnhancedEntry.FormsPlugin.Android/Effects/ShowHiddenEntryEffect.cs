@@ -13,14 +13,14 @@ namespace LeoJHarris.FormsPlugin.Droid.Effects
     {
         protected override void OnAttached()
         {
-            ConfigureControl();
+            configureControl();
         }
 
         protected override void OnDetached()
         {
         }
 
-        private void ConfigureControl()
+        private void configureControl()
         {
             EditText editText = ((EditText)Control);
             editText.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, Resource.Drawable.ShowPass, 0);
@@ -28,6 +28,11 @@ namespace LeoJHarris.FormsPlugin.Droid.Effects
         }
     }
 
+    /// <summary>
+    /// OnDrawableTouchListener
+    /// </summary>
+    /// <seealso cref="Java.Lang.Object" />
+    /// <seealso cref="Android.Views.View.IOnTouchListener" />
     public class OnDrawableTouchListener : Java.Lang.Object, View.IOnTouchListener
     {
         public bool OnTouch(View v, MotionEvent e)

@@ -6,19 +6,14 @@ using Xamarin.Forms;
 [assembly: ExportRenderer(typeof(EnhancedEntry), typeof(EnhancedEntryRenderer))]
 namespace LeoJHarris.FormsPlugin.iOS
 {
+    using CoreGraphics;
+    using Foundation;
     using System;
     using System.ComponentModel;
     using System.Reflection;
-
-    using CoreGraphics;
-
-    using Foundation;
-
     using UIKit;
-
     using Xamarin.Forms;
     using Xamarin.Forms.Platform.iOS;
-
     using EnhancedEntry = EnhancedEntry;
 
     [Preserve(AllMembers = true)]
@@ -27,8 +22,12 @@ namespace LeoJHarris.FormsPlugin.iOS
         /// <summary>
         /// Used for registration with dependency service
         /// </summary>
-        public static void Init() { DateTime temp = DateTime.Now; }
+        new public static void Init() { DateTime temp = DateTime.Now; }
 
+        /// <summary>
+        /// Raises the <see cref="E:ElementChanged" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="ElementChangedEventArgs{Entry}"/> instance containing the event data.</param>
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             EnhancedEntry baseEntry = (EnhancedEntry)Element;
@@ -64,16 +63,9 @@ namespace LeoJHarris.FormsPlugin.iOS
                         break;
                 }
 
-                e.NewElement.Focused += (sender, evt) =>
-                    {
-                        Control.Layer.BorderColor = baseEntry.FocusBorderColor.ToCGColor();
-                    };
+                e.NewElement.Focused += (sender, evt) => Control.Layer.BorderColor = baseEntry.FocusBorderColor.ToCGColor();
 
-                e.NewElement.Unfocused += (sender, evt) =>
-                    {
-                        Control.Layer.BorderColor = baseEntry.BorderColor.ToCGColor();
-                    };
-
+                e.NewElement.Unfocused += (sender, evt) => Control.Layer.BorderColor = baseEntry.BorderColor.ToCGColor();
 
                 Control.Layer.CornerRadius = new nfloat(customEntry.CornerRadius);
                 Control.Layer.BorderWidth = new nfloat(customEntry.BorderWidth);
@@ -81,7 +73,7 @@ namespace LeoJHarris.FormsPlugin.iOS
                 Control.Layer.BorderColor = baseEntry.BorderColor.ToCGColor();
 
                 Control.ReturnKeyType =
-                    GetValueFromDescription<UIReturnKeyType>(customEntry.ReturnKeyType.ToString());
+                    getValueFromDescription<UIReturnKeyType>(customEntry.ReturnKeyType.ToString());
 
                 if (!string.IsNullOrEmpty(customEntry.LeftIcon))
                 {
@@ -101,7 +93,7 @@ namespace LeoJHarris.FormsPlugin.iOS
                     }
                 }
 
-                Control.ShouldReturn += field =>
+                Control.ShouldReturn += _ =>
                     {
                         if (baseEntry.NextEntry == null)
                         {
@@ -114,20 +106,32 @@ namespace LeoJHarris.FormsPlugin.iOS
             }
         }
 
+        /// <summary>
+        /// Called when [element property changed].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="PropertyChangedEventArgs"/> instance containing the event data.</param>
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            if (e.PropertyName != EnhancedEntry.ReturnKeyPropertyName)
+            if (e.PropertyName == EnhancedEntry.ReturnKeyPropertyName)
             {
-                return;
+                if (sender is EnhancedEntry customEntry)
+                {
+                    Control.ReturnKeyType = getValueFromDescription<UIReturnKeyType>(customEntry.ReturnKeyType.ToString());
+                }
             }
-
-            if (sender is EnhancedEntry customEntry)
-                Control.ReturnKeyType =
-                    GetValueFromDescription<UIReturnKeyType>(customEntry.ReturnKeyType.ToString());
         }
 
-        private static T GetValueFromDescription<T>(string description)
+        /// <summary>
+        /// Gets the value from description.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="description">The description.</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException"></exception>
+        /// <exception cref="ArgumentException">Not found. - description</exception>
+        private static T getValueFromDescription<T>(string description)
         {
             Type type = typeof(T);
             if (!type.IsEnum)
@@ -137,9 +141,7 @@ namespace LeoJHarris.FormsPlugin.iOS
 
             foreach (FieldInfo field in type.GetFields())
             {
-                DescriptionAttribute attribute =
-                    Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) as DescriptionAttribute;
-                if (attribute != null)
+                if (Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) is DescriptionAttribute attribute)
                 {
                     if (attribute.Description == description)
                     {
@@ -158,5 +160,4 @@ namespace LeoJHarris.FormsPlugin.iOS
             throw new ArgumentException("Not found.", nameof(description));
         }
     }
-
 }
