@@ -4,7 +4,7 @@
 
 Enhanced entry for Xamarin.forms projects that extends the current xamarin.forms entry. Unofficial. 
 
-**Collaboraters welcome! Submit a feature request, fork the project, add you feature, PR and Ill review and merge :)**
+**Collaboraters welcome! Submit a feature request, fork the project, add your feature, PR and Ill review and merge :)**
 
 • Must have set keyboard return button command or set focus to next entry when user taps the Input Method Editor i.e. Done/Next button on keyboard tapped => do something / set focus on the next specified entry. 
 
@@ -74,6 +74,8 @@ PLEASE NOTE: Although these bindable properties are set per entry, they should a
 You are able to set the `EmailValidatorBehavior` for entries that will be used for emails, the `EmailRegularExpression` can be overriden if desired.
 
 You are able to set `GoToNextEntryOnLengthBehaviour` which will set focus to the `NextEntry` on the given `CharacterLength`, use the `MaxLengthValidator` i.e. MaxLength="1" as well to ensure that entry doesnt exceed the `CharacterLength`
+
+You are able to add new effect of `ShowHiddenEntryEffect` to unmask the entry property, this will toggle between masked and unmasked of a password field i.e. use `Effects = { new ShowHiddenEntryEffect() }`
 
 **License**
 
