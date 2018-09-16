@@ -250,11 +250,13 @@ namespace LeoJHarris.FormsPlugin.Abstractions
         /// Sets the color of the icon drawable.
         /// </summary>
         /// <param name="color">The color.</param>
-        public void SetIconDrawableColor(Color color)
+        /// <param name="isValid">if set to <c>true</c> [is valid].</param>
+        public void SetIconDrawableColor(Color color, bool isValid)
         {
             IconDrawableColorChanged?.Invoke(this, new ColorEventArgs()
             {
                 Color = color,
+                IsValid = isValid
             });
         }
 
@@ -290,6 +292,7 @@ namespace LeoJHarris.FormsPlugin.Abstractions
         public class ColorEventArgs : EventArgs
         {
             public Color Color { get; set; }
+            public bool IsValid { get; set; }
         }
     }
 }

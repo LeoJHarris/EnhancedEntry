@@ -10,14 +10,38 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
     /// <seealso cref="Xamarin.Forms.Behavior{LeoJHarris.FormsPlugin.Abstractions.EnhancedEntry}" />
     public class MaskedBehavior : Behavior<EnhancedEntry>
     {
-        public static readonly BindableProperty IsValidBindableProperty =
+        /// <summary>
+        /// The is valid bindable property
+        /// </summary>
+        private static readonly BindableProperty _isValidBindableProperty =
            BindableProperty.Create(
                nameof(IsValid),
                typeof(bool),
                typeof(MaskedBehavior),
                default(bool), propertyChanged: isValidPropertyChanged);
 
+        /// <summary>
+        /// The valid color bindable property
+        /// </summary>
+        private static readonly BindableProperty _validColorBindableProperty =
+           BindableProperty.Create(
+               nameof(ValidColor),
+               typeof(Color),
+               typeof(MaskedBehavior),
+               Color.Green);
+
+        /// <summary>
+        /// The invalid color bindable property
+        /// </summary>
+        private static readonly BindableProperty _invalidColorBindableProperty =
+         BindableProperty.Create(
+             nameof(InValidColor),
+             typeof(Color),
+             typeof(MaskedBehavior),
+             Color.Transparent);
+
         private string _mask = "";
+
         private IDictionary<int, char> _positions;
 
         /// <summary>
@@ -26,7 +50,7 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
         /// <value>
         /// The entry.
         /// </value>
-        public EnhancedEntry Entry { get; private set; }
+        public EnhancedEntry EnhancedEntry { get; private set; }
 
         /// <summary>
         /// Returns true if ... is valid.
@@ -36,9 +60,32 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
         /// </value>
         public bool IsValid
         {
-            get => (bool)GetValue(IsValidBindableProperty);
+            get => (bool)GetValue(_isValidBindableProperty);
+            protected set => SetValue(_isValidBindableProperty, value);
+        }
 
-            protected set => SetValue(IsValidBindableProperty, value);
+        /// <summary>
+        /// Gets or sets the color of the valid.
+        /// </summary>
+        /// <value>
+        /// The color of the valid.
+        /// </value>
+        public Color ValidColor
+        {
+            get => (Color)GetValue(_validColorBindableProperty);
+            set => SetValue(_validColorBindableProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets the color of the in valid.
+        /// </summary>
+        /// <value>
+        /// The color of the in valid.
+        /// </value>
+        private Color InValidColor
+        {
+            get => (Color)GetValue(_invalidColorBindableProperty);
+            set => SetValue(_invalidColorBindableProperty, value);
         }
 
         /// <summary>
@@ -68,7 +115,7 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
         {
             bindable.TextChanged += onEntryTextChanged;
 
-            Entry = bindable;
+            EnhancedEntry = bindable;
 
             base.OnAttachedTo(bindable);
         }
@@ -96,7 +143,7 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
         {
             if (bindable is MaskedBehavior context && newValue is bool isValid)
             {
-                context.Entry.SetIconDrawableColor(isValid ? Color.Green : Color.White);
+                context.EnhancedEntry.SetIconDrawableColor(isValid ? context.ValidColor : context.InValidColor, isValid);
             }
         }
 

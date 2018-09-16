@@ -122,6 +122,21 @@ namespace LeoJHarris.FormsPlugin.Droid
                         {
                             Control.SetCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
                             Control.CompoundDrawablePadding = entryExt.PaddingLeftIcon;
+
+                            entryExt.IconDrawableColorChanged += (sender, args) =>
+                            {
+                                foreach (Drawable d in Control.GetCompoundDrawables())
+                                {
+                                    if (args.IsValid)
+                                    {
+                                        d?.SetColorFilter(new PorterDuffColorFilter(args.Color.ToAndroid(), PorterDuff.Mode.SrcIn));
+                                    }
+                                    else
+                                    {
+                                        d?.ClearColorFilter();
+                                    }
+                                }
+                            };
                         }
                     }
                 }

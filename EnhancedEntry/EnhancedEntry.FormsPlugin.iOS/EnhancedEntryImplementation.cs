@@ -45,9 +45,9 @@ namespace LeoJHarris.FormsPlugin.iOS
 
             Element.HeightRequest = 30;
 
-            if (e.NewElement is EnhancedEntry customEntry)
+            if (e.NewElement is EnhancedEntry enhancedEntry)
             {
-                switch (customEntry.UITextBorderStyle)
+                switch (enhancedEntry.UITextBorderStyle)
                 {
                     case TextBorderStyle.None:
                         Control.BorderStyle = UITextBorderStyle.None;
@@ -67,30 +67,21 @@ namespace LeoJHarris.FormsPlugin.iOS
 
                 e.NewElement.Unfocused += (sender, evt) => Control.Layer.BorderColor = baseEntry.BorderColor.ToCGColor();
 
-                Control.Layer.CornerRadius = new nfloat(customEntry.CornerRadius);
-                Control.Layer.BorderWidth = new nfloat(customEntry.BorderWidth);
+                Control.Layer.CornerRadius = new nfloat(enhancedEntry.CornerRadius);
+                Control.Layer.BorderWidth = new nfloat(enhancedEntry.BorderWidth);
                 Control.Layer.BackgroundColor = baseEntry.BackgroundColor.ToCGColor();
                 Control.Layer.BorderColor = baseEntry.BorderColor.ToCGColor();
 
-                Control.ReturnKeyType =
-                    getValueFromDescription<UIReturnKeyType>(customEntry.ReturnKeyType.ToString());
+                Control.ReturnKeyType = getValueFromDescription<UIReturnKeyType>(enhancedEntry.ReturnKeyType.ToString());
 
-                if (!string.IsNullOrEmpty(customEntry.LeftIcon))
+                if (!string.IsNullOrEmpty(enhancedEntry.LeftIcon))
                 {
-                    UIImage leftImage = new UIImage(customEntry.LeftIcon);
+                    Control.LeftView = getImage(enhancedEntry, Color.Transparent);
 
+                    enhancedEntry.IconDrawableColorChanged += (sender, args) =>
                     {
-                        UIImageView viewImage = new UIImageView(leftImage);
-
-                        viewImage.Frame = new CGRect(
-                            0.0,
-                            0.0,
-                            viewImage.Image.Size.Width + customEntry.PaddingLeftIcon,
-                            viewImage.Image.Size.Height + customEntry.PaddingLeftIcon);
-                        viewImage.ContentMode = UIViewContentMode.Center;
-
-                        Control.LeftView = viewImage;
-                    }
+                        Control.LeftView = getImage(enhancedEntry, args.Color);
+                    };
                 }
 
                 Control.ShouldReturn += _ =>
@@ -104,6 +95,21 @@ namespace LeoJHarris.FormsPlugin.iOS
                         return true;
                     };
             }
+        }
+
+        /// <summary>
+        /// Gets the image.
+        /// </summary>
+        /// <param name="enhancedEntry">The enhanced entry.</param>
+        /// <param name="color">The color.</param>
+        /// <returns></returns>
+        private UIImageView getImage(EnhancedEntry enhancedEntry, Color color)
+        {
+            return new UIImageView(new UIImage(enhancedEntry.LeftIcon))
+            {
+                BackgroundColor = color.ToUIColor(),
+                ContentMode = UIViewContentMode.Center,
+            };
         }
 
         /// <summary>

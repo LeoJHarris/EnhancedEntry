@@ -83,8 +83,8 @@ namespace SampleApp
                 ReturnKeyType = ReturnKeyTypes.Next
             };
 
-            entryPasswordConfirm.Behaviors.Add(new PasswordCompareValidationBehavior(new List<Entry> { passwordEntry
-    })
+
+            entryPasswordConfirm.Behaviors.Add(new PasswordCompareValidationBehavior(new List<Entry> { passwordEntry })
             {
                 ValidColor = Color.Green,
                 InValidColor = Color.Red
@@ -94,6 +94,7 @@ namespace SampleApp
             {
                 BorderColor = Color.Red,
                 BorderWidth = 1,
+                LeftIcon = "account",
                 CornerRadius = 2,
                 ReturnKeyType = ReturnKeyTypes.Done,
                 Keyboard = Keyboard.Numeric,
@@ -101,7 +102,8 @@ namespace SampleApp
                 {
                     new MaskedBehavior
                     {
-                        Mask="XXXX-XXXX-XXXX-XXXX"
+                        Mask="XXXX-XXXX-XXXX-XXXX",
+                        ValidColor = Color.Green,
                     }
                 },
                 HorizontalOptions = LayoutOptions.FillAndExpand,
