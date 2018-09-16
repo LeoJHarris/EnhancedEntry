@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.3">
     <id>LeoJHarris.XForms.Plugin.EnhancedEntry</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <title>Enhanced Entry Control Plugin for Xamarin.Forms</title>
     <authors>Leonard Harris</authors>
     <owners>Leonard Harris</owners>
@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/LeoJHarris/EnhancedEntry/master/thumb3.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>
-      Added forms .net standard lib
+      Upgrade XF. Mask behavior with UI validation.
     </releaseNotes>
     <description>
       Enhanced entry for Xamarin.Forms projects that extends the current Xamarin.forms entry
@@ -27,7 +27,7 @@
 
       • Left icons perfect for form entry with padding enabled.
 
-      • Email validation (with default reg ex but can be overridden if required) and compare two or more entries.
+      • Custom behaviors available.
     </summary>
   </metadata>
   <files>
