@@ -4,7 +4,7 @@
 
 **Setup**
 
-Available on NuGet: https://www.nuget.org/packages/LeoJHarris.XForms.Plugin.EnhancedEntry NuGet Install into your PCL project and Client projects.
+Available on NuGet: https://www.nuget.org/packages/LeoJHarris.XForms.Plugin.EnhancedEntry NuGet Install into your Xamarin.Forms project including client project i.e. .Android, .iOS etc.
 
 **Gif Demo**
 
