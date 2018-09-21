@@ -2,15 +2,13 @@
 
 [![Build Status](https://www.bitrise.io/app/7f1dafa3432c4b0f/status.svg?token=q5DIlKQd3GcOeNAipGvxKQ&branch=master)](https://www.bitrise.io/app/7f1dafa3432c4b0f)
 
-Enhanced entry for Xamarin.forms projects that extends the current xamarin.forms entry. Unofficial. 
+**Setup**
+
+Available on NuGet: https://www.nuget.org/packages/LeoJHarris.XForms.Plugin.EnhancedEntry NuGet Install into your PCL project and Client projects.
 
 **Gif Demo**
 
 ![EnhancedEntry Gif](https://github.com/LeoJHarris/EnhancedEntry/blob/master/gif.gif)
-
-**Setup**
-
-Available on NuGet: https://www.nuget.org/packages/LeoJHarris.XForms.Plugin.EnhancedEntry NuGet Install into your PCL project and Client projects.
 
 **Usage**
 
