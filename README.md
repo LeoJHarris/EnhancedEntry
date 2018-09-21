@@ -10,6 +10,10 @@ Available on NuGet: https://www.nuget.org/packages/LeoJHarris.XForms.Plugin.Enha
 
 ![EnhancedEntry Gif](https://github.com/LeoJHarris/EnhancedEntry/blob/master/gif.gif)
 
+**Sample Code**
+
+https://github.com/LeoJHarris/EnhancedEntry/blob/master/SampleApp/SampleApp/Page1.xaml.cs
+
 **Usage**
 
 You must do this AFTER you call Xamarin.Forms.Init();
