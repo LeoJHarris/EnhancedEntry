@@ -1,28 +1,18 @@
-**Enhanced Entry for Xamarin forms**
+**Enhanced Entry for Xamarin Forms**
 
 [![Build Status](https://www.bitrise.io/app/7f1dafa3432c4b0f/status.svg?token=q5DIlKQd3GcOeNAipGvxKQ&branch=master)](https://www.bitrise.io/app/7f1dafa3432c4b0f)
 
-Enhanced entry for Xamarin.forms projects that extends the current xamarin.forms entry. Unofficial. 
+**Setup**
 
-**Collaboraters welcome! Submit a feature request, fork the project, add your feature, PR and Ill review and merge :)**
-
-• Must have set keyboard return button command or set focus to next entry when user taps the Input Method Editor i.e. Done/Next button on keyboard tapped => do something / set focus on the next specified entry. 
-
-• Customize keyboard return button. 
-
-• Rounded corners, border color border width and background colors. On and off focus border color property change 
-
-• Left icons perfect for form entry with padding enabled.
-
-• Email and compare entries behavour validator (basically compares a collection of entries
+Available on NuGet: https://www.nuget.org/packages/LeoJHarris.XForms.Plugin.EnhancedEntry NuGet Install into your Xamarin.Forms project including client project i.e. .Android, .iOS etc.
 
 **Gif Demo**
 
 ![EnhancedEntry Gif](https://github.com/LeoJHarris/EnhancedEntry/blob/master/gif.gif)
 
-**Setup**
+**Sample Code**
 
-Available on NuGet: https://www.nuget.org/packages/LeoJHarris.XForms.Plugin.EnhancedEntry NuGet Install into your PCL project and Client projects.
+https://github.com/LeoJHarris/EnhancedEntry/blob/master/SampleApp/SampleApp/Page1.xaml.cs
 
 **Usage**
 
@@ -30,52 +20,84 @@ You must do this AFTER you call Xamarin.Forms.Init();
 
 _In your Android_
 
-            Xamarin.Forms.Init();
-            LeoJHarris.FormsPlugin.Droid.EnhancedEntryRenderer.Init(this);
-
+```csharp
+ Xamarin.Forms.Init();
+ LeoJHarris.FormsPlugin.Droid.EnhancedEntryRenderer.Init(this);
+```
+          
 _In your iOS_
 
-            Xamarin.Forms.Forms.Init(); 
-            LeoJHarris.FormsPlugin.iOS.EnhancedEntryRenderer.Init();
-            LoadApplication(new App());
-
+```csharp
+ Xamarin.Forms.Forms.Init(); 
+ LeoJHarris.FormsPlugin.iOS.EnhancedEntryRenderer.Init();
+ LoadApplication(new App());
+```
+    
 **XAML**
 
 First add the xmlns namespace:
 
-`xmlns:enhancedEntry="clr-namespace:LeoJHarris.FormsPlugin.Abstractions;assembly=LeoJHarris.FormsPlugin.Abstractions"`
+```csharp
+ xmlns:enhancedEntry="clr-namespace:LeoJHarris.FormsPlugin.Abstractions;assembly=LeoJHarris.FormsPlugin.Abstractions"
+```
 
 Then add the xaml (or just use the code behind)
-
+    
 **Bindable Properties**
 
-You are able to set the `LeftIcon` which will place an icon to the left inside the entry, icons to be placed inside respective drawable folders and iOS in the resources files, set the `PaddingLeftIcon` for padding space between icon and entry text.
+* LeftIcon
 
-You are able to set the `BorderWidth` of the entry which must be set for respective bindables such as `CornerRadius`, `FocusBorderColor` etc.
+Places an icon to the left inside the entry, icons to be placed inside respective drawable folders and iOS in the resources files, set the `PaddingLeftIcon` for padding space between icon and entry text.
 
-You are able to set `FocusBorderColor` when the entry has focus, the `BorderColor` will be set when off focus.
+* BorderWidth
 
-You are able to set `BackgroundColor` of the entry.
+Must be set for respective bindables such as `CornerRadius`, `FocusBorderColor` etc.
 
-You are able to set `LeftPadding`, `RightPadding` and `TopBottomPadding` which will set the desired padding between the entry text and the edge of the entry.
+* FocusBorderColor
 
-You are able to set the `ReturnKeyType` which will set the text displayed for the keyboard action button. Runtime exception will be thrown if unsupported on platoform.
+When the entry has focus otherwise the `BorderColor` will be set when off focus.
 
-You are able to set the `NextEntry` which is the entry that will be given focus if when keyboard action button invoked or if `GoToNextEntryOnLengthBehaviour` condition is satisfied.
+* BackgroundColor
 
-You are able to set the `KeyBoardAction` which will take some given command to execute.
+* LeftPadding, TopBottomPadding and RightPadding
+
+Desired padding between the Entry text and the edge of the Entry.
+ 
+* ReturnKeyType
+
+Displayed for the keyboard action button. Run time exception will be thrown if unsupported on platform.
+
+* NextEntry
+
+Entry that will be given focus when keyboard action button pressed and keyboard `ReturnKeyType` is type - Next, otherwise if `GoToNextEntryOnLengthBehaviour` has been added and condition is satisfied.
+
+* KeyBoardAction
+
+Given command parameter to execute when keyboard action button pressed and `ReturnKeyType` is type - Done.
 
 **Custom Behaviours** 
 
-You are able to set the `PasswordCompareValidationBehavior` which will compare these entries with some condition checks, each entry should contain the collection `PasswordCompareValidation` of entries to compare (see examples above), you are also able to set the `ValidColor` and `InValidColor` of the entry for the given condition of the password when there is or int a match. 
+* PasswordCompareValidationBehavior
 
-PLEASE NOTE: Although these bindable properties are set per entry, they should all have the same values for all entries to check in the collection. You are able to set the `MinimumLength` of the passwords. Currently the password validator requires an uppercase, lowercase and a number, therefore the minimum length can be set.
+Compare entries given some condition checks. Each entry should contain in the collection `PasswordCompareValidation` the entries to compare (see examples above), additional bindable properties include `ValidColor` and `InValidColor` that apply if there is or isn't a match between the collection of Entries. 
 
-You are able to set the `EmailValidatorBehavior` for entries that will be used for emails, the `EmailRegularExpression` can be overriden if desired.
+PLEASE NOTE: Although these bindable properties are set per entry, they should all have the same values for all entries to check in the collection. You are able to set the `MinimumLength` of the passwords. Currently the password validation requires an uppercase, lowercase and a number, therefore the minimum length can be set.
 
-You are able to set `GoToNextEntryOnLengthBehaviour` which will set focus to the `NextEntry` on the given `CharacterLength`, use the `MaxLengthValidator` i.e. MaxLength="1" as well to ensure that entry doesnt exceed the `CharacterLength`
+* EmailValidatorBehavior
 
-You are able to add new effect of `ShowHiddenEntryEffect` to unmask the entry property, this will toggle between masked and unmasked of a password field i.e. use `Effects = { new ShowHiddenEntryEffect() }`
+Used for emails. The `EmailRegularExpression` bindable property can be overridden if desired.
+
+* GoToNextEntryOnLengthBehaviour
+
+Sets focus to the `NextEntry` on the given `CharacterLength`. In addition required to set `MaxLengthValidator` i.e. MaxLength="1" to ensure that the entry doesn't exceed the `CharacterLength`
+
+* ShowHiddenEntryEffect
+
+Toggles between masked and unmasked of a entry with type password. Use `Effects = { new ShowHiddenEntryEffect() }`
+
+* MaskedBehavior
+
+Applies a mash to the Entry. Bindable properties InValidColor and ValidColor can be set to update the color for of the drawable image within the Entry. Please set `LeftIcon` to enable this. Refer to docs. 
 
 **License**
 
