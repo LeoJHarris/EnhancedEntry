@@ -5,6 +5,7 @@ using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Support.V4.Content;
 using Android.Text.Method;
+using Android.Util;
 using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
@@ -109,6 +110,8 @@ namespace LeoJHarris.FormsPlugin.Droid
 
                 Control.SetBackground(_gradientDrawable);
 
+                Control.SetHeight((int)DpToPixels(_context, entryExt.EntryHeight));
+
                 if (Control != null && !string.IsNullOrEmpty(PackageName) && !string.IsNullOrEmpty(entryExt.LeftIcon))
                 {
                     int identifier = Context.Resources.GetIdentifier(
@@ -158,6 +161,12 @@ namespace LeoJHarris.FormsPlugin.Droid
                     entryExt.EntryActionFired();
                 };
             }
+        }
+
+        public static float DpToPixels(Context context, float valueInDp)
+        {
+            DisplayMetrics metrics = context.Resources.DisplayMetrics;
+            return TypedValue.ApplyDimension(ComplexUnitType.Dip, valueInDp, metrics);
         }
 
         /// <summary>

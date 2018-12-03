@@ -56,6 +56,9 @@ namespace LeoJHarris.FormsPlugin.Abstractions
         public static readonly BindableProperty LeftPaddingBindableProperty
                     = BindableProperty.Create(nameof(LeftPadding), typeof(int), typeof(EnhancedEntry), 6);
 
+        public static readonly BindableProperty EntryHeightBindableProperty
+                    = BindableProperty.Create(nameof(EntryHeightBindableProperty), typeof(int), typeof(EnhancedEntry), 30);
+
         public static readonly BindableProperty NextEntryBindableProperty =
                     BindableProperty.Create(nameof(NextEntry), typeof(EnhancedEntry),
                         typeof(EnhancedEntry));
@@ -180,6 +183,19 @@ namespace LeoJHarris.FormsPlugin.Abstractions
             get => (int)GetValue(LeftPaddingBindableProperty);
 
             set => SetValue(LeftPaddingBindableProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets the height of the entry.
+        /// </summary>
+        /// <value>
+        /// The height of the entry.
+        /// </value>
+        public int EntryHeight
+        {
+            get => (int)GetValue(EntryHeightBindableProperty);
+
+            set => SetValue(EntryHeightBindableProperty, value);
         }
 
         /// <summary>
