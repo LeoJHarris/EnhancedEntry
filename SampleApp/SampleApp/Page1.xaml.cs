@@ -36,7 +36,7 @@ namespace SampleApp
                 Placeholder = "Password confirm",
                 IsPassword = true,
                 NextEntry = entry3,
-                ReturnKeyType = ReturnKeyTypes.Next
+                ReturnKeyType = ReturnKeyTypes.Next,
             };
 
             EnhancedEntry passwordEntry = new EnhancedEntry
@@ -107,7 +107,8 @@ namespace SampleApp
                     }
                 },
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                HorizontalTextAlignment = TextAlignment.Center
+                HorizontalTextAlignment = TextAlignment.Center,
+                EntryHeight = 80
             };
 
             EnhancedEntry jumpToEntry3 = new EnhancedEntry
