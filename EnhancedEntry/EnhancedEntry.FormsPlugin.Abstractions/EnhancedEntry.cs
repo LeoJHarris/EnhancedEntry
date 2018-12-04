@@ -57,7 +57,7 @@ namespace LeoJHarris.FormsPlugin.Abstractions
                     = BindableProperty.Create(nameof(LeftPadding), typeof(int), typeof(EnhancedEntry), 6);
 
         public static readonly BindableProperty EntryHeightBindableProperty
-                    = BindableProperty.Create(nameof(EntryHeightBindableProperty), typeof(int), typeof(EnhancedEntry), 30);
+                    = BindableProperty.Create(nameof(EntryHeightBindableProperty), typeof(int), typeof(EnhancedEntry), 50);
 
         public static readonly BindableProperty NextEntryBindableProperty =
                     BindableProperty.Create(nameof(NextEntry), typeof(EnhancedEntry),

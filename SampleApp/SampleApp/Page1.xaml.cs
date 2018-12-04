@@ -108,7 +108,6 @@ namespace SampleApp
                 },
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
-                EntryHeight = 80
             };
 
             EnhancedEntry jumpToEntry3 = new EnhancedEntry
