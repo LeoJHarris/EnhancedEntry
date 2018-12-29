@@ -59,8 +59,8 @@ namespace LeoJHarris.FormsPlugin.iOS.Effects
                 paddingViewRight.ContentMode = UIViewContentMode.BottomRight;
 
 
-                enhancedEntry.LeftView = paddingViewRight;
-                enhancedEntry.LeftViewMode = UITextFieldViewMode.Always;
+                enhancedEntry.RightView = paddingViewRight;
+                enhancedEntry.RightViewMode = UITextFieldViewMode.Always;
 
                 Control.Layer.CornerRadius = 4;
                 Control.Layer.BorderColor = new CoreGraphics.CGColor(255, 255, 255);
