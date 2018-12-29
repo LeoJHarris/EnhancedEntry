@@ -110,8 +110,6 @@ namespace LeoJHarris.FormsPlugin.Droid
 
                 Control.SetBackground(_gradientDrawable);
 
-                Control.SetHeight((int)DpToPixels(_context, entryExt.EntryHeight));
-
                 if (Control != null && !string.IsNullOrEmpty(PackageName) && !string.IsNullOrEmpty(entryExt.LeftIcon))
                 {
                     int identifier = Context.Resources.GetIdentifier(

@@ -23,7 +23,7 @@ namespace LeoJHarris.FormsPlugin.Droid.Effects
         private void configureControl()
         {
             EditText editText = ((EditText)Control);
-            editText.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, Resource.Drawable.ShowPass, 0);
+            editText.SetCompoundDrawablesWithIntrinsicBounds(0, 0, Resource.Drawable.show_password, 0);
             editText.SetOnTouchListener(new OnDrawableTouchListener());
         }
     }
@@ -44,12 +44,12 @@ namespace LeoJHarris.FormsPlugin.Droid.Effects
                     if (editText.TransformationMethod == null)
                     {
                         editText.TransformationMethod = PasswordTransformationMethod.Instance;
-                        editText.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, Resource.Drawable.ShowPass, 0);
+                        editText.SetCompoundDrawablesWithIntrinsicBounds(0, 0, Resource.Drawable.show_password, 0);
                     }
                     else
                     {
                         editText.TransformationMethod = null;
-                        editText.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, Resource.Drawable.ShowPass, 0);
+                        editText.SetCompoundDrawablesWithIntrinsicBounds(0, 0, Resource.Drawable.hide_password, 0);
                     }
 
                     return true;

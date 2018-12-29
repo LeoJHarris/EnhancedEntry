@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AC996D64-DE03-42A5-8FDC-B6C3A0E2487A}"
 	ProjectSection(SolutionItems) = preProject
-		LeoJHarris.XForms.Plugin.EnhancedEntry.nuspec = LeoJHarris.XForms.Plugin.EnhancedEntry.nuspec
+		Nuget\LeoJHarris.XForms.Plugin.EnhancedEntry.nuspec = Nuget\LeoJHarris.XForms.Plugin.EnhancedEntry.nuspec
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnhancedEntry.FormsPlugin.iOS", "EnhancedEntry\EnhancedEntry.FormsPlugin.iOS\EnhancedEntry.FormsPlugin.iOS.csproj", "{D525F236-6A2D-4010-B1CC-4A4B8581C90B}"

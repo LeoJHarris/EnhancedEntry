@@ -61,12 +61,6 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\HidePass.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ShowPass.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\EnhancedEntry.FormsPlugin.Abstractions\EnhancedEntry.FormsPlugin.Abstractions.csproj">
       <Project>{14c534b6-1984-41a9-a384-d3a5508588e3}</Project>
       <Name>EnhancedEntry.FormsPlugin.Abstractions</Name>
@@ -74,6 +68,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\show_password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\show_password%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\show_password%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hide_password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hide_password%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hide_password%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

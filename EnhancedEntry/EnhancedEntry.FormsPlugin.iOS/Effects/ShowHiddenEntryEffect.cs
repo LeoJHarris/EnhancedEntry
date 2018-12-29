@@ -28,18 +28,18 @@ namespace LeoJHarris.FormsPlugin.iOS.Effects
             {
                 UITextField enhancedEntry = (UITextField)Control;
                 UIButton buttonRect = UIButton.FromType(UIButtonType.Custom);
-                buttonRect.SetImage(new UIImage("ShowPass"), UIControlState.Normal);
+                buttonRect.SetImage(new UIImage("show_password"), UIControlState.Normal);
                 buttonRect.TouchUpInside += (object sender, EventArgs e1) =>
                 {
                     if (enhancedEntry.SecureTextEntry)
                     {
                         enhancedEntry.SecureTextEntry = false;
-                        buttonRect.SetImage(new UIImage("HidePass"), UIControlState.Normal);
+                        buttonRect.SetImage(new UIImage("hide_password"), UIControlState.Normal);
                     }
                     else
                     {
                         enhancedEntry.SecureTextEntry = true;
-                        buttonRect.SetImage(new UIImage("ShowPass"), UIControlState.Normal);
+                        buttonRect.SetImage(new UIImage("show_password"), UIControlState.Normal);
                     }
                 };
 
