@@ -153,28 +153,22 @@
     <BundleResource Include="Resources\account.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\alldone.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\done.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\password.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\account%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\alldone%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\done%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\password%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\password%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\account%403x.png" />
   </ItemGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

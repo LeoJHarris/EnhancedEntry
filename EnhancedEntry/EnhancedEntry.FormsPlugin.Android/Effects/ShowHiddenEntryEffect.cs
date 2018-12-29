@@ -1,4 +1,5 @@
-﻿using Android.Text.Method;
+﻿using Android.Support.V4.Content;
+using Android.Text.Method;
 using Android.Views;
 using Android.Widget;
 using Xamarin.Forms;
@@ -23,7 +24,8 @@ namespace LeoJHarris.FormsPlugin.Droid.Effects
         private void configureControl()
         {
             EditText editText = ((EditText)Control);
-            editText.SetCompoundDrawablesWithIntrinsicBounds(0, 0, Resource.Drawable.show_password, 0);
+
+            editText.SetCompoundDrawablesWithIntrinsicBounds(editText.GetCompoundDrawables()[0] ?? null, null, ContextCompat.GetDrawable(Android.App.Application.Context, Resource.Drawable.show_password), null);
             editText.SetOnTouchListener(new OnDrawableTouchListener());
         }
     }
@@ -44,12 +46,12 @@ namespace LeoJHarris.FormsPlugin.Droid.Effects
                     if (editText.TransformationMethod == null)
                     {
                         editText.TransformationMethod = PasswordTransformationMethod.Instance;
-                        editText.SetCompoundDrawablesWithIntrinsicBounds(0, 0, Resource.Drawable.show_password, 0);
+                        editText.SetCompoundDrawablesWithIntrinsicBounds(editText.GetCompoundDrawables()[0] ?? null, null, ContextCompat.GetDrawable(Android.App.Application.Context, Resource.Drawable.show_password), null);
                     }
                     else
                     {
                         editText.TransformationMethod = null;
-                        editText.SetCompoundDrawablesWithIntrinsicBounds(0, 0, Resource.Drawable.hide_password, 0);
+                        editText.SetCompoundDrawablesWithIntrinsicBounds(editText.GetCompoundDrawables()[0] ?? null, null, ContextCompat.GetDrawable(Android.App.Application.Context, Resource.Drawable.hide_password), null);
                     }
 
                     return true;
