@@ -43,7 +43,8 @@ namespace LeoJHarris.FormsPlugin.iOS
             Control.LeftViewMode = UITextFieldViewMode.Always;
             Control.RightViewMode = UITextFieldViewMode.Always;
 
-            Element.HeightRequest = baseEntry.EntryHeight;
+            if (baseEntry.EntryHeight != -1)
+                Element.HeightRequest = baseEntry.EntryHeight;
 
             if (e.NewElement is EnhancedEntry enhancedEntry)
             {

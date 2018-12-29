@@ -34,7 +34,7 @@ namespace LeoJHarris.FormsPlugin.Abstractions
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <seealso cref="Xamarin.Forms.Entry" />
     public class EnhancedEntry : Entry
@@ -57,7 +57,7 @@ namespace LeoJHarris.FormsPlugin.Abstractions
                     = BindableProperty.Create(nameof(LeftPadding), typeof(int), typeof(EnhancedEntry), 6);
 
         public static readonly BindableProperty EntryHeightBindableProperty
-                    = BindableProperty.Create(nameof(EntryHeightBindableProperty), typeof(int), typeof(EnhancedEntry), 50);
+                    = BindableProperty.Create(nameof(EntryHeightBindableProperty), typeof(int), typeof(EnhancedEntry), -1);
 
         public static readonly BindableProperty NextEntryBindableProperty =
                     BindableProperty.Create(nameof(NextEntry), typeof(EnhancedEntry),
@@ -108,7 +108,7 @@ namespace LeoJHarris.FormsPlugin.Abstractions
         public event EventHandler<ColorEventArgs> IconDrawableColorChanged;
 
         /// <summary>
-        /// Background color 
+        /// Background color
         /// </summary>
         new public Color BackgroundColor
         {

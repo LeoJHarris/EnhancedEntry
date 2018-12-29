@@ -108,6 +108,9 @@ namespace LeoJHarris.FormsPlugin.Droid
                     _gradientDrawable.SetStroke((int)entryExt.BorderWidth, entryExt.BorderColor.ToAndroid());
                 };
 
+                if (entryExt.EntryHeight != -1)
+                    Control.SetHeight((int)DpToPixels(_context, entryExt.EntryHeight));
+
                 Control.SetBackground(_gradientDrawable);
 
                 if (Control != null && !string.IsNullOrEmpty(PackageName) && !string.IsNullOrEmpty(entryExt.LeftIcon))

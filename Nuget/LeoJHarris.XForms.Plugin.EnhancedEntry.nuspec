@@ -2,8 +2,8 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.3">
     <id>LeoJHarris.XForms.Plugin.EnhancedEntry</id>
-    <version>1.0.3</version>
-    <title>Enhanced Entry Control Plug-in for Xamarin.Forms</title>
+    <version>1.0.4</version>
+    <title>Enhanced Entry Control for Xamarin.Forms</title>
     <authors>Leonard Harris</authors>
     <owners>Leonard Harris</owners>
     <licenseUrl>https://github.com/LeoJHarris/EnhancedEntry/blob/master/LICENSE</licenseUrl>
@@ -11,7 +11,7 @@
     <iconUrl>https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/NuGet_project_logo.svg/220px-NuGet_project_logo.svg.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>
-      Upgrade XF. Entry height property added.
+
     </releaseNotes>
     <description>
       Enhanced entry for Xamarin.Forms projects that extends the current Xamarin.forms entry
