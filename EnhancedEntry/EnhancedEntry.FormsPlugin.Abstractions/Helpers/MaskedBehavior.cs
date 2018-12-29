@@ -7,7 +7,7 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
     /// <summary>
     /// MaskedBehavior
     /// </summary>
-    /// <seealso cref="Xamarin.Forms.Behavior{LeoJHarris.FormsPlugin.Abstractions.EnhancedEntry}" />
+    /// <seealso cref="Xamarin.Forms.Behavior{Abstractions.EnhancedEntry}" />
     public class MaskedBehavior : Behavior<EnhancedEntry>
     {
         /// <summary>
@@ -38,9 +38,14 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
              nameof(InValidColor),
              typeof(Color),
              typeof(MaskedBehavior),
-             Color.Transparent);
+             Color.Gray);
 
-        private string _mask = "";
+        private static readonly BindableProperty _maskBindableProperty =
+           BindableProperty.Create(
+               nameof(Mask),
+               typeof(string),
+               typeof(MaskedBehavior),
+              string.Empty);
 
         private IDictionary<int, char> _positions;
 
@@ -82,7 +87,7 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
         /// <value>
         /// The color of the in valid.
         /// </value>
-        private Color InValidColor
+        public Color InValidColor
         {
             get => (Color)GetValue(_invalidColorBindableProperty);
             set => SetValue(_invalidColorBindableProperty, value);
@@ -94,12 +99,16 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
         /// <value>
         /// The mask.
         /// </value>
+        ///
         public string Mask
         {
-            get => _mask;
+            get
+            {
+                return (string)GetValue(_maskBindableProperty);
+            }
             set
             {
-                _mask = value;
+                SetValue(_maskBindableProperty, value);
                 setPositions();
             }
         }
@@ -189,13 +198,13 @@ namespace LeoJHarris.FormsPlugin.Abstractions.Helpers
             if (string.IsNullOrWhiteSpace(text) || _positions == null)
                 return;
 
-            if (text.Length > _mask.Length)
+            if (text.Length > Mask.Length)
             {
                 entry.Text = text.Remove(text.Length - 1);
                 return;
             }
 
-            IsValid = isEntryValid(text, _mask);
+            IsValid = isEntryValid(text, Mask);
 
             foreach (var position in _positions)
             {

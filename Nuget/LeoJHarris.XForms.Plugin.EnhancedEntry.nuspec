@@ -12,6 +12,7 @@
     <releaseNotes>
       • Entry Height now set by platform otherwise specified on EntryHeight Property.
       • Hide and show password icons improved.
+      • Invalid Color on Mask behavior exposed.
     </releaseNotes>
     <description>
       Enhanced entry for Xamarin.Forms projects that extends the current Xamarin.forms entry

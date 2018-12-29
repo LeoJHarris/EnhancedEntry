@@ -20,7 +20,6 @@ namespace SampleApp
                 BorderColor = Color.Red,
                 BorderWidth = 1,
                 CornerRadius = 2,
-                FontSize = 11,
                 ReturnKeyType = ReturnKeyTypes.Done,
                 Placeholder = "Show dialog on tap",
                 KeyBoardAction = new Command(() => DisplayAlert("Passwords match!", "Both passwords match", "OK"))
@@ -94,8 +93,9 @@ namespace SampleApp
             {
                 BorderColor = Color.Red,
                 BorderWidth = 1,
-                LeftIcon = "account",
+                HorizontalTextAlignment = TextAlignment.Center,
                 CornerRadius = 2,
+                Placeholder = "XXXX-XXXX-XXXX-XXXX",
                 ReturnKeyType = ReturnKeyTypes.Done,
                 Keyboard = Keyboard.Numeric,
                 Behaviors =
@@ -104,10 +104,10 @@ namespace SampleApp
                     {
                         Mask="XXXX-XXXX-XXXX-XXXX",
                         ValidColor = Color.Green,
+                        InValidColor = Color.Black
                     }
                 },
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                HorizontalTextAlignment = TextAlignment.Center,
             };
 
             EnhancedEntry jumpToEntry3 = new EnhancedEntry
