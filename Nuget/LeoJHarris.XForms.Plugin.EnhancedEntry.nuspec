@@ -6,12 +6,12 @@
     <title>Enhanced Entry Control for Xamarin.Forms</title>
     <authors>Leonard Harris</authors>
     <owners>Leonard Harris</owners>
-    <licenseUrl>https://github.com/LeoJHarris/EnhancedEntry/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/LeoJHarris/EnhancedEntry</projectUrl>
     <iconUrl>https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/NuGet_project_logo.svg/220px-NuGet_project_logo.svg.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>
-
+      • Entry Height now set by platform otherwise specified on EntryHeight Property.
+      • Hide and show password icons improved.
     </releaseNotes>
     <description>
       Enhanced entry for Xamarin.Forms projects that extends the current Xamarin.forms entry
@@ -45,6 +45,5 @@
     <!-- iOS reference assemblies -->
     <file src="..\EnhancedEntry\EnhancedEntry.FormsPlugin.Abstractions\bin\Release\netstandard2.0\*.dll" target="lib\Xamarin.iOS10" />
     <file src="..\EnhancedEntry\EnhancedEntry.FormsPlugin.iOS\bin\Release\*.dll" target="lib\Xamarin.iOS10" />
-
   </files>
 </package>

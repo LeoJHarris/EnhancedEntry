@@ -13,4 +13,13 @@
  <ItemGroup>
    <ProjectReference Include="..\..\EnhancedEntry\EnhancedEntry.FormsPlugin.Abstractions\EnhancedEntry.FormsPlugin.Abstractions.csproj" />
  </ItemGroup>
+
+ <ItemGroup>
+   <None Update="App.xaml">
+     <Generator>MSBuild:Compile</Generator>
+   </None>
+   <None Update="Page1.xaml">
+     <Generator>MSBuild:Compile</Generator>
+   </None>
+ </ItemGroup>
 </Project>
