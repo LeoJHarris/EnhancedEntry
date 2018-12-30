@@ -8,7 +8,7 @@ Available on NuGet: https://www.nuget.org/packages/LeoJHarris.XForms.Plugin.Enha
 
 **Gif Demo**
 
-![EnhancedEntry Gif](https://github.com/LeoJHarris/EnhancedEntry/blob/master/GithubFiles/gif.gif)
+![EnhancedEntry Gif](https://github.com/LeoJHarris/EnhancedEntry/blob/master/assets/android_gif.gif)
 
 **Sample Code**
 
