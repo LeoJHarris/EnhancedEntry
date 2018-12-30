@@ -57,7 +57,7 @@ namespace SampleApp
                     }
                 },
                 NextEntry = entryPasswordConfirm,
-                ReturnKeyType = ReturnKeyTypes.Done
+                ReturnKeyType = ReturnKeyTypes.Next
             };
 
             EnhancedEntry advancedEntry = new EnhancedEntry
@@ -184,7 +184,7 @@ namespace SampleApp
                        .FirstOrDefault(behavior => behavior.GetType() ==
                                                 typeof(PasswordCompareValidationBehavior))).IsValid)
             {
-                this.DisplayAlert("Passwords match!", "Both passwords match", "OK");
+                this.DisplayAlert(string.Empty, "Done keyboard pressed", "OK");
             }
 
             StackLayout stack = new StackLayout
