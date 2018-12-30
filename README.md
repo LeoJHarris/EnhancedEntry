@@ -49,7 +49,7 @@ Then add the xaml (or just use the code behind)
 
 Places an icon to the left inside the entry, icons to be placed inside respective drawable folders and iOS in the resources files, set the `PaddingLeftIcon` for padding space between icon and entry text.
 
-* BorderWidth
+* `BorderWidth`
 
 Must be set for respective bindables such as `CornerRadius`, `FocusBorderColor` etc.
 
