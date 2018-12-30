@@ -2325,26 +2325,26 @@ namespace LeoJHarris.FormsPlugin.Droid
 			// aapt resource value: 0x7f020053
 			public static int avd_hide_password = 2130837587;
 			
+			// aapt resource value: 0x7f020131
+			public static int avd_hide_password_1 = 2130837809;
+			
 			// aapt resource value: 0x7f020132
-			public static int avd_hide_password_1 = 2130837810;
+			public static int avd_hide_password_2 = 2130837810;
 			
 			// aapt resource value: 0x7f020133
-			public static int avd_hide_password_2 = 2130837811;
-			
-			// aapt resource value: 0x7f020134
-			public static int avd_hide_password_3 = 2130837812;
+			public static int avd_hide_password_3 = 2130837811;
 			
 			// aapt resource value: 0x7f020054
 			public static int avd_show_password = 2130837588;
 			
+			// aapt resource value: 0x7f020134
+			public static int avd_show_password_1 = 2130837812;
+			
 			// aapt resource value: 0x7f020135
-			public static int avd_show_password_1 = 2130837813;
+			public static int avd_show_password_2 = 2130837813;
 			
 			// aapt resource value: 0x7f020136
-			public static int avd_show_password_2 = 2130837814;
-			
-			// aapt resource value: 0x7f020137
-			public static int avd_show_password_3 = 2130837815;
+			public static int avd_show_password_3 = 2130837814;
 			
 			// aapt resource value: 0x7f020055
 			public static int design_bottom_navigation_item_background = 2130837589;
@@ -2899,115 +2899,112 @@ namespace LeoJHarris.FormsPlugin.Droid
 			public static int ic_vol_type_tv_light = 2130837772;
 			
 			// aapt resource value: 0x7f02010d
-			public static int icon = 2130837773;
+			public static int mr_button_connected_dark = 2130837773;
 			
 			// aapt resource value: 0x7f02010e
-			public static int mr_button_connected_dark = 2130837774;
+			public static int mr_button_connected_light = 2130837774;
 			
 			// aapt resource value: 0x7f02010f
-			public static int mr_button_connected_light = 2130837775;
+			public static int mr_button_connecting_dark = 2130837775;
 			
 			// aapt resource value: 0x7f020110
-			public static int mr_button_connecting_dark = 2130837776;
+			public static int mr_button_connecting_light = 2130837776;
 			
 			// aapt resource value: 0x7f020111
-			public static int mr_button_connecting_light = 2130837777;
+			public static int mr_button_dark = 2130837777;
 			
 			// aapt resource value: 0x7f020112
-			public static int mr_button_dark = 2130837778;
+			public static int mr_button_light = 2130837778;
 			
 			// aapt resource value: 0x7f020113
-			public static int mr_button_light = 2130837779;
+			public static int mr_dialog_close_dark = 2130837779;
 			
 			// aapt resource value: 0x7f020114
-			public static int mr_dialog_close_dark = 2130837780;
+			public static int mr_dialog_close_light = 2130837780;
 			
 			// aapt resource value: 0x7f020115
-			public static int mr_dialog_close_light = 2130837781;
+			public static int mr_dialog_material_background_dark = 2130837781;
 			
 			// aapt resource value: 0x7f020116
-			public static int mr_dialog_material_background_dark = 2130837782;
+			public static int mr_dialog_material_background_light = 2130837782;
 			
 			// aapt resource value: 0x7f020117
-			public static int mr_dialog_material_background_light = 2130837783;
+			public static int mr_group_collapse = 2130837783;
 			
 			// aapt resource value: 0x7f020118
-			public static int mr_group_collapse = 2130837784;
+			public static int mr_group_expand = 2130837784;
 			
 			// aapt resource value: 0x7f020119
-			public static int mr_group_expand = 2130837785;
+			public static int mr_media_pause_dark = 2130837785;
 			
 			// aapt resource value: 0x7f02011a
-			public static int mr_media_pause_dark = 2130837786;
+			public static int mr_media_pause_light = 2130837786;
 			
 			// aapt resource value: 0x7f02011b
-			public static int mr_media_pause_light = 2130837787;
+			public static int mr_media_play_dark = 2130837787;
 			
 			// aapt resource value: 0x7f02011c
-			public static int mr_media_play_dark = 2130837788;
+			public static int mr_media_play_light = 2130837788;
 			
 			// aapt resource value: 0x7f02011d
-			public static int mr_media_play_light = 2130837789;
+			public static int mr_media_stop_dark = 2130837789;
 			
 			// aapt resource value: 0x7f02011e
-			public static int mr_media_stop_dark = 2130837790;
+			public static int mr_media_stop_light = 2130837790;
 			
 			// aapt resource value: 0x7f02011f
-			public static int mr_media_stop_light = 2130837791;
+			public static int mr_vol_type_audiotrack_dark = 2130837791;
 			
 			// aapt resource value: 0x7f020120
-			public static int mr_vol_type_audiotrack_dark = 2130837792;
+			public static int mr_vol_type_audiotrack_light = 2130837792;
 			
 			// aapt resource value: 0x7f020121
-			public static int mr_vol_type_audiotrack_light = 2130837793;
+			public static int navigation_empty_icon = 2130837793;
 			
 			// aapt resource value: 0x7f020122
-			public static int navigation_empty_icon = 2130837794;
+			public static int notification_action_background = 2130837794;
 			
 			// aapt resource value: 0x7f020123
-			public static int notification_action_background = 2130837795;
+			public static int notification_bg = 2130837795;
 			
 			// aapt resource value: 0x7f020124
-			public static int notification_bg = 2130837796;
+			public static int notification_bg_low = 2130837796;
 			
 			// aapt resource value: 0x7f020125
-			public static int notification_bg_low = 2130837797;
+			public static int notification_bg_low_normal = 2130837797;
 			
 			// aapt resource value: 0x7f020126
-			public static int notification_bg_low_normal = 2130837798;
+			public static int notification_bg_low_pressed = 2130837798;
 			
 			// aapt resource value: 0x7f020127
-			public static int notification_bg_low_pressed = 2130837799;
+			public static int notification_bg_normal = 2130837799;
 			
 			// aapt resource value: 0x7f020128
-			public static int notification_bg_normal = 2130837800;
+			public static int notification_bg_normal_pressed = 2130837800;
 			
 			// aapt resource value: 0x7f020129
-			public static int notification_bg_normal_pressed = 2130837801;
-			
-			// aapt resource value: 0x7f02012a
-			public static int notification_icon_background = 2130837802;
-			
-			// aapt resource value: 0x7f020130
-			public static int notification_template_icon_bg = 2130837808;
-			
-			// aapt resource value: 0x7f020131
-			public static int notification_template_icon_low_bg = 2130837809;
-			
-			// aapt resource value: 0x7f02012b
-			public static int notification_tile_bg = 2130837803;
-			
-			// aapt resource value: 0x7f02012c
-			public static int notify_panel_notification_icon_bg = 2130837804;
-			
-			// aapt resource value: 0x7f02012d
-			public static int show_password = 2130837805;
-			
-			// aapt resource value: 0x7f02012e
-			public static int tooltip_frame_dark = 2130837806;
+			public static int notification_icon_background = 2130837801;
 			
 			// aapt resource value: 0x7f02012f
-			public static int tooltip_frame_light = 2130837807;
+			public static int notification_template_icon_bg = 2130837807;
+			
+			// aapt resource value: 0x7f020130
+			public static int notification_template_icon_low_bg = 2130837808;
+			
+			// aapt resource value: 0x7f02012a
+			public static int notification_tile_bg = 2130837802;
+			
+			// aapt resource value: 0x7f02012b
+			public static int notify_panel_notification_icon_bg = 2130837803;
+			
+			// aapt resource value: 0x7f02012c
+			public static int show_password = 2130837804;
+			
+			// aapt resource value: 0x7f02012d
+			public static int tooltip_frame_dark = 2130837805;
+			
+			// aapt resource value: 0x7f02012e
+			public static int tooltip_frame_light = 2130837806;
 			
 			static Drawable()
 			{
@@ -3283,14 +3280,14 @@ namespace LeoJHarris.FormsPlugin.Droid
 			// aapt resource value: 0x7f080061
 			public static int list_item = 2131230817;
 			
-			// aapt resource value: 0x7f0800ca
-			public static int masked = 2131230922;
+			// aapt resource value: 0x7f0800c8
+			public static int masked = 2131230920;
 			
 			// aapt resource value: 0x7f0800b9
 			public static int media_actions = 2131230905;
 			
-			// aapt resource value: 0x7f0800c8
-			public static int message = 2131230920;
+			// aapt resource value: 0x7f0800c6
+			public static int message = 2131230918;
 			
 			// aapt resource value: 0x7f080031
 			public static int middle = 2131230769;
@@ -3499,9 +3496,6 @@ namespace LeoJHarris.FormsPlugin.Droid
 			// aapt resource value: 0x7f080025
 			public static int showTitle = 2131230757;
 			
-			// aapt resource value: 0x7f0800c6
-			public static int sliding_tabs = 2131230918;
-			
 			// aapt resource value: 0x7f08008b
 			public static int smallLabel = 2131230859;
 			
@@ -3580,9 +3574,6 @@ namespace LeoJHarris.FormsPlugin.Droid
 			// aapt resource value: 0x7f08006f
 			public static int title_template = 2131230831;
 			
-			// aapt resource value: 0x7f0800c7
-			public static int toolbar = 2131230919;
-			
 			// aapt resource value: 0x7f08003e
 			public static int top = 2131230782;
 			
@@ -3619,8 +3610,8 @@ namespace LeoJHarris.FormsPlugin.Droid
 			// aapt resource value: 0x7f080016
 			public static int view_offset_helper = 2131230742;
 			
-			// aapt resource value: 0x7f0800c9
-			public static int visible = 2131230921;
+			// aapt resource value: 0x7f0800c7
+			public static int visible = 2131230919;
 			
 			// aapt resource value: 0x7f0800ab
 			public static int volume_item_container = 2131230891;
@@ -3911,13 +3902,7 @@ namespace LeoJHarris.FormsPlugin.Droid
 			public static int support_simple_spinner_dropdown_item = 2130903104;
 			
 			// aapt resource value: 0x7f030041
-			public static int Tabbar = 2130903105;
-			
-			// aapt resource value: 0x7f030042
-			public static int Toolbar = 2130903106;
-			
-			// aapt resource value: 0x7f030043
-			public static int tooltip = 2130903107;
+			public static int tooltip = 2130903105;
 			
 			static Layout()
 			{
@@ -4142,9 +4127,6 @@ namespace LeoJHarris.FormsPlugin.Droid
 			
 			// aapt resource value: 0x7f0b016e
 			public static int Animation_Design_BottomSheetDialog = 2131427694;
-			
-			// aapt resource value: 0x7f0b0191
-			public static int AppCompatDialogStyle = 2131427729;
 			
 			// aapt resource value: 0x7f0b00a9
 			public static int Base_AlertDialog_AppCompat = 2131427497;
@@ -4646,12 +4628,6 @@ namespace LeoJHarris.FormsPlugin.Droid
 			
 			// aapt resource value: 0x7f0b000e
 			public static int CardView_Light = 2131427342;
-			
-			// aapt resource value: 0x7f0b018f
-			public static int MyTheme = 2131427727;
-			
-			// aapt resource value: 0x7f0b0190
-			public static int MyTheme_Base = 2131427728;
 			
 			// aapt resource value: 0x7f0b002d
 			public static int Platform_AppCompat = 2131427373;

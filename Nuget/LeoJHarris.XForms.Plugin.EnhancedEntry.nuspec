@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.3">
     <id>LeoJHarris.XForms.Plugin.EnhancedEntry</id>
-    <version>1.0.4</version>
+    <version>1.0.6</version>
     <title>Enhanced Entry Control for Xamarin.Forms</title>
     <authors>Leonard Harris</authors>
     <owners>Leonard Harris</owners>
@@ -13,6 +13,8 @@
       • Entry Height now set by platform otherwise specified on EntryHeight Property.
       • Hide and show password icons improved.
       • Invalid Color on Mask behavior exposed.
+      • Fixes Left icon not showing if ShowHiddenEntryEffect effect was added.
+      • Removed copy of the Xamarin libraries inside nuget package.
     </releaseNotes>
     <description>
       Enhanced entry for Xamarin.Forms projects that extends the current Xamarin.forms entry
@@ -38,13 +40,23 @@
     </dependencies>
   </metadata>
   <files>
+
     <!-- Cross-platform reference assemblies -->
-    <file src="..\EnhancedEntry\EnhancedEntry.FormsPlugin.Abstractions\bin\Release\netstandard2.0\*.dll" target="lib\netstandard2.0"/>
+    <file src="..\EnhancedEntry\EnhancedEntry.FormsPlugin.Abstractions\bin\Release\netstandard2.0\LeoJHarris.FormsPlugin.Abstractions.dll" target="lib\netstandard2.0"/>
+
     <!-- Android reference assemblies -->
-    <file src="..\EnhancedEntry\EnhancedEntry.FormsPlugin.Abstractions\bin\Release\netstandard2.0\*.dll" target="lib\MonoAndroid"/>
-    <file src="..\EnhancedEntry\EnhancedEntry.FormsPlugin.Android\bin\Release\*.dll" target="lib\MonoAndroid"/>
+    <file src="..\EnhancedEntry\EnhancedEntry.FormsPlugin.Abstractions\bin\Release\netstandard2.0\LeoJHarris.FormsPlugin.Abstractions.dll" target="lib\MonoAndroid"/>
+
+    <file src="..\EnhancedEntry\EnhancedEntry.FormsPlugin.Android\bin\Release\LeoJHarris.FormsPlugin.Abstractions.dll" target="lib\MonoAndroid"/>
+
+    <file src="..\EnhancedEntry\EnhancedEntry.FormsPlugin.Android\bin\Release\LeoJHarris.FormsPlugin.Droid.dll" target="lib\MonoAndroid"/>
+
     <!-- iOS reference assemblies -->
-    <file src="..\EnhancedEntry\EnhancedEntry.FormsPlugin.Abstractions\bin\Release\netstandard2.0\*.dll" target="lib\Xamarin.iOS10" />
-    <file src="..\EnhancedEntry\EnhancedEntry.FormsPlugin.iOS\bin\Release\*.dll" target="lib\Xamarin.iOS10" />
+    <file src="..\EnhancedEntry\EnhancedEntry.FormsPlugin.Abstractions\bin\Release\netstandard2.0\LeoJHarris.FormsPlugin.Abstractions.dll" target="lib\Xamarin.iOS10" />
+
+    <file src="..\EnhancedEntry\EnhancedEntry.FormsPlugin.iOS\bin\Release\LeoJHarris.FormsPlugin.Abstractions.dll" target="lib\Xamarin.iOS10" />
+
+    <file src="..\EnhancedEntry\EnhancedEntry.FormsPlugin.iOS\bin\Release\LeoJHarris.FormsPlugin.iOS.dll" target="lib\Xamarin.iOS10" />
+
   </files>
 </package>

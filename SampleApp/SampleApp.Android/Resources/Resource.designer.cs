@@ -957,7 +957,6 @@ namespace SampleApp.Droid
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Drawable.ic_vol_type_speaker_light = global::SampleApp.Droid.Resource.Drawable.ic_vol_type_speaker_light;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Drawable.ic_vol_type_tv_dark = global::SampleApp.Droid.Resource.Drawable.ic_vol_type_tv_dark;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Drawable.ic_vol_type_tv_light = global::SampleApp.Droid.Resource.Drawable.ic_vol_type_tv_light;
-			global::LeoJHarris.FormsPlugin.Droid.Resource.Drawable.icon = global::SampleApp.Droid.Resource.Drawable.icon;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Drawable.mr_button_connected_dark = global::SampleApp.Droid.Resource.Drawable.mr_button_connected_dark;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Drawable.mr_button_connected_light = global::SampleApp.Droid.Resource.Drawable.mr_button_connected_light;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Drawable.mr_button_connecting_dark = global::SampleApp.Droid.Resource.Drawable.mr_button_connecting_dark;
@@ -1153,7 +1152,6 @@ namespace SampleApp.Droid
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Id.showCustom = global::SampleApp.Droid.Resource.Id.showCustom;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Id.showHome = global::SampleApp.Droid.Resource.Id.showHome;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Id.showTitle = global::SampleApp.Droid.Resource.Id.showTitle;
-			global::LeoJHarris.FormsPlugin.Droid.Resource.Id.sliding_tabs = global::SampleApp.Droid.Resource.Id.sliding_tabs;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Id.smallLabel = global::SampleApp.Droid.Resource.Id.smallLabel;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Id.snackbar_action = global::SampleApp.Droid.Resource.Id.snackbar_action;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Id.snackbar_text = global::SampleApp.Droid.Resource.Id.snackbar_text;
@@ -1180,7 +1178,6 @@ namespace SampleApp.Droid
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Id.title = global::SampleApp.Droid.Resource.Id.title;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Id.titleDividerNoCustom = global::SampleApp.Droid.Resource.Id.titleDividerNoCustom;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Id.title_template = global::SampleApp.Droid.Resource.Id.title_template;
-			global::LeoJHarris.FormsPlugin.Droid.Resource.Id.toolbar = global::SampleApp.Droid.Resource.Id.toolbar;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Id.top = global::SampleApp.Droid.Resource.Id.top;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Id.topPanel = global::SampleApp.Droid.Resource.Id.topPanel;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Id.touch_outside = global::SampleApp.Droid.Resource.Id.touch_outside;
@@ -1277,8 +1274,6 @@ namespace SampleApp.Droid
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Layout.select_dialog_multichoice_material = global::SampleApp.Droid.Resource.Layout.select_dialog_multichoice_material;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Layout.select_dialog_singlechoice_material = global::SampleApp.Droid.Resource.Layout.select_dialog_singlechoice_material;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Layout.support_simple_spinner_dropdown_item = global::SampleApp.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::LeoJHarris.FormsPlugin.Droid.Resource.Layout.Tabbar = global::SampleApp.Droid.Resource.Layout.Tabbar;
-			global::LeoJHarris.FormsPlugin.Droid.Resource.Layout.Toolbar = global::SampleApp.Droid.Resource.Layout.Toolbar;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Layout.tooltip = global::SampleApp.Droid.Resource.Layout.tooltip;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.String.abc_action_bar_home_description = global::SampleApp.Droid.Resource.String.abc_action_bar_home_description;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.String.abc_action_bar_up_description = global::SampleApp.Droid.Resource.String.abc_action_bar_up_description;
@@ -1346,7 +1341,6 @@ namespace SampleApp.Droid
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Style.Animation_AppCompat_DropDownUp = global::SampleApp.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Style.Animation_AppCompat_Tooltip = global::SampleApp.Droid.Resource.Style.Animation_AppCompat_Tooltip;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Style.Animation_Design_BottomSheetDialog = global::SampleApp.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
-			global::LeoJHarris.FormsPlugin.Droid.Resource.Style.AppCompatDialogStyle = global::SampleApp.Droid.Resource.Style.AppCompatDialogStyle;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Style.Base_AlertDialog_AppCompat = global::SampleApp.Droid.Resource.Style.Base_AlertDialog_AppCompat;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light = global::SampleApp.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Style.Base_Animation_AppCompat_Dialog = global::SampleApp.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
@@ -1514,8 +1508,6 @@ namespace SampleApp.Droid
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Style.CardView = global::SampleApp.Droid.Resource.Style.CardView;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Style.CardView_Dark = global::SampleApp.Droid.Resource.Style.CardView_Dark;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Style.CardView_Light = global::SampleApp.Droid.Resource.Style.CardView_Light;
-			global::LeoJHarris.FormsPlugin.Droid.Resource.Style.MyTheme = global::SampleApp.Droid.Resource.Style.MyTheme;
-			global::LeoJHarris.FormsPlugin.Droid.Resource.Style.MyTheme_Base = global::SampleApp.Droid.Resource.Style.MyTheme_Base;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Style.Platform_AppCompat = global::SampleApp.Droid.Resource.Style.Platform_AppCompat;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Style.Platform_AppCompat_Light = global::SampleApp.Droid.Resource.Style.Platform_AppCompat_Light;
 			global::LeoJHarris.FormsPlugin.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat = global::SampleApp.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
@@ -6932,17 +6924,11 @@ namespace SampleApp.Droid
 			// aapt resource value: 0x7f0b000e
 			public const int CardView_Light = 2131427342;
 			
-			// aapt resource value: 0x7f0b0192
-			public const int MainTheme = 2131427730;
-			
-			// aapt resource value: 0x7f0b0193
-			public const int MainTheme_Base = 2131427731;
-			
 			// aapt resource value: 0x7f0b018f
-			public const int MyTheme = 2131427727;
+			public const int MainTheme = 2131427727;
 			
 			// aapt resource value: 0x7f0b0190
-			public const int MyTheme_Base = 2131427728;
+			public const int MainTheme_Base = 2131427728;
 			
 			// aapt resource value: 0x7f0b002d
 			public const int Platform_AppCompat = 2131427373;
