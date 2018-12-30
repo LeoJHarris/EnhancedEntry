@@ -45,7 +45,7 @@ Then add the xaml (or just use the code behind)
     
 **Bindable Properties**
 
-* LeftIcon
+* `LeftIcon`
 
 Places an icon to the left inside the entry, icons to be placed inside respective drawable folders and iOS in the resources files, set the `PaddingLeftIcon` for padding space between icon and entry text.
 
@@ -53,51 +53,51 @@ Places an icon to the left inside the entry, icons to be placed inside respectiv
 
 Must be set for respective bindables such as `CornerRadius`, `FocusBorderColor` etc.
 
-* FocusBorderColor
+* `FocusBorderColor`
 
 When the entry has focus otherwise the `BorderColor` will be set when off focus.
 
-* BackgroundColor
+* `BackgroundColor`
 
-* LeftPadding, TopBottomPadding and RightPadding
+* `LeftPadding, TopBottomPadding and RightPadding`
 
 Desired padding between the Entry text and the edge of the Entry.
  
-* ReturnKeyType
+* `ReturnKeyType`
 
 Displayed for the keyboard action button. Run time exception will be thrown if unsupported on platform.
 
-* NextEntry
+* `NextEntry`
 
 Entry that will be given focus when keyboard action button pressed and keyboard `ReturnKeyType` is type - Next, otherwise if `GoToNextEntryOnLengthBehaviour` has been added and condition is satisfied.
 
-* KeyBoardAction
+* `KeyBoardAction`
 
 Given command parameter to execute when keyboard action button pressed and `ReturnKeyType` is type - Done.
 
 **Custom Behaviours** 
 
-* PasswordCompareValidationBehavior
+* `PasswordCompareValidationBehavior`
 
 Compare entries given some condition checks. Each entry should contain in the collection `PasswordCompareValidation` the entries to compare (see examples above), additional bindable properties include `ValidColor` and `InValidColor` that apply if there is or isn't a match between the collection of Entries. 
 
 PLEASE NOTE: Although these bindable properties are set per entry, they should all have the same values for all entries to check in the collection. You are able to set the `MinimumLength` of the passwords. Currently the password validation requires an uppercase, lowercase and a number, therefore the minimum length can be set.
 
-* EmailValidatorBehavior
+* `EmailValidatorBehavior`
 
 Used for emails. The `EmailRegularExpression` bindable property can be overridden if desired.
 
-* GoToNextEntryOnLengthBehaviour
+* `GoToNextEntryOnLengthBehaviour`
 
 Sets focus to the `NextEntry` on the given `CharacterLength`. In addition required to set `MaxLengthValidator` i.e. MaxLength="1" to ensure that the entry doesn't exceed the `CharacterLength`
 
-* ShowHiddenEntryEffect
+* `ShowHiddenEntryEffect`
 
 Toggles between masked and unmasked of a entry with type password. Use `Effects = { new ShowHiddenEntryEffect() }`
 
-* MaskedBehavior
+* `MaskedBehavior`
 
-Applies a mash to the Entry. Bindable properties InValidColor and ValidColor can be set to update the color for of the drawable image within the Entry. Please set `LeftIcon` to enable this. Refer to docs. 
+Applies a mask to the Entry. Bindable properties InValidColor and ValidColor can be set to update the color for of the drawable image within the Entry. Please set `LeftIcon` to enable this. Refer to docs. 
 
 **License**
 
