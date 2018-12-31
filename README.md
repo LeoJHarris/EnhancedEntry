@@ -93,7 +93,7 @@ Sets focus to the `NextEntry` on the given `CharacterLength`. In addition requir
 
 * `ShowHiddenEntryEffect`
 
-Toggles visibility of a entry with type password. Use `Effects = { new ShowHiddenEntryEffect() }`
+Toggles visibility of text with type password. Use `Effects = { new ShowHiddenEntryEffect() }`
 
 * `MaskedBehavior`
 
