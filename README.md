@@ -2,6 +2,8 @@
 
 [![Build Status](https://www.bitrise.io/app/7f1dafa3432c4b0f/status.svg?token=q5DIlKQd3GcOeNAipGvxKQ&branch=master)](https://www.bitrise.io/app/7f1dafa3432c4b0f)
 
+A simple extended Xamarin Forms Entry with custom behaviours.
+
 **Setup**
 
 Available on NuGet: https://www.nuget.org/packages/LeoJHarris.XForms.Plugin.EnhancedEntry NuGet Install into your Xamarin.Forms project including client project i.e. .Android, .iOS etc.
