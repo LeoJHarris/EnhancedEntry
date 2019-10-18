@@ -104,3 +104,5 @@ Applies a mask to the Entry. Bindable properties InValidColor and ValidColor can
 **License**
 
 Licensed under MIT, see license file
+
+As with any open source project if you see improvements feel free to add your PR's
